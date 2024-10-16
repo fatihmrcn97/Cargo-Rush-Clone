@@ -6,7 +6,7 @@ using UnityEngine;
 public class AddMaterialToMachine : MonoBehaviour
 { 
 
-    [HideInInspector] public StackSystem _stackSystem;
+    [HideInInspector] public StackSystem stackSystem;
 
     private MachineController _machineController;
 
@@ -18,7 +18,7 @@ public class AddMaterialToMachine : MonoBehaviour
     private void Start()
     {
         _machineController = GetComponentInParent<MachineController>();
-        _stackSystem = GetComponent<StackSystem>();
+        stackSystem = GetComponent<StackSystem>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -59,8 +59,8 @@ public class AddMaterialToMachine : MonoBehaviour
             stackController.StackPositionHandler();
             _machineController.convertedMaterials.Add(currentSingleMaterial);
             currentSingleMaterial.transform.DOLocalRotate(Vector3.zero, progressionTime); 
-            currentSingleMaterial.transform.DOLocalJump(_stackSystem.materialDropPos.position, .5f, 1, progressionTime);
-            _stackSystem.DropPointHandle();
+            currentSingleMaterial.transform.DOLocalJump(stackSystem.materialDropPos.position, .5f, 1, progressionTime);
+            stackSystem.DropPointHandle();
             Events.MaterialStackedEvent?.Invoke();
             yield return new WaitForSeconds(progressionTime + .02f);
         }

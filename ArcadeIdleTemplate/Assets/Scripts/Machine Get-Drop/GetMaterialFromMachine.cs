@@ -36,7 +36,7 @@ public class GetMaterialFromMachine : MonoBehaviour
         { 
             if (singleMaterial.Count <= 0)
             {
-                await UniTask.Delay(250); 
+                await UniTask.Delay(150); 
                 continue;
             }  
             if (stackController.CheckPlayerHandMax()) return;
@@ -45,13 +45,13 @@ public class GetMaterialFromMachine : MonoBehaviour
             singleMaterial.Remove(currentSingleMaterial);
             _machineController._stackSystem.SetTheStackPositonBack(singleMaterial.Count);
             
+            currentSingleMaterial.transform.SetParent(stackController.StackTransforms()[stackController.StackedMaterialList().Count]);
             currentSingleMaterial.transform.DOLocalJump(Vector3.zero, .5f, 1, ProgressTime);
             currentSingleMaterial.transform.DOLocalRotate(Vector3.zero, ProgressTime);
-            currentSingleMaterial.transform.SetParent(stackController.StackTransforms()[stackController.StackedMaterialList().Count]);
       
             stackController.StackedMaterialList().Add(currentSingleMaterial);
             Events.MaterialStackedEvent?.Invoke();
-            await UniTask.Delay(250);
+            await UniTask.Delay(50);
         }
     }
 }

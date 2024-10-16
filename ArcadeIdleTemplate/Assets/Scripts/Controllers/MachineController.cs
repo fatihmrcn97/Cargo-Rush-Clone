@@ -2,15 +2,14 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-[RequireComponent(typeof(StackSystem))]
+ 
 public class MachineController : MonoBehaviour, IMachineController
 {
     public List<GameObject> convertedMaterials;
 
     [SerializeField] protected Transform material_machine_enter_pos;
 
-    [HideInInspector] public StackSystem _stackSystem;
+    [HideInInspector] public IStackSystem _stackSystem;
 
     protected bool isMachineWorking;
 

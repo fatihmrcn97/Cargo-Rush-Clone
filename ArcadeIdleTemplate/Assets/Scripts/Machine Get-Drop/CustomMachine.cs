@@ -22,11 +22,11 @@ public class CustomMachine : MachineController
     private int _machineDefaulutWork;
     private void Awake()
     {
-        _stackSystem = GetComponent<StackSystem>();
+        _stackSystem = GetComponent<IStackSystem>();
         anim = GetComponentInChildren<Animator>();
         _addMaterialToMachine = GetComponentInChildren<AddMaterialToMachine>();
         _getMaterialFromMachine = GetComponentInChildren<GetMaterialFromMachine>();
-        startPosOfDropPos = _stackSystem.materialDropPos.localPosition;
+        startPosOfDropPos = _stackSystem.MaterialDropPositon().localPosition;
         InvokeRepeating(nameof(MachineStartedWorking), 1f, 1f);
         animStartValue = anim.GetFloat(TagManager.ANIM_SPEED_FLOAT);
         _machineDefaulutWork = machineWorkCount;
@@ -46,7 +46,7 @@ public class CustomMachine : MachineController
         {
             _convertingItem = convertedMaterials[^1];
             convertedMaterials.Remove(_convertingItem);
-            _addMaterialToMachine._stackSystem.SetTheStackPositonBack(convertedMaterials.Count);
+            _addMaterialToMachine.stackSystem.SetTheStackPositonBack(convertedMaterials.Count);
             _convertingItem.transform.DOLocalJump(material_machine_enter_pos.position, jumpPower, 1, .15f);
             Destroy(_convertingItem, 6.25f);
         }
@@ -62,15 +62,19 @@ public class CustomMachine : MachineController
                     _convertingItem.transform.GetChild(i).transform.position, Quaternion.Euler(0,0,90), null);
                 _convertingItem.SetActive(false);
                 //   particle2.Play();
+                
                 newBox.transform.DOMove(toGoLastPostion.position, timeForMove).OnComplete(() =>
                 {
-                    newBox.transform.DOLocalRotate(lastRotation, .15f);
-                    newBox.transform.transform.DOLocalJump(_stackSystem.materialDropPos.position, .5f, 1, .15f)
-                        .OnComplete(()=>_getMaterialFromMachine.singleMaterial.Add(newBox));
-                
-                    _stackSystem.DropPointHandle();
-                    isMachineWorking = false;
-                    anim.SetBool(TagManager.WALKING_BOOL_ANIM, false);
+                    newBox.transform.DOLocalRotate(_stackSystem.MaterialDropPositon().rotation.eulerAngles, .15f);
+                    newBox.transform.transform.DOLocalJump(_stackSystem.MaterialDropPositon().position, .5f, 1, .15f)
+                        .OnComplete(() =>
+                        {
+                            _getMaterialFromMachine.singleMaterial.Add(newBox);
+                            _stackSystem.DropPointHandle();
+                            isMachineWorking = false;
+                            anim.SetBool(TagManager.WALKING_BOOL_ANIM, false);
+                        });
+            
                 });
             }
    //         ps.Stop();

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StackSystem : MonoBehaviour
+public class StackSystem : MonoBehaviour , IStackSystem
 {
     public Transform materialDropPos;
 
@@ -93,6 +93,11 @@ public class StackSystem : MonoBehaviour
         float zPos = (stackData.Z * line) + startPosOfDropPos.z;
 
         materialDropPos.position = new Vector3(xPos, yPos, zPos);
+    }
+
+    public Transform MaterialDropPositon()
+    {
+        return materialDropPos;
     }
 }
 
