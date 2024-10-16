@@ -2688,8 +2688,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 473095868}
-  - component: {fileID: 8658537431245092893}
   - component: {fileID: 8658537431245092892}
+  - component: {fileID: 8658537431245092893}
   m_Layer: 0
   m_Name: Material Converter
   m_TagString: Untagged
@@ -3649,7 +3649,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &939648253
 Transform:
   m_ObjectHideFlags: 0
@@ -3836,9 +3836,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1193283369}
   - component: {fileID: 1193283368}
+  - component: {fileID: 1193283370}
+  - component: {fileID: 1193283371}
   m_Layer: 0
   m_Name: Packable Item Spawner
-  m_TagString: Untagged
+  m_TagString: PackableItemSpawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3874,6 +3876,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1193283370
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193283367}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 25, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1193283371
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193283367}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1247698956
 GameObject:
   m_ObjectHideFlags: 0

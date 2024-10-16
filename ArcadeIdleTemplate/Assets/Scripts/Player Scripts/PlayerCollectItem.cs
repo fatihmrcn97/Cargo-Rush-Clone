@@ -31,7 +31,24 @@ public class PlayerCollectItem : MonoBehaviour
             ItemList.StackedMaterialList().Add(collectableObj);
             Events.MaterialStackedEvent?.Invoke(); 
         }
+
+
     }
-     
-    
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag(TagManager.PACKABLE_ITEM_SPAWNER))
+        {
+            PushBackItems();
+        }
+    }
+
+    private void PushBackItems()
+    {
+        foreach (var item in ItemList.StackedMaterialList())
+        {
+            item.GetComponent<ICollectable>().PushInCircle(-transform.forward);
+        }
+        ItemList.StackedMaterialList().Clear();
+    }
 }

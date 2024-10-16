@@ -1,6 +1,8 @@
 public static class TagManager
 {
 
+    public const string Default = "Untagged";
+
 
     // Animations
     public const string WALKING_BOOL_ANIM = "isWalking"; 
@@ -15,6 +17,7 @@ public static class TagManager
     public const string PLAYER_TAG = "Player";
     public const string CUSTOMER_TAG = "Customer"; 
     public const string COLLECTABLE_ITEM = "Collectable"; 
+    public const string PACKABLE_ITEM_SPAWNER= "PackableItemSpawner"; 
 
 
    

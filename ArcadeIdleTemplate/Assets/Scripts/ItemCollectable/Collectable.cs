@@ -21,4 +21,22 @@ public class Collectable : MonoBehaviour, ICollectable
        _rb.useGravity = false;
        _rb.isKinematic = true;  
     }
+
+    public void PushInCircle(Vector3 direction)
+    {
+        transform.parent = null;
+        tag = TagManager.Default;
+        _collider.enabled = true;
+        _rb.useGravity = true;
+        _rb.isKinematic = false;
+
+        _rb.AddForce(direction * 25);
+        StartCoroutine(PushInCircleCorotine());
+    }
+
+    private IEnumerator PushInCircleCorotine()
+    {
+        yield return new WaitForSeconds(.5f);
+        tag = TagManager.COLLECTABLE_ITEM;
+    }
 }
