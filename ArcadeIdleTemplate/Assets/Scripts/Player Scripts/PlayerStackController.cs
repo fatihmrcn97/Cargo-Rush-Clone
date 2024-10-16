@@ -2,7 +2,7 @@ using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStackController : MonoBehaviour , IItemList
+public class PlayerStackController : MonoBehaviour, IItemList
 {
     public List<GameObject> stackedMaterials; 
 
@@ -61,6 +61,11 @@ public class PlayerStackController : MonoBehaviour , IItemList
     public int MaxStackCount()
     {
         return maxStackCount;
+    }
+
+    public bool CheckPlayerHandMax()
+    {
+        return StackedMaterialList().Count >= MaxStackCount();
     }
 
     #endregion

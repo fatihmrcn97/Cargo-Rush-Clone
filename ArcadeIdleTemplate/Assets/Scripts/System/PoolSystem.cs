@@ -67,7 +67,30 @@ public class PoolSystem : MonoBehaviour
         }
     }
 
-
+    public GameObject SpawnFromPool(string tag, Transform parent,Transform createTranform)
+    {
+        if (poolDictionary.ContainsKey(tag))
+        {
+            GameObject objectToSpawn = poolDictionary[tag].Dequeue();
+            if (!objectToSpawn.activeInHierarchy)
+            {
+                objectToSpawn.transform.SetParent(parent);
+                objectToSpawn.SetActive(true);
+                objectToSpawn.transform.SetPositionAndRotation(createTranform.position, createTranform.rotation);
+                poolDictionary[tag].Enqueue(objectToSpawn);
+                return objectToSpawn;
+            }
+            else
+            {
+                return SpawnFromPool(tag, parent);
+            }
+        }
+        else
+        {
+            Debug.Log("Pool with tag " + tag + " does not exist");
+            return null;
+        }
+    }
 
 
 

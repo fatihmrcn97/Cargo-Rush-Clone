@@ -38,8 +38,8 @@ public class GetMaterialFromMachine : MonoBehaviour
             {
                 await UniTask.Delay(250); 
                 continue;
-            } 
-            if (stackController.StackedMaterialList().Count >= stackController.MaxStackCount()) return;
+            }  
+            if (stackController.CheckPlayerHandMax()) return;
 
             var currentSingleMaterial = singleMaterial[^1];
             singleMaterial.Remove(currentSingleMaterial);

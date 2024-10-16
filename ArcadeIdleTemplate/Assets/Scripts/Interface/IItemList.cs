@@ -9,4 +9,6 @@ public interface IItemList
     int MaxStackCount();
 
     void StackPositionHandler();
+
+    bool CheckPlayerHandMax();
 }
