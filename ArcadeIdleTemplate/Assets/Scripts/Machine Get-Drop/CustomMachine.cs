@@ -26,7 +26,7 @@ public class CustomMachine : MachineController
         anim = GetComponentInChildren<Animator>();
         _addMaterialToMachine = GetComponentInChildren<AddMaterialToMachine>();
         _getMaterialFromMachine = GetComponentInChildren<GetMaterialFromMachine>();
-        startPosOfDropPos = _stackSystem.MaterialDropPositon().localPosition;
+      //  startPosOfDropPos = _stackSystem.MaterialDropPositon().localPosition;
         InvokeRepeating(nameof(MachineStartedWorking), 1f, 1f);
         animStartValue = anim.GetFloat(TagManager.ANIM_SPEED_FLOAT);
         _machineDefaulutWork = machineWorkCount;

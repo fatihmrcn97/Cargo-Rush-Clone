@@ -30,7 +30,7 @@ public class Collectable : MonoBehaviour, ICollectable
         _rb.useGravity = true;
         _rb.isKinematic = false;
 
-        _rb.AddForce(direction * 25);
+        _rb.AddForce(direction * 155);
         StartCoroutine(PushInCircleCorotine());
     }
 
