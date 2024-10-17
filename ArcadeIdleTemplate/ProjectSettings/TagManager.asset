@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Collectable
   - PackableItemSpawner
+  - Packable
   layers:
   - Default
   - TransparentFX

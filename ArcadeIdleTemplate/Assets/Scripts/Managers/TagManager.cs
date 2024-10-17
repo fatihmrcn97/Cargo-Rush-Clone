@@ -18,6 +18,7 @@ public static class TagManager
     public const string CUSTOMER_TAG = "Customer"; 
     public const string COLLECTABLE_ITEM = "Collectable"; 
     public const string PACKABLE_ITEM_SPAWNER= "PackableItemSpawner"; 
+    public const string PACKABLE_ITEM= "Packable"; 
 
 
    

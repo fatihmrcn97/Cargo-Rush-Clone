@@ -34,7 +34,7 @@ public class CustomMachine : MachineController
       
     private void MachineStartedWorking()
     {
-        if (isMachineWorking || convertedMaterials.Count <= 0 || _getMaterialFromMachine.singleMaterial.Count >= _addMaterialToMachine.maxConvertedMaterial) return;
+        if (isMachineWorking || convertedMaterials.Count <= 0 || _getMaterialFromMachine.singleMaterial.Count >= _addMaterialToMachine._maxConvertedMaterial) return;
         isMachineWorking = true;
 
   //      ps.Play();

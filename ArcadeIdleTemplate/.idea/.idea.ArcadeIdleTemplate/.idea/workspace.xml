@@ -6,17 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="d54077af-5082-4972-a088-44bb708e99c5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ArcadeIdleTemplate/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ArcadeIdleTemplate/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Machine Animation/MachineAnimCTRL.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Machine Animation/MachineAnimCTRL.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Machine Animation/Producing.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Machine Animation/Producing.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Stack Materials/Duck Holder.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Stack Materials/Duck Holder.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Collectables/Duck Holder.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Collectables/Duck Holder.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Stack Materials/Bos Kutu.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Stack Materials/Bos Kutu.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scene-1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scene-1.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Machine Get-Drop/AddMaterialToMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Machine Get-Drop/AddMaterialToMachine.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Machine Get-Drop/CustomMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Machine Get-Drop/CustomMachine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player Scripts/PlayerCollectItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player Scripts/PlayerCollectItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Upgrade Systems/MachineUpgradeUIOpener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Upgrade Systems/MachineUpgradeUIOpener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Machines/PutInBox Machine/PutInBoxMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Machines/PutInBox Machine/PutInBoxMachine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/TagManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/TagManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/System/Enums.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/System/Enums.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +31,11 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Editor/CustomEditorSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interface/IItemList.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interface/ITriggerInteraction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Machine Get-Drop/AddMaterialSave.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Machines/PutInBox Machine/BoxTapingMachine.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Machines/PutInBox Machine/FirstItemTrigger.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Stack System SO/RandomCustomStackSystem.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -53,6 +59,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   },
@@ -123,7 +130,7 @@
       <workItem from="1698831962622" duration="2476000" />
       <workItem from="1701762318797" duration="6465000" />
       <workItem from="1705322547145" duration="2326000" />
-      <workItem from="1729156104286" duration="6694000" />
+      <workItem from="1729156104286" duration="19862000" />
     </task>
     <servers />
   </component>
