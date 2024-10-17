@@ -7,11 +7,11 @@ public class PlayerCollectItem : MonoBehaviour
 {
 
     private const float ProgressTime = .25f;
-    private IItemList ItemList;
+    private IItemList _itemList;
 
     private void Awake()
     {
-        ItemList = GetComponentInParent<IItemList>();
+        _itemList = GetComponentInParent<IItemList>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -19,16 +19,16 @@ public class PlayerCollectItem : MonoBehaviour
          
         if (other.CompareTag(TagManager.COLLECTABLE_ITEM))
         {
-            if (ItemList.CheckPlayerHandMax()) return;
+            if (_itemList.CheckPlayerHandMax()) return;
             ICollectable collectable =  other.GetComponent<ICollectable>();
             var collectableObj = collectable.GameObject;
             collectable.DeactivateObjAndPhysics();
 
-            collectableObj.transform.SetParent(ItemList.StackTransforms()[ItemList.StackedMaterialList().Count]);
+            collectableObj.transform.SetParent(_itemList.StackTransforms()[_itemList.StackedMaterialList().Count]);
             collectableObj.transform.DOLocalJump(Vector3.zero, .5f, 1, ProgressTime);
             collectableObj.transform.DOLocalRotate(Vector3.zero, ProgressTime);
            
-            ItemList.StackedMaterialList().Add(collectableObj);
+            _itemList.StackedMaterialList().Add(collectableObj);
             Events.MaterialStackedEvent?.Invoke(); 
         }
 
@@ -39,16 +39,17 @@ public class PlayerCollectItem : MonoBehaviour
     {
         if (other.CompareTag(TagManager.PACKABLE_ITEM_SPAWNER))
         {
-            PushBackItems();
+            if(_itemList.StackedMaterialList().Count > 0 && _itemList.StackedMaterialList()[0].CompareTag(TagManager.COLLECTABLE_ITEM))
+                PushBackItems();
         }
     }
 
     private void PushBackItems()
     {
-        foreach (var item in ItemList.StackedMaterialList())
+        foreach (var item in _itemList.StackedMaterialList())
         {
             item.GetComponent<ICollectable>().PushInCircle(-transform.forward);
         }
-        ItemList.StackedMaterialList().Clear();
+        _itemList.StackedMaterialList().Clear();
     }
 }

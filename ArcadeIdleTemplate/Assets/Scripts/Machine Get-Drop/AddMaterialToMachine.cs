@@ -12,7 +12,7 @@ public class AddMaterialToMachine : MonoBehaviour
 
     private bool isInTrigger; 
 
-    public int maxConvertedMaterial = 10;
+    public int maxConvertedMaterial = 10000;
 
     private Coroutine DropMaterialCorotine; 
     private void Start()

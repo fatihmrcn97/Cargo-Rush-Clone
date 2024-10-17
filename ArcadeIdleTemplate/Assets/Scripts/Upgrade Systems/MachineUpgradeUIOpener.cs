@@ -42,7 +42,7 @@ public class MachineUpgradeUIOpener : MonoBehaviour
 
     private MachineController machineController;
 
-    [SerializeField] private int machineMaxStackCountStartValue=12;
+   // [SerializeField] private int machineMaxStackCountStartValue=12;
 
     [SerializeField] private AddMaterialToMachine addMaterialToMachine;
     private void Awake()
@@ -72,7 +72,7 @@ public class MachineUpgradeUIOpener : MonoBehaviour
         int currentLevel = (int)PlayerPrefs.GetFloat("upgSpeed" + machine_upgrade_name);
         Level_TxtSpeed.text = currentLevel.ToString();
 
-        machineController.MachineUpgradeUpdate(currentLevel);
+     //   machineController.MachineUpgradeUpdate(currentLevel);
 
         if (currentLevel >= 5)
         {
@@ -84,7 +84,7 @@ public class MachineUpgradeUIOpener : MonoBehaviour
 
         int currentLevel2 = PlayerPrefs.GetInt("maxCollectedLevel" + machine_upgrade_name);
         Level_TxtCapasity.text = currentLevel2.ToString();
-        addMaterialToMachine.maxConvertedMaterial = machineMaxStackCountStartValue + (currentLevel2 * 2);
+    //    addMaterialToMachine.maxConvertedMaterial = machineMaxStackCountStartValue + (currentLevel2 * 2);
         if (currentLevel2 >= 5)
         {
             moneyTxtCapasity.transform.parent.GetComponent<Button>().interactable = false;
@@ -114,7 +114,8 @@ public class MachineUpgradeUIOpener : MonoBehaviour
 
         currentLevel = (int)PlayerPrefs.GetFloat("upgSpeed" + machine_upgrade_name);
         Level_TxtSpeed.text = currentLevel.ToString();
-        machineController.anim.SetFloat(TagManager.ANIM_SPEED_FLOAT, 1 + currentLevel);
+      
+        // machineController.anim.SetFloat(TagManager.ANIM_SPEED_FLOAT, 1 + currentLevel);
 
         if (currentLevel >= 5)
         {
@@ -145,7 +146,8 @@ public class MachineUpgradeUIOpener : MonoBehaviour
 
         currentLevel = PlayerPrefs.GetInt("maxCollectedLevel" + machine_upgrade_name);
         Level_TxtCapasity.text = currentLevel.ToString();
-        addMaterialToMachine.maxConvertedMaterial = machineMaxStackCountStartValue + (currentLevel * 2);
+      
+        //addMaterialToMachine.maxConvertedMaterial = machineMaxStackCountStartValue + (currentLevel * 2);
 
         if (currentLevel >= 5)
         {

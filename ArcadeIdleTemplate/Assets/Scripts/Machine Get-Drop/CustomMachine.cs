@@ -5,9 +5,7 @@ using DG.Tweening;
 
 public class CustomMachine : MachineController
 {
-    GameObject _convertingItem;
-
-    [SerializeField] private Vector3 lastRotation;
+    GameObject _convertingItem; 
 
     [SerializeField] private int createCount=3;
 
@@ -18,6 +16,9 @@ public class CustomMachine : MachineController
    // [SerializeField] private ParticleSystem ps;
 
     [SerializeField] private int machineWorkCount=1;
+
+    [SerializeField] private Transform middlePosition , lastBoxPosition;
+    
     
     private int _machineDefaulutWork;
     private void Awake()
@@ -25,9 +26,8 @@ public class CustomMachine : MachineController
         _stackSystem = GetComponent<IStackSystem>();
         anim = GetComponentInChildren<Animator>();
         _addMaterialToMachine = GetComponentInChildren<AddMaterialToMachine>();
-        _getMaterialFromMachine = GetComponentInChildren<GetMaterialFromMachine>();
-      //  startPosOfDropPos = _stackSystem.MaterialDropPositon().localPosition;
-        InvokeRepeating(nameof(MachineStartedWorking), 1f, 1f);
+        _getMaterialFromMachine = GetComponentInChildren<GetMaterialFromMachine>(); 
+        InvokeRepeating(nameof(MachineStartedWorking), 1f, .25f);
         animStartValue = anim.GetFloat(TagManager.ANIM_SPEED_FLOAT);
         _machineDefaulutWork = machineWorkCount;
     }
@@ -58,26 +58,35 @@ public class CustomMachine : MachineController
         {
             for (int i = 0; i < createCount; i++)
             {
-                GameObject newBox = Instantiate(newProduct,
-                    _convertingItem.transform.GetChild(i).transform.position, Quaternion.Euler(0,0,90), null);
-                _convertingItem.SetActive(false);
+                // GameObject newBox = Instantiate(newProduct,
+                //     _convertingItem.transform.GetChild(i).transform.position, Quaternion.Euler(0,0,90), null);
+                // _convertingItem.SetActive(false);
+
+                var packableItemBeforePack = _convertingItem; 
                 //   particle2.Play();
-                
-                newBox.transform.DOMove(toGoLastPostion.position, timeForMove).OnComplete(() =>
+                packableItemBeforePack.transform.DOMove(middlePosition.position, timeForMove).OnComplete(() =>
                 {
-                    newBox.transform.DOLocalRotate(_stackSystem.MaterialDropPositon().rotation.eulerAngles, .15f);
-                    newBox.transform.transform.DOLocalJump(_stackSystem.MaterialDropPositon().position, .5f, 1, .15f)
-                        .OnComplete(() =>
-                        {
-                            _getMaterialFromMachine.singleMaterial.Add(newBox);
-                            _stackSystem.DropPointHandle();
-                            isMachineWorking = false;
-                            anim.SetBool(TagManager.WALKING_BOOL_ANIM, false);
-                        });
-            
+                    var packBox = Instantiate(newProduct,lastBoxPosition.position, Quaternion.Euler(0,0,90), null);
+                    packableItemBeforePack.transform.DOMove(toGoLastPostion.position, timeForMove).OnComplete(() =>
+                    {
+                        packableItemBeforePack.transform.DOLocalJump(lastBoxPosition.position, .5f, 1, .15f)
+                            .OnComplete(() =>
+                            {
+                                packableItemBeforePack.SetActive(false);
+                                packBox.transform.DOLocalRotate(_stackSystem.MaterialDropPositon().rotation.eulerAngles, .15f);
+                                packBox.transform.transform.DOLocalJump(_stackSystem.MaterialDropPositon().position, .5f, 1, .15f).OnComplete(
+                                        () =>
+                                        {
+                                            _getMaterialFromMachine.singleMaterial.Add(packBox);
+                                            _stackSystem.DropPointHandle();
+                                            isMachineWorking = false;
+                                            anim.SetBool(TagManager.WALKING_BOOL_ANIM, false);
+                                        });
+                            });
+                    });
                 });
             }
-   //         ps.Stop();
+             //         ps.Stop();
         }
     }
 
