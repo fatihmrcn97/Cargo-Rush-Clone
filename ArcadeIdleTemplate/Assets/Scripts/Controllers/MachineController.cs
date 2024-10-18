@@ -18,9 +18,7 @@ public class MachineController : MonoBehaviour, IMachineController
     protected AddMaterialToMachine _addMaterialToMachine;
 
     protected GetMaterialFromMachine _getMaterialFromMachine;
-
-    [SerializeField] protected GameObject newProduct;
-
+ 
     [SerializeField] protected float timePerProduce;
 
     protected Vector3 startPosOfDropPos;

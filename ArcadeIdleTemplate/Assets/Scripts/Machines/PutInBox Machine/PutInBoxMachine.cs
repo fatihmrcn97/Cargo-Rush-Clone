@@ -1,6 +1,9 @@
+ using System;
+ using System.Collections.Generic;
  using DG.Tweening;
 using Dreamteck.Splines;
-using UnityEngine;
+ using Unity.VisualScripting;
+ using UnityEngine;
 
 public class PutInBoxMachine : MachineController , ITriggerInteraction
 {
@@ -14,18 +17,24 @@ public class PutInBoxMachine : MachineController , ITriggerInteraction
 
     [SerializeField] private ItemStatus outItemStatus;
     [SerializeField] private TapedItemStatus outTapedItemStatus;
+
+    [SerializeField] private List<GameObject> newProducts;
     
-    
+
+    private Array _stackSystems;
 
     private void Awake()
     {
         _stackSystem = GetComponent<IStackSystem>();
+        _stackSystems = GetComponents<IStackSystem>();
         splineComputer = GetComponentInChildren<SplineComputer>();
         anim = GetComponentInChildren<Animator>();
         _addMaterialToMachine = GetComponentInChildren<AddMaterialToMachine>();
         _getMaterialFromMachine = GetComponentInChildren<GetMaterialFromMachine>();
         InvokeRepeating(nameof(MachineStartedWorking), 1f, 1f);
         // animStartValue = anim.GetFloat(TagManager.ANIM_SPEED_FLOAT); 
+
+       // Debug.Log(  stackSystems.GetValue(1));
     }
 
     private void MachineStartedWorking()
@@ -51,7 +60,7 @@ public class PutInBoxMachine : MachineController , ITriggerInteraction
     public void PathEnded(GameObject item)
     {
         item.GetComponent<SplineFollower>().enabled = false;
-        var packBox = Instantiate(newProduct,lastBoxPosition.position, Quaternion.Euler(0,90,0), null);
+        var packBox = Instantiate(newProducts[0],lastBoxPosition.position, Quaternion.Euler(0,90,0), null);
         item.transform.DOLocalJump(lastBoxPosition.position, .5f, 1, .25f)
             .OnComplete(() =>
             {
@@ -73,4 +82,6 @@ public class PutInBoxMachine : MachineController , ITriggerInteraction
     {
         // Do Nothing for this class
     }
+    
+     
 }

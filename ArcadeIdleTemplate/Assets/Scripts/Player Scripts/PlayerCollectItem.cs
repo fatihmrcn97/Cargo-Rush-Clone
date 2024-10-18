@@ -20,6 +20,8 @@ public class PlayerCollectItem : MonoBehaviour
         if (other.CompareTag(TagManager.COLLECTABLE_ITEM))
         {
             if (_itemList.CheckPlayerHandMax()) return;
+            if (_itemList.StackedMaterialList().Count > 0 &&
+                !_itemList.StackedMaterialList()[0].CompareTag(TagManager.COLLECTABLE_ITEM)) return;
             ICollectable collectable =  other.GetComponent<ICollectable>();
             var collectableObj = collectable.GameObject;
             collectable.DeactivateObjAndPhysics();

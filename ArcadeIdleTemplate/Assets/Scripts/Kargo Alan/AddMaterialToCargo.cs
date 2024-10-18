@@ -1,28 +1,28 @@
-using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
-public class AddMaterialToMachine : MonoBehaviour
-{ 
-
-    [HideInInspector] public IStackSystem stackSystem;
-
-    private MachineController _machineController;
-
+public class AddMaterialToCargo : MonoBehaviour
+{
+    [HideInInspector] public IStackSystem stackSystem; 
     private bool isInTrigger; 
-
     public int _maxConvertedMaterial = 50;
-
     private Coroutine DropMaterialCorotine;
 
     [SerializeField] private ItemStatus itemStatus;
     [SerializeField] private TapedItemStatus tapedItemStatus;
-    
-    
-    private void Start()
+
+    private CargoPlace _cargoPlace;
+
+    private void Awake()
     {
-        _machineController = GetComponentInParent<MachineController>();
+        _cargoPlace = GetComponentInParent<CargoPlace>();
+    }
+
+    private void Start()
+    { 
         stackSystem = GetComponent<IStackSystem>();
     }
 
@@ -42,13 +42,8 @@ public class AddMaterialToMachine : MonoBehaviour
             if (DropMaterialCorotine != null) StopCoroutine(DropMaterialCorotine);
             isInTrigger = false;
         }  
-    }
-
-    public bool CheckIsMax()
-    {
-        if (_machineController.convertedMaterials.Count >= _maxConvertedMaterial) return true;
-        else return false;
-    }
+    } 
+  
 
     private IEnumerator PlayerDroppingMaterialsToTheMachine(PlayerStackController stackController)
     { 
@@ -60,31 +55,29 @@ public class AddMaterialToMachine : MonoBehaviour
         var iItem = stackController.stackedMaterials[0].GetComponent<IItem>();
         
         if(itemStatus != iItem.ItemStatus()) yield break;
-        if(tapedItemStatus != iItem.TapedItemStatus()) yield break;
-            
+        if(tapedItemStatus != iItem.TapedItemStatus()) yield break; 
         foreach (var currentSingleMaterial in tempList)
         {
-            if (!isInTrigger || _machineController.convertedMaterials.Count >= _maxConvertedMaterial) yield break; 
+            if (!isInTrigger || _cargoPlace.IsCurrierGoing) yield break;
+            if (_cargoPlace.cargoItems.Count >= _maxConvertedMaterial)
+            {
+                _cargoPlace.CargoFullCurrierGo();
+                stackSystem.SetTheStackPositonBack(0);
+                yield break;
+            }
             if(itemStatus != iItem.ItemStatus()) yield break;
             if(tapedItemStatus != iItem.TapedItemStatus()) yield break;
-            currentSingleMaterial.transform.SetParent(null);
-            // Active collision
-            
-            currentSingleMaterial.tag = TagManager.PACKABLE_ITEM;
-            currentSingleMaterial.GetComponent<BoxCollider>().enabled = true;
-            currentSingleMaterial.GetComponent<BoxCollider>().isTrigger = true; 
+            currentSingleMaterial.transform.SetParent(_cargoPlace.CurrierTransform);
+            // Active collision 
             
             stackController.stackedMaterials.Remove(currentSingleMaterial);
             stackController.StackPositionHandler();
-            _machineController.convertedMaterials.Add(currentSingleMaterial);
+            _cargoPlace.cargoItems.Add(currentSingleMaterial);
             currentSingleMaterial.transform.DOLocalRotate(Vector3.zero, progressionTime); 
-            currentSingleMaterial.transform.DOLocalJump(stackSystem.MaterialDropPositon().position, .5f, 1, progressionTime);
+            currentSingleMaterial.transform.DOLocalJump(stackSystem.MaterialDropPositon().localPosition, .5f, 1, progressionTime);
             stackSystem.DropPointHandle();
             Events.MaterialStackedEvent?.Invoke();
             yield return new WaitForSeconds(progressionTime + .02f);
         }
     }
-
-
-   
 }
