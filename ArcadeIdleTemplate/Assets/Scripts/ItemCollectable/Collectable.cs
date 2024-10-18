@@ -7,7 +7,9 @@ public class Collectable : MonoBehaviour, ICollectable , IItem
 
     [SerializeField] private ItemStatus itemStatus;
     [SerializeField] private TapedItemStatus tapedItemStatus;
-    
+    [SerializeField] private CollectableTypes collectableTypes;
+
+    public CollectableTypes CollectableTypes => collectableTypes;
     
     
     private Rigidbody _rb;

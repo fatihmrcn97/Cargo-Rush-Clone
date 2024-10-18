@@ -13,6 +13,9 @@ public class GetMaterialFromMachine : MonoBehaviour
 
     private const float ProgressTime = .2f;
 
+    [SerializeField] private int indexOfStackSytem;
+    
+
     private void Start()
     {
         _machineController = GetComponentInParent<MachineController>();
@@ -43,7 +46,8 @@ public class GetMaterialFromMachine : MonoBehaviour
 
             var currentSingleMaterial = singleMaterial[^1];
             singleMaterial.Remove(currentSingleMaterial);
-            _machineController._stackSystem.SetTheStackPositonBack(singleMaterial.Count);
+            
+            _machineController._stackSystems[indexOfStackSytem].SetTheStackPositonBack(singleMaterial.Count);
             
             currentSingleMaterial.transform.SetParent(stackController.StackTransforms()[stackController.StackedMaterialList().Count]);
             currentSingleMaterial.transform.DOLocalJump(Vector3.zero, .5f, 1, ProgressTime);

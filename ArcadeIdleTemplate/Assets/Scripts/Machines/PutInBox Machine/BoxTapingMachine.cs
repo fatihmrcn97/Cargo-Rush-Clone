@@ -20,6 +20,10 @@ public class BoxTapingMachine : MachineController , ITriggerInteraction
     private void Awake()
     {
         _stackSystem = GetComponent<IStackSystem>();
+
+        _stackSystems = new List<IStackSystem>();
+        _stackSystems.Add(_stackSystem);
+        
         splineComputer = GetComponentInChildren<SplineComputer>();
         anim = GetComponentInChildren<Animator>();
         _addMaterialToMachine = GetComponentInChildren<AddMaterialToMachine>();

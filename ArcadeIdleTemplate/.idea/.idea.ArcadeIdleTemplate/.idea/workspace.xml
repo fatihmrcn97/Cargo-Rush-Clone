@@ -6,12 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="d54077af-5082-4972-a088-44bb708e99c5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ArcadeIdleTemplate/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ArcadeIdleTemplate/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Stack Materials/Bos Kutu.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Stack Materials/Bos Kutu.prefab.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scene-1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scene-1.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/MachineController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/MachineController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Machine Get-Drop/AddMaterialToMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Machine Get-Drop/AddMaterialToMachine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Item Spawner/PackableItemSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Item Spawner/PackableItemSpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemCollectable/Collectable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemCollectable/Collectable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Machine Get-Drop/GetMaterialFromMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Machine Get-Drop/GetMaterialFromMachine.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Machines/PutInBox Machine/BoxTapingMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Machines/PutInBox Machine/BoxTapingMachine.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Machines/PutInBox Machine/PutInBoxMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Machines/PutInBox Machine/PutInBoxMachine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player Scripts/PlayerCollectItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player Scripts/PlayerCollectItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/System/Enums.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/System/Enums.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +132,7 @@
       <workItem from="1701762318797" duration="6465000" />
       <workItem from="1705322547145" duration="2326000" />
       <workItem from="1729156104286" duration="19862000" />
-      <workItem from="1729240544522" duration="10967000" />
+      <workItem from="1729240544522" duration="13119000" />
     </task>
     <servers />
   </component>

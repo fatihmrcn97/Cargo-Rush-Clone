@@ -21,3 +21,10 @@ public enum TapedItemStatus
     yellowBox,
     pinkBox,
 }
+
+
+public enum CollectableTypes
+{
+    duck,
+    pinkduck
+}

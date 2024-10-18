@@ -61,8 +61,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6716684403145362716, guid: ed7a2f938b1de6744bd5261b9d4570fc, type: 3}
-  - {fileID: 3869411105113267375, guid: ed7a2f938b1de6744bd5261b9d4570fc, type: 3}
+  - {fileID: 2100000, guid: 729adca0894632b488490c9e324441eb, type: 2}
+  - {fileID: 2100000, guid: 729adca0894632b488490c9e324441eb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -153,7 +153,7 @@ GameObject:
   - component: {fileID: 2736729631469245094}
   - component: {fileID: -2341951567204567441}
   m_Layer: 0
-  m_Name: Bos Kutu
+  m_Name: Second Kutu Pinlk
   m_TagString: Packable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -380,8 +380,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6716684403145362716, guid: ed7a2f938b1de6744bd5261b9d4570fc, type: 3}
-  - {fileID: 3869411105113267375, guid: ed7a2f938b1de6744bd5261b9d4570fc, type: 3}
+  - {fileID: 2100000, guid: 729adca0894632b488490c9e324441eb, type: 2}
+  - {fileID: 2100000, guid: 729adca0894632b488490c9e324441eb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -464,8 +464,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6716684403145362716, guid: ed7a2f938b1de6744bd5261b9d4570fc, type: 3}
-  - {fileID: 3869411105113267375, guid: ed7a2f938b1de6744bd5261b9d4570fc, type: 3}
+  - {fileID: 2100000, guid: 729adca0894632b488490c9e324441eb, type: 2}
+  - {fileID: 2100000, guid: 729adca0894632b488490c9e324441eb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

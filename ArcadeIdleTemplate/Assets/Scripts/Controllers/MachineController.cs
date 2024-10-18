@@ -27,6 +27,7 @@ public class MachineController : MonoBehaviour, IMachineController
 
     protected float animStartValue;
 
+    public List<IStackSystem> _stackSystems;
 
     public virtual void StartWashing()
     {

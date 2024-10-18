@@ -12,6 +12,8 @@ public class PackableItemSpawner : MonoBehaviour
     private int spawnCount = 0;
     private WaitForSeconds waitTime;
 
+    [SerializeField] private string poolName;
+    
     
     private void Start()
     {
@@ -27,7 +29,7 @@ public class PackableItemSpawner : MonoBehaviour
         for (int i = 0; i < spawnMaxCount-spawnCount; i++)
         {
             spawnCount++;
-            var createdOjb = PoolSystem.instance.SpawnFromPool("duck", null);
+            var createdOjb = PoolSystem.instance.SpawnFromPool(poolName, null);
             createdOjb.transform.position = spawnTransform.position + new Vector3(Random.Range(-.25f,.75f) ,0 , Random.Range(-.25f, .75f));
             yield return waitTime;
         }
