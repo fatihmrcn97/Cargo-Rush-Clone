@@ -14,7 +14,12 @@ public class AddMaterialToMachine : MonoBehaviour
 
     public int _maxConvertedMaterial = 50;
 
-    private Coroutine DropMaterialCorotine; 
+    private Coroutine DropMaterialCorotine;
+
+    [SerializeField] private ItemStatus itemStatus;
+    [SerializeField] private TapedItemStatus tapedItemStatus;
+    
+    
     private void Start()
     {
         _machineController = GetComponentInParent<MachineController>();
@@ -46,14 +51,20 @@ public class AddMaterialToMachine : MonoBehaviour
     }
 
     private IEnumerator PlayerDroppingMaterialsToTheMachine(PlayerStackController stackController)
-    {
+    { 
         float progressionTime = .1f;
         List<GameObject> tempList = new(stackController.stackedMaterials);
         tempList.Reverse();
         if (stackController.stackedMaterials.Count <= 0) yield break;
+        
+        if(itemStatus != stackController.stackedMaterials[0].GetComponent<IItem>().ItemStatus()) yield break;
+        if(tapedItemStatus != stackController.stackedMaterials[0].GetComponent<IItem>().TapedItemStatus()) yield break;
+            
         foreach (var currentSingleMaterial in tempList)
         {
             if (!isInTrigger || _machineController.convertedMaterials.Count >= _maxConvertedMaterial) yield break; 
+            if(itemStatus != stackController.stackedMaterials[0].GetComponent<IItem>().ItemStatus()) yield break;
+            if(tapedItemStatus != stackController.stackedMaterials[0].GetComponent<IItem>().TapedItemStatus()) yield break;
             currentSingleMaterial.transform.SetParent(null);
             // Active collision
             

@@ -4371,6 +4371,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxConvertedMaterial: 150
+  itemStatus: 1
+  tapedItemStatus: 1
 --- !u!114 &766166016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6677,6 +6679,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxConvertedMaterial: 150
+  itemStatus: 0
+  tapedItemStatus: 0
 --- !u!114 &1620617376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8322,6 +8326,56 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2139928975}
     m_Modifications:
+    - target: {fileID: 1781355685797907674, guid: 1a36ae0b5bbc3ae45a56876fe11d85a8,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1781355685797907674, guid: 1a36ae0b5bbc3ae45a56876fe11d85a8,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1781355685797907674, guid: 1a36ae0b5bbc3ae45a56876fe11d85a8,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1781355685797907674, guid: 1a36ae0b5bbc3ae45a56876fe11d85a8,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1781355685797907674, guid: 1a36ae0b5bbc3ae45a56876fe11d85a8,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[3]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1781355685797907674, guid: 1a36ae0b5bbc3ae45a56876fe11d85a8,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[4]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1781355685797907674, guid: 1a36ae0b5bbc3ae45a56876fe11d85a8,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[5]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1781355685797907674, guid: 1a36ae0b5bbc3ae45a56876fe11d85a8,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[6]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1781355685797907674, guid: 1a36ae0b5bbc3ae45a56876fe11d85a8,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[7]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1781355685797907674, guid: 1a36ae0b5bbc3ae45a56876fe11d85a8,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[8]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5959762359402923720, guid: 1a36ae0b5bbc3ae45a56876fe11d85a8,
         type: 3}
       propertyPath: m_Name
@@ -8548,3 +8602,5 @@ MonoBehaviour:
   lastBoxPosition: {fileID: 1035213755}
   jumpPower: 0.25
   splineComputer: {fileID: 36497858}
+  outItemStatus: 1
+  outTapedItemStatus: 1

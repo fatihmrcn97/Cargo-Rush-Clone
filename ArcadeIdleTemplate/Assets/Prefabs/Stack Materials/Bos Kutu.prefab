@@ -151,6 +151,7 @@ GameObject:
   - component: {fileID: 6689714157729007611}
   - component: {fileID: 3130187642634322776}
   - component: {fileID: 2736729631469245094}
+  - component: {fileID: -2341951567204567441}
   m_Layer: 0
   m_Name: Bos Kutu
   m_TagString: Packable
@@ -304,6 +305,20 @@ MonoBehaviour:
   _unityOnBeginningReached:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &-2341951567204567441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5862504352274940469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d499a3d0b6b7a534abc792dbae76f8b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemStatus: 1
+  tapedItemStatus: 0
 --- !u!1 &6613499780806127145
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,8 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Collectable : MonoBehaviour, ICollectable
+public class Collectable : MonoBehaviour, ICollectable , IItem
 {
+
+    [SerializeField] private ItemStatus itemStatus;
+    [SerializeField] private TapedItemStatus tapedItemStatus;
+    
+    
+    
     private Rigidbody _rb;
     private Collider _collider;
 
@@ -38,5 +44,21 @@ public class Collectable : MonoBehaviour, ICollectable
     {
         yield return new WaitForSeconds(.5f);
         tag = TagManager.COLLECTABLE_ITEM;
+    }
+
+    public ItemStatus ItemStatus()
+    {
+        return itemStatus;
+    }
+
+    public TapedItemStatus TapedItemStatus()
+    {
+        return tapedItemStatus;
+    }
+
+    public void SetStatus(ItemStatus iStatus, TapedItemStatus tapedStatus)
+    {
+        itemStatus = iStatus;
+        tapedItemStatus = tapedStatus;
     }
 }

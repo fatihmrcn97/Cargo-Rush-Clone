@@ -68,6 +68,8 @@ public class PlayerStackController : MonoBehaviour, IItemList
         return StackedMaterialList().Count >= MaxStackCount();
     }
 
+   
+
     #endregion
 
 }

@@ -11,6 +11,10 @@ public class PutInBoxMachine : MachineController , ITriggerInteraction
     [SerializeField] private float jumpPower = .25f;
     // [SerializeField] private ParticleSystem ps; 
     [SerializeField] private SplineComputer splineComputer;
+
+    [SerializeField] private ItemStatus outItemStatus;
+    [SerializeField] private TapedItemStatus outTapedItemStatus;
+    
     
 
     private void Awake()
@@ -52,6 +56,7 @@ public class PutInBoxMachine : MachineController , ITriggerInteraction
             .OnComplete(() =>
             {
                 packBox.GetComponentInChildren<Animator>().SetTrigger("close");
+                packBox.GetComponent<IItem>().SetStatus(outItemStatus,outTapedItemStatus);
                 item.SetActive(false);
                 packBox.transform.DOLocalRotate(_stackSystem.MaterialDropPositon().rotation.eulerAngles, .15f);
                 packBox.transform.transform.DOLocalJump(_stackSystem.MaterialDropPositon().position, .5f, 1, .15f).OnComplete(() =>
