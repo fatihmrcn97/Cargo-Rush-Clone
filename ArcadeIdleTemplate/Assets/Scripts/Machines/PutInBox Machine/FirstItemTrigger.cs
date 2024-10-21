@@ -14,22 +14,20 @@ public class FirstItemTrigger : MonoBehaviour
         _putInBoxMachine = GetComponentInParent<ITriggerInteraction>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) 
     {
-        if (other.CompareTag(TagManager.PACKABLE_ITEM))
+        if (!other.CompareTag(TagManager.PACKABLE_ITEM)) return;
+        
+        switch (triggerActivationOptions)
         {
-            switch (triggerActivationOptions)
-            {
-                case TriggerActivationOptions.OnPathEnded:
-                    _putInBoxMachine.PathEnded(other.gameObject);
-                    break;
-                case TriggerActivationOptions.OnTappingSectionTriggered:
-                    _putInBoxMachine.OnTriggerBanting(other.gameObject);
-                    break;
-                default:
-                    return;
-            }
-           
+            case TriggerActivationOptions.OnPathEnded:
+                _putInBoxMachine.PathEnded(other.gameObject);
+                break;
+            case TriggerActivationOptions.OnTappingSectionTriggered:
+                _putInBoxMachine.OnTriggerBanting(other.gameObject);
+                break;
+            default:
+                return;
         }
     }
 }

@@ -15,6 +15,7 @@ public static class TagManager
     // Tag
 
     public const string PLAYER_TAG = "Player";
+    public const string AI_RECYCLER_TAG = "AIRecycler";
     public const string CUSTOMER_TAG = "Customer"; 
     public const string COLLECTABLE_ITEM = "Collectable"; 
     public const string PACKABLE_ITEM_SPAWNER= "PackableItemSpawner"; 

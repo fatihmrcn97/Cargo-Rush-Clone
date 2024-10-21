@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class BoxItems : MonoBehaviour, IItem
 {
     [SerializeField] private ItemStatus itemStatus;
     [SerializeField] private TapedItemStatus tapedItemStatus;
+
+    private Tween _currentTween;
 
     public ItemStatus ItemStatus()
     {
@@ -21,5 +24,15 @@ public class BoxItems : MonoBehaviour, IItem
     {
         itemStatus = iStatus;
         tapedItemStatus = tapedStatus;
+    }
+
+    public Tween CurrentTween()
+    {
+        return _currentTween;
+    }
+
+    public void SetCurrentTween(Tween tw)
+    {
+        _currentTween = tw;
     }
 }

@@ -24,7 +24,7 @@ public class MoneyManager : MonoBehaviour
     }
 
     [Button]
-    public void MoneyCreaterRacing(int moneyCount)
+    public void MoneyCreate(int moneyCount)
     {
         StartCoroutine(MoneyEarned(spawnPosition, moneyCount)); 
     } 
@@ -38,7 +38,7 @@ public class MoneyManager : MonoBehaviour
         }
     }
 
-    public IEnumerator MoneyEarned(Transform spawnPoint, int moneyAmount)
+    private IEnumerator MoneyEarned(Transform spawnPoint, int moneyAmount)
     {
         for (var i = 0; i < moneyAmount; i++)
         {
@@ -55,7 +55,7 @@ public class MoneyManager : MonoBehaviour
      
     private int line = 0, column = 0;
 
-    public void DropPointHandle()
+    private void DropPointHandle()
     {
         if (line < 3)
         {

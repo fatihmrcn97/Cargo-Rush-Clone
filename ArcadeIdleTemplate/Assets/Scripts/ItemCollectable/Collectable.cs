@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class Collectable : MonoBehaviour, ICollectable , IItem
@@ -62,5 +63,15 @@ public class Collectable : MonoBehaviour, ICollectable , IItem
     {
         itemStatus = iStatus;
         tapedItemStatus = tapedStatus;
+    }
+
+    public Tween CurrentTween()
+    {
+        return null;
+    }
+
+    public void SetCurrentTween(Tween tw)
+    {
+        //Do not
     }
 }

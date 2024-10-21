@@ -72,13 +72,13 @@ public class PutInBoxMachine : MachineController , ITriggerInteraction
                 packBox.GetComponent<IItem>().SetStatus(outItemStatus,CollectableItemTapedType(type));
                 item.SetActive(false);
                 packBox.transform.DOLocalRotate(_stackSystems[index].MaterialDropPositon().rotation.eulerAngles, .15f);
-                packBox.transform.transform.DOLocalJump(_stackSystems[index].MaterialDropPositon().position, .5f, 1, .15f).OnComplete(() =>
-                    {
-                        _getMaterialFromMachines[index].singleMaterial.Add(packBox);
-                        _stackSystems[index].DropPointHandle();
-                        isMachineWorking = false;
-                        anim.SetBool(TagManager.WALKING_BOOL_ANIM, false);
-                    });
+                _getMaterialFromMachines[index].singleMaterial.Add(packBox);
+                _stackSystems[index].DropPointHandle();
+               
+                packBox.GetComponent<IItem>().SetCurrentTween( packBox.transform.DOLocalJump(_stackSystems[index].MaterialDropPositon().position, .5f, 1, .15f).OnComplete(() =>
+                { 
+                    anim.SetBool(TagManager.WALKING_BOOL_ANIM, false);
+                }));
             }); 
     }
 

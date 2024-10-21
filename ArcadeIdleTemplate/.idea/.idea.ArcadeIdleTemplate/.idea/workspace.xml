@@ -6,16 +6,113 @@
   <component name="ChangeListManager">
     <list default="true" id="d54077af-5082-4972-a088-44bb708e99c5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ArcadeIdleTemplate/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ArcadeIdleTemplate/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Stack Materials/Bos Kutu.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Stack Materials/Bos Kutu.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/1.jpg.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/1.jpg.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/3.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/3.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/barArkaZemin.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/barArkaZemin.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/beyazBar.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/beyazBar.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/claimHediye.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/claimHediye.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/claimYesil.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/claimYesil.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/claimgri.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/claimgri.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/dedfex.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/dedfex.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/defter.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/defter.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/el.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/el.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/eps.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/eps.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/gorevBeyaz.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/gorevBeyaz.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/gorevZemin.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/gorevZemin.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/griBar.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/griBar.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/griBar1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/griBar1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/griBar_2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/griBar_2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/hediyeZemin.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/hediyeZemin.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/map.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/map.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/maviBar.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/maviBar.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/para.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/para.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/sariBar.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/sariBar.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/sariBar_2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/sariBar_2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/sariKutu.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/sariKutu.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/shareValue.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/shareValue.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/shop.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/shop.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/skin.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/skin.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/slice10.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/slice10.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/slice11.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/slice11.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/slice12.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/slice12.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/upgrade.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/upgrade.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/x.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/x.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/yesilBar.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoAnaUI/yesilBar.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/3.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/3.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/4.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/4.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/calisan.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/calisan.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/drone.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/drone.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/drone2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/drone2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/etiketMakina.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/etiketMakina.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/etiketMakina2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/etiketMakina2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/gemi.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/gemi.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/gemi2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/gemi2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/hr.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/hr.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/kamyon.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/kamyon.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/kamyon2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/kamyon2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/karistiriciMakina.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/karistiriciMakina.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/karistiriciMakina2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/karistiriciMakina2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/konveyor.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/konveyor.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/lacivertKutu1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/lacivertKutu1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/lacivertKutu2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/lacivertKutu2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/maviKutu1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/maviKutu1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/maviKutu2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/maviKutu2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/motor2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/motor2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/motort.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/motort.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/pembeKutu1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/pembeKutu1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/pembeKutu2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/pembeKutu2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/sariKutu1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/sariKutu1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/sariKutu2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/sariKutu2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/slotUpgarde.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/slotUpgarde.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/tir.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/tir.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/tir2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/tir2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/urunlerToplu.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/urunlerToplu.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/yesilKutu1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/yesilKutu1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/yesilKutu2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoPNG/yesilKutu2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/beyazAlt.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/beyazAlt.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/beyazZemin2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/beyazZemin2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/characterC.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/characterC.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/characterS.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/characterS.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/cizgi.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/cizgi.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/freeBar.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/freeBar.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/icon.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/icon.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/kargoUI.jpg.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/kargoUI.jpg.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/para.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/para.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/paraBar.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/paraBar.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/siyahBar.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/siyahBar.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/videoicon.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/videoicon.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/worker.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/worker.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/workerC.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/workerC.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/workerS.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/workerS.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/x.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/x.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/yesilBar.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/yesilBar.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/zemin.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/zemin.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/zeminBeyaz.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargo2UI/kargoUpgrde/zeminBeyaz.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/DOTweenSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/DOTweenSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scene-1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scene-1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/MachineController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/MachineController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Item Spawner/PackableItemSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Item Spawner/PackableItemSpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Boxed Items/BoxItems.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Boxed Items/BoxItems.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interface/IItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interface/IItem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemCollectable/Collectable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemCollectable/Collectable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Kargo Alan/CargoPlace.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Kargo Alan/CargoPlace.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Machine Get-Drop/GetMaterialFromMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Machine Get-Drop/GetMaterialFromMachine.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Machines/PutInBox Machine/BoxTapingMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Machines/PutInBox Machine/BoxTapingMachine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Machines/PutInBox Machine/FirstItemTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Machines/PutInBox Machine/FirstItemTrigger.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Machines/PutInBox Machine/PutInBoxMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Machines/PutInBox Machine/PutInBoxMachine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/System/Enums.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/System/Enums.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/TagManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/TagManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MoneyScript/MoneySystem/MoneyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MoneyScript/MoneySystem/MoneyManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Stack System SO/CustomStackSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Stack System SO/CustomStackSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/z_Others/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/z_Others/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/z_Others/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/z_Others/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/z_Others/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Electronic Highway Sign SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/z_Others/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Electronic Highway Sign SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/z_Others/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/z_Others/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +124,9 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Editor/CustomEditorSystem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/RecyclerWalkingToDesk.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Boxed Items/BoxItems.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/FpsCounter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interface/IItem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interface/IItemList.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interface/ITriggerInteraction.cs" root0="FORCE_HIGHLIGHTING" />
@@ -36,6 +135,8 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Machine Get-Drop/AddMaterialSave.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Machines/PutInBox Machine/BoxTapingMachine.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Machines/PutInBox Machine/FirstItemTrigger.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/RecycleArea/AddMaterialToRecycle.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/RecycleArea/RecyclerAi/RecyclerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Stack System SO/RandomCustomStackSystem.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -55,6 +156,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;do_not_show_Android_plugin_suggestion&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;Version-22-03-06&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -132,7 +234,11 @@
       <workItem from="1701762318797" duration="6465000" />
       <workItem from="1705322547145" duration="2326000" />
       <workItem from="1729156104286" duration="19862000" />
-      <workItem from="1729240544522" duration="13119000" />
+      <workItem from="1729240544522" duration="13716000" />
+      <workItem from="1729334049974" duration="1989000" />
+      <workItem from="1729414178528" duration="7106000" />
+      <workItem from="1729434397290" duration="6401000" />
+      <workItem from="1729499646530" duration="15764000" />
     </task>
     <servers />
   </component>
