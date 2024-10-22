@@ -7,22 +7,9 @@
     <list default="true" id="d54077af-5082-4972-a088-44bb708e99c5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ArcadeIdleTemplate/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ArcadeIdleTemplate/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scene-1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scene-1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Boxed Items/BoxItems.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Boxed Items/BoxItems.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interface/IItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interface/IItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FpsCounter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FpsCounter.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Item Spawner/PackableItemSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Item Spawner/PackableItemSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemCollectable/Collectable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemCollectable/Collectable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Kargo Alan/AddMaterialToCargo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Kargo Alan/AddMaterialToCargo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Kargo Alan/CargoPlace.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Kargo Alan/CargoPlace.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Machine Get-Drop/AddMaterialToMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Machine Get-Drop/AddMaterialToMachine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Machines/PutInBox Machine/BoxTapingMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Machines/PutInBox Machine/BoxTapingMachine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Machines/PutInBox Machine/PutInBoxMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Machines/PutInBox Machine/PutInBoxMachine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RecycleArea/RecycleArea.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RecycleArea/RecycleArea.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Stack System SO/CustomStackSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Stack System SO/CustomStackSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Stack System SO/SO/StackPosForMoney.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Stack System SO/SO/StackPosForMoney.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/System/PoolSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/System/PoolSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/z_Others/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/z_Others/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,6 +138,7 @@
       <workItem from="1729434397290" duration="6401000" />
       <workItem from="1729499646530" duration="16127000" />
       <workItem from="1729584352603" duration="11783000" />
+      <workItem from="1729635165129" duration="1122000" />
     </task>
     <servers />
   </component>

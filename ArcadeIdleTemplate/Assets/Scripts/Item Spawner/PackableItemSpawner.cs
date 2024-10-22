@@ -57,21 +57,9 @@ public class PackableItemSpawner : MonoBehaviour
         
         foreach (var item in _inGameCollectablesCount)
         {
-            if (item.Key == "duck")
-            {
-                if(item.Value <= 15)
-                    SpawnCollectableObject("duck");
-                
-                Debug.Log("var geliyor duck -> " + item.Value);
-            }
-
-            if (item.Key=="pinkDuck")
-            {
-                if(item.Value <= 15)
-                    SpawnCollectableObject("pinkDuck");
-                
-                Debug.Log("var geliyor pink duck -> " + item.Value);
-            }
+            if (item is { Key: "duck", Value: <= 15 }) SpawnCollectableObject("duck");
+            
+            if (item is { Key: "pinkDuck", Value: <= 15 }) SpawnCollectableObject("pinkDuck");
         }
     }
 

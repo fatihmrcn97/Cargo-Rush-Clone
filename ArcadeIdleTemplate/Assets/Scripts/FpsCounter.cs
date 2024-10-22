@@ -5,70 +5,34 @@ using UnityEngine;
 
 public class FpsCounter : MonoBehaviour
 {
-    public enum DeltaTimeType
-    {
-        Smooth,
-        Unscaled
-    }
-
+ 
     public TextMeshProUGUI Text;
-    [Tooltip("Unscaled is more accurate, but jumpy, or if your game modifies Time.timeScale. Use Smooth for smoothDeltaTime.")]
-    public DeltaTimeType DeltaType = DeltaTimeType.Smooth;
+ 
+   
+    private int screenLongSide; 
 
-    private Dictionary<int, string> CachedNumberStrings = new();
-
-    private int[] _frameRateSamples;
-    private int _cacheNumbersAmount = 300;
-    private int _averageFromAmount = 30;
-    private int _averageCounter;
-    private int _currentAveraged;
-
-    void Awake()
+    // for fps calculation.
+    private int frameCount;
+    private float elapsedTime;
+    private double frameRate;
+ 
+    private void Update()
     {
-        // Cache strings and create array
+        // FPS calculation
+        frameCount++;
+        elapsedTime += Time.deltaTime;
+        if (elapsedTime > 0.5f)
         {
-            for (int i = 0; i < _cacheNumbersAmount; i++) {
-                CachedNumberStrings[i] = i.ToString();
-            }
+            frameRate = System.Math.Round(frameCount / elapsedTime, 1, System.MidpointRounding.AwayFromZero);
+            frameCount = 0;
+            elapsedTime = 0;
 
-            _frameRateSamples = new int[_averageFromAmount];
+            // Update the UI size if the resolution has changed
+            if (screenLongSide != Mathf.Max(Screen.width, Screen.height))
+            {
+                Text.text = frameRate+"";
+            }
         }
     }
-
-    void Update()
-    {
-        // Sample
-        {
-            var currentFrame = (int)Math.Round(1f / DeltaType switch
-            {
-                DeltaTimeType.Smooth => Time.smoothDeltaTime,
-                DeltaTimeType.Unscaled => Time.unscaledDeltaTime,
-                _ => Time.unscaledDeltaTime
-            });
-            _frameRateSamples[_averageCounter] = currentFrame;
-        }
-
-        // Average
-        {
-            var average = 0f;
-
-            foreach (var frameRate in _frameRateSamples) {
-                average += frameRate;
-            }
-
-            _currentAveraged = (int)Math.Round(average / _averageFromAmount);
-            _averageCounter = (_averageCounter + 1) % _averageFromAmount;
-        }
-
-        // Assign to UI
-        {
-            Text.text = _currentAveraged switch
-            {
-                var x when x >= 0 && x < _cacheNumbersAmount => CachedNumberStrings[x],
-                var x when x >= _cacheNumbersAmount => $"> {_cacheNumbersAmount}",
-                var x when x < 0 => "< 0",
-                _ => "?"
-            };
-        }
-    }
+ 
 }
