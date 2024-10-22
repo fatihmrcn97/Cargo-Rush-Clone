@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -19,11 +20,15 @@ public class UIManager : MonoBehaviour
 
     public GameObject maxUI;
     
+    public Dictionary<string, int> InGameCollectablesCount;
+    
     private void Awake()
     {
         if (instance == null)
             instance = this;
         AwakeInitializer();
+
+        InGameCollectablesCount = new Dictionary<string, int>();
     }
 
     private void AwakeInitializer()

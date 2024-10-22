@@ -1,5 +1,6 @@
 
 using DG.Tweening;
+using UnityEngine;
 
 public interface IItem
 {
@@ -11,4 +12,6 @@ public interface IItem
 
     Tween CurrentTween();
     void SetCurrentTween(Tween tw);
+
+    Transform ResetObj();
 }

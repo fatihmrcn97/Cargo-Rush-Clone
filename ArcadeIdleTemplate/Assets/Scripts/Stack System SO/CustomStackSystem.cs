@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +24,13 @@ public class CustomStackSystem : MonoBehaviour, IStackSystem
         nullableBoxTaping =
             GetComponent<BoxTapingMachine>(); // Some of CustomStackSystem does not have BoxTapingMachine classes we need to control it if we want to use
 
+      
+    }
+
+    private IEnumerator Start()
+    {
+        // Açılış animasyonu 0 dan 1 ' e scale olurken drop transfromun yeri animasyon bittikten sonra baz alınsın yoksa animasyyon sırasında bir yerde oluyor
+        yield return new WaitForSeconds(.25f);
         materialDropPosition.SetPositionAndRotation(dropTransforms[0].position,
             dropTransforms[0].rotation);
     }

@@ -35,4 +35,10 @@ public class BoxItems : MonoBehaviour, IItem
     {
         _currentTween = tw;
     }
+
+    public Transform ResetObj()
+    {
+        // itemi geri poola dondurceksem resetleme işlemeri burda olacak
+        return transform;
+    }
 }

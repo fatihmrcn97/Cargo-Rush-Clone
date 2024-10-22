@@ -24,6 +24,16 @@ public class Collectable : MonoBehaviour, ICollectable , IItem
 
     public GameObject GameObject => gameObject;
 
+    public Transform ResetObj()
+    {
+        tag = TagManager.COLLECTABLE_ITEM;
+        _collider.isTrigger = false;
+        _collider.enabled = true;
+        _rb.useGravity = true;
+        _rb.isKinematic = false;
+        return transform;
+    }
+
     public void DeactivateObjAndPhysics()
     {
        _collider.enabled = false;

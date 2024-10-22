@@ -48,10 +48,11 @@ public class PutInBoxMachine : MachineController , ITriggerInteraction
         convertedMaterials.Remove(_convertingItem);
         _addMaterialToMachine.stackSystem.SetTheStackPositonBack(convertedMaterials.Count);
         _convertingItem.transform.DOLocalJump(material_machine_enter_pos.position, jumpPower, 1, .15f).OnComplete(ItemBoxingProcess);
-        Destroy(_convertingItem, 6.25f);
+ 
     }
 
     private void ItemBoxingProcess()
+    
     {
         var ctype = _convertingItem.GetComponent<Collectable>().CollectableTypes;
         _convertingItem.GetComponent<SplineFollower>().spline = splineComputers[GetCollectableItemIndex(ctype)];
@@ -74,11 +75,11 @@ public class PutInBoxMachine : MachineController , ITriggerInteraction
                 packBox.transform.DOLocalRotate(_stackSystems[index].MaterialDropPositon().rotation.eulerAngles, .15f);
                 _getMaterialFromMachines[index].singleMaterial.Add(packBox);
                 _stackSystems[index].DropPointHandle();
-               
                 packBox.GetComponent<IItem>().SetCurrentTween( packBox.transform.DOLocalJump(_stackSystems[index].MaterialDropPositon().position, .5f, 1, .15f).OnComplete(() =>
                 { 
                     anim.SetBool(TagManager.WALKING_BOOL_ANIM, false);
                 }));
+               PoolSystem.instance.DeactivateAndSentToPool(item.GetComponent<IItem>());
             }); 
     }
 

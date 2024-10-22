@@ -1,12 +1,7 @@
-using System;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class RecycleArea : MonoBehaviour
-{
-    [SerializeField] private GameObject recycle_karakter;
-
+{  
     [SerializeField] private Transform boxGetTransform;
 
     [SerializeField] private RecyclerController recyclerControllerKarakter;
@@ -16,10 +11,13 @@ public class RecycleArea : MonoBehaviour
     private bool oneTime = true;
 
     private AddMaterialToRecycle _addMaterialToRecycle;
+
+    private MoneyManager _moneyManager;
  
     private void Awake()
     { 
         _addMaterialToRecycle = GetComponentInChildren<AddMaterialToRecycle>();  
+        _moneyManager = GetComponentInChildren<MoneyManager>();  
     }
 
     private void Start()
@@ -47,7 +45,7 @@ public class RecycleArea : MonoBehaviour
             var itemToDispose = _addMaterialToRecycle.recycleMaterials[^1];
             _addMaterialToRecycle.recycleMaterials.Remove(itemToDispose);
             recyclerControllerKarakter.SetBox(itemToDispose,_startTransform);
-            
+            _moneyManager.MoneyCreate(2);
         }
     }
 

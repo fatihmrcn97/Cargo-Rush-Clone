@@ -43,6 +43,14 @@ public class PoolSystem : MonoBehaviour
     }
 
 
+    public void DeactivateAndSentToPool(IItem item)
+    {
+        var iTransform =item.ResetObj();  
+        iTransform.SetParent(transform);
+        iTransform.gameObject.SetActive(false);
+    }
+
+
     public GameObject SpawnFromPool(string tag, Transform parent)
     {
         if (poolDictionary.ContainsKey(tag))

@@ -57,16 +57,13 @@ public class AddMaterialToMachine : MonoBehaviour
         tempList.Reverse();
         if (stackController.stackedMaterials.Count <= 0) yield break;
 
-        var iItem = stackController.stackedMaterials[0].GetComponent<IItem>();
-        
-        if(itemStatus != iItem.ItemStatus()) yield break;
-        if(tapedItemStatus != iItem.TapedItemStatus()) yield break;
             
         foreach (var currentSingleMaterial in tempList)
         {
+            var iItem = currentSingleMaterial.GetComponent<IItem>();
             if (!isInTrigger || _machineController.convertedMaterials.Count >= _maxConvertedMaterial) yield break; 
-            if(itemStatus != iItem.ItemStatus()) yield break;
-            if(tapedItemStatus != iItem.TapedItemStatus()) yield break;
+            if(itemStatus != iItem.ItemStatus()) continue;
+            if(tapedItemStatus != iItem.TapedItemStatus()) continue;
             currentSingleMaterial.transform.SetParent(null);
             // Active collision
             

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 927b369eb4c08134e9a27bbce27f8e8c, type: 3}
   m_Name: StackPosForMoney
   m_EditorClassIdentifier: 
-  x: 0.25
-  y: 0.12
-  z: 0.33
+  x: 0.22
+  y: 0.07
+  z: 0.36

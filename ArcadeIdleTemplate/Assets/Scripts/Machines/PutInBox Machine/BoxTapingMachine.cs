@@ -77,14 +77,14 @@ public class BoxTapingMachine : MachineController, ITriggerInteraction
     public void PathEnded(GameObject item)
     {
         item.GetComponent<SplineFollower>().enabled = false;
-        item.transform.DOLocalRotate(_stackSystem.MaterialDropPositon().rotation.eulerAngles, .15f);
+        item.transform.DORotate(_stackSystem.MaterialDropPositon().rotation.eulerAngles, .15f);
         item.GetComponent<IItem>().SetStatus(outItemStatus, outTapedItemStatus);
         item.tag = TagManager.Default;
      
         CheckExtraPaletAddOrDelete(true);
         item.GetComponent<IItem>()
             .SetCurrentTween(
-                item.transform.transform.DOLocalJump(_stackSystem.MaterialDropPositon().position, 1.15f, 1, .25f));
+                item.transform.DOJump(_stackSystem.MaterialDropPositon().position, 1.15f, 1, .25f));
         
         _getMaterialFromMachine.singleMaterial.Add(item);
         _stackSystem.DropPointHandle();
