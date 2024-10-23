@@ -26,7 +26,7 @@ public class UIManager : MonoBehaviour
     {
         
         Screen.SetResolution(Screen.width/2,Screen.height/2,true);
-        
+        Application.targetFrameRate = 60;
         if (instance == null)
             instance = this;
         AwakeInitializer();
