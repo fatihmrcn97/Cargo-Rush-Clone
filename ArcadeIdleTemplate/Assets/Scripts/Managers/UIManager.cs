@@ -24,6 +24,9 @@ public class UIManager : MonoBehaviour
     
     private void Awake()
     {
+        
+        Screen.SetResolution(Screen.width/2,Screen.height/2,true);
+        
         if (instance == null)
             instance = this;
         AwakeInitializer();
