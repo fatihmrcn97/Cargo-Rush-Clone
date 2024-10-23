@@ -20,11 +20,13 @@ public enum TapedItemStatus
     nonTapped,
     yellowBox,
     pinkBox,
+    blueBox
 }
 
 
 public enum CollectableTypes
 {
     duck,
-    pinkduck
+    pinkduck,
+    blueduck,
 }

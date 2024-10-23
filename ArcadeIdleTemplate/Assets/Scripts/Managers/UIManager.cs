@@ -21,6 +21,8 @@ public class UIManager : MonoBehaviour
     public GameObject maxUI;
     
     public Dictionary<string, int> InGameCollectablesCount;
+
+    public List<Sprite> boxSprites;
     
     private void Awake()
     {

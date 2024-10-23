@@ -6,13 +6,19 @@ using UnityEngine;
 
 public class AddMaterialToCargo : MonoBehaviour
 {
-    [HideInInspector] public IStackSystem stackSystem;
+    private IStackSystem stackSystem;
     private bool isInTrigger;
     private int _maxConvertedMaterial;
     private Coroutine DropMaterialCorotine;
 
     [SerializeField] private ItemStatus itemStatus;
     [SerializeField] private TapedItemStatus tapedItemStatus;
+
+    public TapedItemStatus TapedItemStatus
+    {
+        get => tapedItemStatus;
+        set => tapedItemStatus = value;
+    }
 
     private CargoPlace _cargoPlace;
 
@@ -33,6 +39,7 @@ public class AddMaterialToCargo : MonoBehaviour
     {
         if (other.gameObject.CompareTag(TagManager.PLAYER_TAG))
         {
+            _maxConvertedMaterial = _cargoPlace.maxConvertedMaterial;
             isInTrigger = true;
             DropMaterialCorotine =
                 StartCoroutine(PlayerDroppingMaterialsToTheMachine(other.GetComponent<PlayerStackController>()));
@@ -69,7 +76,7 @@ public class AddMaterialToCargo : MonoBehaviour
                 yield break;
             }
 
-            currentSingleMaterial.transform.SetParent(_cargoPlace.CurrierTransform);
+            currentSingleMaterial.transform.SetParent(stackSystem.MaterialDropPositon().parent);
             // Active collision 
             stackController.stackedMaterials.Remove(currentSingleMaterial);
             stackController.StackPositionHandler();
@@ -81,8 +88,8 @@ public class AddMaterialToCargo : MonoBehaviour
             Events.MaterialStackedEvent?.Invoke();
             _cargoPlace.remaningText.text = _cargoPlace.cargoItems.Count + "/" + _maxConvertedMaterial;
 
-            UIManager.instance.InGameCollectablesCount[Helper.GetPoolName(tapedItemStatus)] -= 1; 
-            
+            UIManager.instance.InGameCollectablesCount[Helper.GetPoolName(tapedItemStatus)] -= 1;
+
             if (_cargoPlace.cargoItems.Count >= _maxConvertedMaterial)
             {
                 _cargoPlace.CargoFullCurrierGo();
