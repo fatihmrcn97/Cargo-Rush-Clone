@@ -15,13 +15,14 @@ public class StackSystem : MonoBehaviour , IStackSystem
 
     private int line = 0, column = 0; // Line Z ' de haraktet eden // Column X ' de haraketer
     [SerializeField] private int _x = 1, _y = 1;
-    private void Start()
+    private IEnumerator Start()
     {
+        yield return new WaitForSeconds(1);
         startPosOfDropPos = materialDropPos.position;
         Initialize(_x, _y);
     }
 
-    public void Initialize(int x, int y)
+    private void Initialize(int x, int y)
     {
         totalLineAndColumn = (x + 1) * (y + 1);
         height = 0;

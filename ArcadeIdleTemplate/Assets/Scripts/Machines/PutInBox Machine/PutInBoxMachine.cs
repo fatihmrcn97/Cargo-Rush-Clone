@@ -8,18 +8,17 @@ using Dreamteck.Splines;
 public class PutInBoxMachine : MachineController , ITriggerInteraction
 {
     private GameObject _convertingItem;
-
-    [SerializeField] private List<Transform> lastBoxPosition;
     
     [SerializeField] private float jumpPower = .25f;
     // [SerializeField] private ParticleSystem ps; 
-    [SerializeField] private List<SplineComputer> splineComputers;
 
     [SerializeField] private ItemStatus outItemStatus;
     [SerializeField] private TapedItemStatus outTapedItemStatus;
 
-    [SerializeField] private List<GameObject> newProducts;
 
+    [SerializeField] private List<Transform> lastBoxPosition;
+    [SerializeField] private List<SplineComputer> splineComputers;
+    [SerializeField] private List<GameObject> newProducts;
     [SerializeField] private List<GetMaterialFromMachine> _getMaterialFromMachines;
     
 
@@ -74,11 +73,11 @@ public class PutInBoxMachine : MachineController , ITriggerInteraction
                 item.SetActive(false);
                 packBox.transform.DOLocalRotate(_stackSystems[index].MaterialDropPositon().rotation.eulerAngles, .15f);
                 _getMaterialFromMachines[index].singleMaterial.Add(packBox);
-                _stackSystems[index].DropPointHandle();
                 packBox.GetComponent<IItem>().SetCurrentTween( packBox.transform.DOLocalJump(_stackSystems[index].MaterialDropPositon().position, .5f, 1, .15f).OnComplete(() =>
                 { 
                     anim.SetBool(TagManager.WALKING_BOOL_ANIM, false);
                 }));
+                _stackSystems[index].DropPointHandle();
                PoolSystem.instance.DeactivateAndSentToPool(item.GetComponent<IItem>());
             }); 
     }
@@ -94,6 +93,7 @@ public class PutInBoxMachine : MachineController , ITriggerInteraction
         {
             CollectableTypes.duck => 0,
             CollectableTypes.pinkduck => 1,
+            CollectableTypes.blueduck => 2,
             _ => 0
         };
     }
@@ -104,6 +104,7 @@ public class PutInBoxMachine : MachineController , ITriggerInteraction
         {
             CollectableTypes.duck => TapedItemStatus.yellowBox,
             CollectableTypes.pinkduck => TapedItemStatus.pinkBox,
+            CollectableTypes.blueduck => TapedItemStatus.blueBox,
             _ => 0
         };
     }

@@ -28,5 +28,5 @@ public enum CollectableTypes
 {
     duck,
     pinkduck,
-    blueduck,
+    blueduck
 }

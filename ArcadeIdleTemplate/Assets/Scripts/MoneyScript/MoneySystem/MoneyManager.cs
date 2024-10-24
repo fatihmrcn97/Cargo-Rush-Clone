@@ -1,4 +1,4 @@
-using Sirenix.OdinInspector;
+ 
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,8 +22,7 @@ public class MoneyManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         origPoisitonOfSpawnPoint = spawnPosition.position;
     }
-
-    [Button]
+ 
     public void MoneyCreate(int moneyCount)
     {
         StartCoroutine(MoneyEarned(spawnPosition, moneyCount)); 

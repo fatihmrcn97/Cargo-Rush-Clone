@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using DG.Tweening;
 using Dreamteck.Splines;
 using TMPro;
 using UnityEngine;
@@ -50,7 +48,7 @@ public class CargoPlace : MonoBehaviour
         if (_isCurrierGoing) yield break;
         unityEvent?.Invoke();
         splineFollower.follow = true;
-        splineFollower.followDuration = 4;
+        splineFollower.followDuration = 6;
         splineFollower.Restart();
         _isCurrierGoing = true;
         _moneyManager.MoneyCreate(10);
@@ -69,8 +67,7 @@ public class CargoPlace : MonoBehaviour
     }
 
     private TapedItemStatus SetRandomShippingObject()
-    {
-        Debug.Log(UIManager.instance.InGameCollectablesCount.Keys.Count);
+    { 
         var randomTapedBox =Helper.GetRandomTaped(UIManager.instance.InGameCollectablesCount.Keys.Count);
         maxConvertedMaterial = Random.Range(5, 9);
         spriteRenderer.sprite = Helper.GetRandomSpriteAccordiongToTapedBox(randomTapedBox);

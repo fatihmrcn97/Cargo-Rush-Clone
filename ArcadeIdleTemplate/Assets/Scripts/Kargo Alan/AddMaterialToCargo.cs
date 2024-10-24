@@ -69,13 +69,7 @@ public class AddMaterialToCargo : MonoBehaviour
             var iItem = currentSingleMaterial.GetComponent<IItem>();
             if (itemStatus != iItem.ItemStatus()) continue;
             if (tapedItemStatus != iItem.TapedItemStatus()) continue;
-            if (_cargoPlace.cargoItems.Count >= _maxConvertedMaterial)
-            {
-                _cargoPlace.CargoFullCurrierGo();
-                stackSystem.SetTheStackPositonBack(0);
-                yield break;
-            }
-
+       
             currentSingleMaterial.transform.SetParent(stackSystem.MaterialDropPositon().parent);
             // Active collision 
             stackController.stackedMaterials.Remove(currentSingleMaterial);
