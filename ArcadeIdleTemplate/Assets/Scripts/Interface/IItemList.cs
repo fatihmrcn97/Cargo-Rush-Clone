@@ -11,5 +11,6 @@ public interface IItemList
     void StackPositionHandler();
 
     bool CheckPlayerHandMax();
- 
+
+    bool IsInTrigger { get; set; }
 }

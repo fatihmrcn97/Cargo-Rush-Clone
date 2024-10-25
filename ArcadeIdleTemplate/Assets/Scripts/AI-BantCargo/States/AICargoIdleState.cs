@@ -10,7 +10,7 @@ public class AICargoIdleState : AICargoBaseState
 
     public override void UpdateState(AICargoStateManager ai)
     {
-        if (ai.MachineController.convertedMaterials.Count > 0)
+        if (ai.MachineController._getMaterialFromMachine.singleMaterial.Count > 0)
         {
             //Eli fulse kargo bırakmaya git
             if (ai.ItemList.CheckPlayerHandMax())
@@ -32,7 +32,7 @@ public class AICargoIdleState : AICargoBaseState
         }
         else
         {
-            if (ai.MachineController.convertedMaterials.Count > 0)
+            if (ai.MachineController._getMaterialFromMachine.singleMaterial.Count > 0)
             {
                 ai.destination = ai.MachineController._getMaterialFromMachine.transform;
                 ai.SwitchState(ai.WalkingState);

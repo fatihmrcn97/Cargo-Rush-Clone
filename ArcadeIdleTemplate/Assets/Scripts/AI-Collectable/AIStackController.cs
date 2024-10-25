@@ -12,7 +12,8 @@ public class AIStackController : MonoBehaviour , IItemList
     [SerializeField] private int maxStackCountBase = 3;
 
     [HideInInspector] public int maxStackCount;
-    
+
+    private bool _isInTrigger;
     
     private void Start()
     {
@@ -59,7 +60,7 @@ public class AIStackController : MonoBehaviour , IItemList
         return StackedMaterialList().Count >= MaxStackCount();
     }
 
-   
+    public bool IsInTrigger { get; set; }
 
     #endregion
 

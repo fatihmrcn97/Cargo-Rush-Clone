@@ -6,10 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="d54077af-5082-4972-a088-44bb708e99c5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ArcadeIdleTemplate/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ArcadeIdleTemplate/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scene-1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scene-1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/MachineController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/MachineController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Kargo Alan/AddMaterialToCargo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Kargo Alan/AddMaterialToCargo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI-BantCargo/States/AICargoIdleState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI-BantCargo/States/AICargoIdleState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI-Collectable/AIStackController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI-Collectable/AIStackController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interface/IItemList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interface/IItemList.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Machine Get-Drop/GetMaterialFromMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Machine Get-Drop/GetMaterialFromMachine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player Scripts/PlayerStackController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player Scripts/PlayerStackController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,7 +151,7 @@
       <workItem from="1729720485789" duration="645000" />
       <workItem from="1729755436825" duration="5870000" />
       <workItem from="1729842612623" duration="7411000" />
-      <workItem from="1729865602019" duration="2526000" />
+      <workItem from="1729865602019" duration="3258000" />
     </task>
     <servers />
   </component>

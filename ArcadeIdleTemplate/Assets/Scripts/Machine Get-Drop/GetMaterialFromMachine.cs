@@ -6,8 +6,7 @@ using UnityEngine;
 public class GetMaterialFromMachine : MonoBehaviour
 {
     public List<GameObject> singleMaterial;
-
-    private bool _isInTrigger;
+ 
 
     private MachineController _machineController;
 
@@ -24,19 +23,20 @@ public class GetMaterialFromMachine : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!other.gameObject.CompareTag(TagManager.PLAYER_TAG)) return;
-        _isInTrigger = true;
-        PlayerGettingStackMaterials(other.GetComponent<IItemList>()).Forget();
+        var iItemList = other.GetComponent<IItemList>();
+        iItemList.IsInTrigger = true;
+        PlayerGettingStackMaterials(iItemList).Forget();
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag(TagManager.PLAYER_TAG))
-            _isInTrigger = false;
+            other.GetComponent<IItemList>().IsInTrigger=false;
     }
 
     private async UniTaskVoid PlayerGettingStackMaterials(IItemList stackController)
     {
-        while (_isInTrigger)
+        while (stackController.IsInTrigger)
         {
             if (singleMaterial.Count <= 0)
             {
