@@ -1,6 +1,4 @@
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCollectItem : MonoBehaviour
@@ -26,6 +24,7 @@ public class PlayerCollectItem : MonoBehaviour
             var collectableObj = collectable.GameObject;
             collectable.DeactivateObjAndPhysics();
 
+            PackableItemSpawner.Instance.allCollectables.Remove(collectableObj);
             collectableObj.transform.SetParent(_itemList.StackTransforms()[_itemList.StackedMaterialList().Count]);
             collectableObj.transform.DOLocalJump(Vector3.zero, .5f, 1, ProgressTime);
             collectableObj.transform.DOLocalRotate(Vector3.zero, ProgressTime);

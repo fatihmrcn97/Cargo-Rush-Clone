@@ -75,5 +75,10 @@ public class CargoPlace : MonoBehaviour
         return randomTapedBox;
     }
 
+    public void CargoSystemUpgraded(SplineFollower newSplineFollower)
+    {
+        splineFollower = newSplineFollower;
+    }
+
   
 }

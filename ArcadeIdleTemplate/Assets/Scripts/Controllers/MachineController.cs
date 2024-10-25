@@ -15,7 +15,7 @@ public class MachineController : MonoBehaviour, IMachineController
 
     [HideInInspector] public Animator anim;
 
-    protected AddMaterialToMachine _addMaterialToMachine;
+    public AddMaterialToMachine _addMaterialToMachine;
 
     protected GetMaterialFromMachine _getMaterialFromMachine;
  

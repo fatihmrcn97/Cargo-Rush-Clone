@@ -31,7 +31,7 @@ public class AddMaterialToMachine : MonoBehaviour
         if (other.gameObject.CompareTag(TagManager.PLAYER_TAG))
         {
             isInTrigger = true;
-            DropMaterialCorotine= StartCoroutine(PlayerDroppingMaterialsToTheMachine(other.GetComponent<PlayerStackController>()));
+            DropMaterialCorotine= StartCoroutine(PlayerDroppingMaterialsToTheMachine(other.GetComponent<IItemList>()));
         }
         
     }
@@ -50,12 +50,12 @@ public class AddMaterialToMachine : MonoBehaviour
         else return false;
     }
 
-    private IEnumerator PlayerDroppingMaterialsToTheMachine(PlayerStackController stackController)
+    private IEnumerator PlayerDroppingMaterialsToTheMachine(IItemList stackController)
     { 
         float progressionTime = .1f;
-        List<GameObject> tempList = new(stackController.stackedMaterials);
+        List<GameObject> tempList = new(stackController.StackedMaterialList());
         tempList.Reverse();
-        if (stackController.stackedMaterials.Count <= 0) yield break;
+        if (stackController.StackedMaterialList().Count <= 0) yield break;
 
             
         foreach (var currentSingleMaterial in tempList)
@@ -71,7 +71,7 @@ public class AddMaterialToMachine : MonoBehaviour
             currentSingleMaterial.GetComponent<BoxCollider>().enabled = true;
             currentSingleMaterial.GetComponent<BoxCollider>().isTrigger = true; 
             
-            stackController.stackedMaterials.Remove(currentSingleMaterial);
+            stackController.StackedMaterialList().Remove(currentSingleMaterial);
             stackController.StackPositionHandler();
             _machineController.convertedMaterials.Add(currentSingleMaterial);
             currentSingleMaterial.transform.DOLocalRotate(Vector3.zero, progressionTime); 

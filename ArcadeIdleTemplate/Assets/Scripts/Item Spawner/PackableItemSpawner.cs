@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PackableItemSpawner : MonoBehaviour
+public class PackableItemSpawner : SingletonMonoBehaviour<PackableItemSpawner>
 {
 
     [SerializeField] private Transform spawnTransform;
@@ -14,6 +14,8 @@ public class PackableItemSpawner : MonoBehaviour
     private Dictionary<string, int> _inGameCollectablesCount;
 
     private bool _isCurrentlySpwaning = false;
+
+    public List<GameObject> allCollectables;
     
     private void Start()
     {
@@ -42,6 +44,7 @@ public class PackableItemSpawner : MonoBehaviour
             createdItemCount++;
             var createdOjb = PoolSystem.instance.SpawnFromPool(poolName, null);
             createdOjb.transform.position = spawnTransform.position + new Vector3(Random.Range(-.25f,.75f) ,0 , Random.Range(-.25f, .75f));
+            allCollectables.Add(createdOjb);
             _inGameCollectablesCount[poolName] = createdItemCount;
             yield return _waitTime;
         } 

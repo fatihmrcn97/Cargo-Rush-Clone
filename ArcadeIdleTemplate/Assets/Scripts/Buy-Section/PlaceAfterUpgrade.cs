@@ -1,21 +1,22 @@
-using DG.Tweening;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlaceAfterBought : MonoBehaviour, IBuyTrigger
+public class PlaceAfterUpgrade : MonoBehaviour, IBuyTrigger
 {
-    [SerializeField] private GameObject placeActivate;
+    [SerializeField] private GameObject currentCargoSystem, nextCargoSystem;
     [SerializeField] private GameObject nextObjectToBuy;
-    [SerializeField] private bool isStart;
 
     [SerializeField] UnityEvent u_event;
+
+    [SerializeField] private bool isStart;
     private void Awake()
     {
         if (isStart) return;
         transform.GetComponent<BoxCollider>().enabled = false;
         transform.transform.GetChild(0).gameObject.SetActive(false);
-        transform.transform.GetChild(1).gameObject.SetActive(false); 
+        transform.transform.GetChild(1).gameObject.SetActive(false);
     }
 
     public void PlaceBought()
@@ -24,17 +25,16 @@ public class PlaceAfterBought : MonoBehaviour, IBuyTrigger
     }
 
     private IEnumerator PlaceActivateWithScale()
-    { 
+    {
         transform.GetChild(0).GetComponent<Canvas>().enabled = false;
-        transform.GetChild(1).GetComponent<Canvas>().enabled = false; 
-        placeActivate.transform.localScale = new Vector3(0, 0, 0);
-        placeActivate.SetActive(true);
-        placeActivate.transform.DOScale(Vector3.one, .75f).SetEase(Ease.InBounce);
-        yield return new WaitForSeconds(1f);
+        transform.GetChild(1).GetComponent<Canvas>().enabled = false;
 
+        currentCargoSystem.SetActive(false);
+        yield return new WaitForSeconds(.5f);
+        nextCargoSystem.SetActive(true);
         u_event?.Invoke();
         Vibration.Vibrate(50);
-        yield return null; 
+        yield return null;
         OpenNextObjectToBuy();
         transform.gameObject.SetActive(false);
     }
@@ -46,6 +46,4 @@ public class PlaceAfterBought : MonoBehaviour, IBuyTrigger
         nextObjectToBuy.transform.GetChild(0).gameObject.SetActive(true);
         nextObjectToBuy.transform.GetChild(1).gameObject.SetActive(true);
     }
-
-
 }
