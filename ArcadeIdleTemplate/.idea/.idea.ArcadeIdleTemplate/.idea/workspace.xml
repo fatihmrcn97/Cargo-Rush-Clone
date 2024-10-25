@@ -6,16 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="d54077af-5082-4972-a088-44bb708e99c5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ArcadeIdleTemplate/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ArcadeIdleTemplate/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/RecyclerWalkingToDesk.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/RecyclerWalkingToDesk.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scene-1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scene-1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Buy-Section/PlaceAfterBought.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Buy-Section/PlaceAfterBought.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/MachineController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/MachineController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Item Spawner/PackableItemSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Item Spawner/PackableItemSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Kargo Alan/CargoPlace.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Kargo Alan/CargoPlace.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Machine Get-Drop/AddMaterialToMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Machine Get-Drop/AddMaterialToMachine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player Scripts/PlayerCollectItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player Scripts/PlayerCollectItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2022.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2022.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Kargo Alan/AddMaterialToCargo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Kargo Alan/AddMaterialToCargo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Machine Get-Drop/GetMaterialFromMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Machine Get-Drop/GetMaterialFromMachine.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +21,9 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Editor/CustomEditorSystem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI-BantCargo/AICargoStateManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI-BantCargo/States/AICargoBaseState.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI-BantCargo/States/AICargoIdleState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI-Collectable/AICollectableStateMananger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI-Collectable/AIStackController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI-Collectable/States/AICollectableIdleState.cs" root0="FORCE_HIGHLIGHTING" />
@@ -153,6 +150,7 @@
       <workItem from="1729720485789" duration="645000" />
       <workItem from="1729755436825" duration="5870000" />
       <workItem from="1729842612623" duration="7411000" />
+      <workItem from="1729865602019" duration="2526000" />
     </task>
     <servers />
   </component>

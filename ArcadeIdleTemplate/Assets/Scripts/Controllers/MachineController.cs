@@ -17,7 +17,7 @@ public class MachineController : MonoBehaviour, IMachineController
 
     public AddMaterialToMachine _addMaterialToMachine;
 
-    protected GetMaterialFromMachine _getMaterialFromMachine;
+    public GetMaterialFromMachine _getMaterialFromMachine;
  
     [SerializeField] protected float timePerProduce;
 

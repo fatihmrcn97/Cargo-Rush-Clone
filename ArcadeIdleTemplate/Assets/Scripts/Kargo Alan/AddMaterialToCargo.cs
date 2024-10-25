@@ -42,7 +42,7 @@ public class AddMaterialToCargo : MonoBehaviour
             _maxConvertedMaterial = _cargoPlace.maxConvertedMaterial;
             isInTrigger = true;
             DropMaterialCorotine =
-                StartCoroutine(PlayerDroppingMaterialsToTheMachine(other.GetComponent<PlayerStackController>()));
+                StartCoroutine(PlayerDroppingMaterialsToTheMachine(other.GetComponent<IItemList>()));
         }
     }
 
@@ -56,12 +56,12 @@ public class AddMaterialToCargo : MonoBehaviour
     }
 
 
-    private IEnumerator PlayerDroppingMaterialsToTheMachine(PlayerStackController stackController)
+    private IEnumerator PlayerDroppingMaterialsToTheMachine(IItemList stackController)
     {
         float progressionTime = .1f;
-        List<GameObject> tempList = new(stackController.stackedMaterials);
+        List<GameObject> tempList = new(stackController.StackedMaterialList());
         tempList.Reverse();
-        if (stackController.stackedMaterials.Count <= 0) yield break;
+        if (stackController.StackedMaterialList().Count <= 0) yield break;
 
         foreach (var currentSingleMaterial in tempList)
         {
@@ -72,7 +72,7 @@ public class AddMaterialToCargo : MonoBehaviour
        
             currentSingleMaterial.transform.SetParent(stackSystem.MaterialDropPositon().parent);
             // Active collision 
-            stackController.stackedMaterials.Remove(currentSingleMaterial);
+            stackController.StackedMaterialList().Remove(currentSingleMaterial);
             stackController.StackPositionHandler();
             _cargoPlace.cargoItems.Add(currentSingleMaterial);
             currentSingleMaterial.transform.DOLocalRotate(Vector3.zero, progressionTime);

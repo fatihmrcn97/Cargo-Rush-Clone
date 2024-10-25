@@ -25,7 +25,7 @@ public class GetMaterialFromMachine : MonoBehaviour
     {
         if (!other.gameObject.CompareTag(TagManager.PLAYER_TAG)) return;
         _isInTrigger = true;
-        PlayerGettingStackMaterials(other.GetComponent<PlayerStackController>()).Forget();
+        PlayerGettingStackMaterials(other.GetComponent<IItemList>()).Forget();
     }
 
     private void OnTriggerExit(Collider other)
