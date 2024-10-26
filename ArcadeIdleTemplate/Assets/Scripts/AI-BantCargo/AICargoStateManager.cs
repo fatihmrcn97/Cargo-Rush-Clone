@@ -14,8 +14,8 @@ public class AICargoStateManager : MonoBehaviour
     private NavMeshAgent _agent;
     public NavMeshAgent Agent => _agent;
 
-    [SerializeField] private MachineController _machineController;
-    public MachineController MachineController => _machineController;
+    [SerializeField] private GetMaterialFromMachine _machineController;
+    public GetMaterialFromMachine MachineController => _machineController;
 
     public Transform cargoPlace;
     
@@ -41,8 +41,7 @@ public class AICargoStateManager : MonoBehaviour
     }
 
     private void Update()
-    { 
-        Debug.Log(_currentState);
+    {  
         _currentState.UpdateState(this);
     }
 
