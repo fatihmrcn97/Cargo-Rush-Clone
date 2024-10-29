@@ -6,6 +6,7 @@ public class AICargoIdleState : AICargoBaseState
 {
     public override void EnterState(AICargoStateManager ai)
     {
+        ai.anim.SetBool(TagManager.WALKING_BOOL_ANIM,false);
     }
 
     public override void UpdateState(AICargoStateManager ai)
@@ -15,7 +16,7 @@ public class AICargoIdleState : AICargoBaseState
             //Eli fulse kargo bırakmaya git
             if (ai.ItemList.CheckPlayerHandMax())
             {
-                ai.destination = ai.cargoPlace;
+                ai.destination =ai.FindDestinationByItem(ai.ItemList.StackedMaterialList()[0].GetComponent<IItem>().TapedItemStatus());
                 ai.SwitchState(ai.WalkingState);
             }
 
@@ -27,7 +28,7 @@ public class AICargoIdleState : AICargoBaseState
         if (ai.ItemList.CheckPlayerHandMax())
         {
             // kARGoyu bırakmaya giden destination
-            ai.destination = ai.cargoPlace;
+            ai.destination =ai.FindDestinationByItem(ai.ItemList.StackedMaterialList()[0].GetComponent<IItem>().TapedItemStatus());
             ai.SwitchState(ai.WalkingState);
         }
         else

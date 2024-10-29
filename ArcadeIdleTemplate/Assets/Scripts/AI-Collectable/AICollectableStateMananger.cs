@@ -23,10 +23,13 @@ public class AICollectableStateMananger : MonoBehaviour
 
     public Transform destination;
 
+    [HideInInspector] public Animator animator;
+
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
         ItemList = GetComponent<IItemList>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void Start()

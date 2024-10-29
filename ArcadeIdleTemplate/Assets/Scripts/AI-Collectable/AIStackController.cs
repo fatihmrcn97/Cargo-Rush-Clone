@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -14,7 +15,7 @@ public class AIStackController : MonoBehaviour , IItemList
     [HideInInspector] public int maxStackCount;
 
     private bool _isInTrigger;
-    
+    private Animator anim;
     private void Start()
     {
         maxStackCount = maxStackCountBase;
@@ -24,12 +25,13 @@ public class AIStackController : MonoBehaviour , IItemList
     {
         // maxStackCount = maxStackCountBase + PlayerPrefs.GetInt("maxCollected");
     }
-    
-    private void CheckMax()
+
+    private void Awake()
     {
-        Vibration.Vibrate(10);
-        UIManager.instance.maxUI.SetActive(stackedMaterials.Count >= maxStackCount);
+        anim = GetComponentInChildren<Animator>();
     }
+
+ 
 
     #region INTERFACE IMPLEMENTATIONS
 
@@ -57,6 +59,7 @@ public class AIStackController : MonoBehaviour , IItemList
     }
     public bool CheckPlayerHandMax()
     {
+        anim.SetBool(TagManager.CARRY_BOOL_ANIM,stackedMaterials.Count>0);
         return StackedMaterialList().Count >= MaxStackCount();
     }
 

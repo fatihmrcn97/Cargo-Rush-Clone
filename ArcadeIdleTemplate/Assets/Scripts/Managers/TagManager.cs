@@ -6,6 +6,7 @@ public static class TagManager
 
     // Animations
     public const string WALKING_BOOL_ANIM = "isWalking"; 
+    public const string CARRY_BOOL_ANIM = "isCarry"; 
     public const string ANIM_SPEED_FLOAT = "anim_speed"; 
     public const string RUNNING_BOOL_ANIM = "isRunning"; 
 

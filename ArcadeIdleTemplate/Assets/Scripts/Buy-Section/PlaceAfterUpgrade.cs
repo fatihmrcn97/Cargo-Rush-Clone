@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
+using Dreamteck.Splines;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class PlaceAfterUpgrade : MonoBehaviour, IBuyTrigger
 {
     [SerializeField] private GameObject currentCargoSystem, nextCargoSystem;
-    [SerializeField] private GameObject nextObjectToBuy;
+    [SerializeField] private GameObject nextObjectToBuy , nextVehicle;
 
     [SerializeField] UnityEvent u_event;
 
@@ -29,9 +31,21 @@ public class PlaceAfterUpgrade : MonoBehaviour, IBuyTrigger
         transform.GetChild(0).GetComponent<Canvas>().enabled = false;
         transform.GetChild(1).GetComponent<Canvas>().enabled = false;
 
+        currentCargoSystem.GetComponentInChildren<SplineFollower>().follow = true;
+        currentCargoSystem.GetComponentInChildren<SplineFollower>().Restart();
+        yield return new WaitForSeconds(2.5f);
         currentCargoSystem.SetActive(false);
-        yield return new WaitForSeconds(.5f);
-        nextCargoSystem.SetActive(true);
+
+        var nextVehicObj = Instantiate(nextVehicle);
+        nextVehicObj.transform.position = nextVehicle.transform.position;
+        var position = nextVehicObj.transform.position;
+        position += new Vector3(-3, 0, 0);
+        nextVehicObj.transform.position = position;
+        nextVehicObj.transform.DOMove(position + new Vector3(3, 0, 0), 1.25f);
+        yield return new WaitForSeconds(1.25f);
+        Destroy(nextVehicObj);
+        nextCargoSystem.GetComponentInChildren<SplineFollower>().follow = false;
+        nextCargoSystem.SetActive(true); 
         u_event?.Invoke();
         Vibration.Vibrate(50);
         yield return null;

@@ -39,6 +39,7 @@ public class MoneyMovement : MonoBehaviour
             transform.position = Vector3.Lerp(origPos, player.transform.position + new Vector3(0, .75f, 0), progress);
             yield return null;
         }
+        UIManager.instance.ScoreAdd(1);
          
     }
 }

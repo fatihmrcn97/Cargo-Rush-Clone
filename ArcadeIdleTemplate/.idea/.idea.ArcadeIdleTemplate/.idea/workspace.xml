@@ -6,9 +6,27 @@
   <component name="ChangeListManager">
     <list default="true" id="d54077af-5082-4972-a088-44bb708e99c5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ArcadeIdleTemplate/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ArcadeIdleTemplate/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/PlayerAnims/PlayerAnimCTRL.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/PlayerAnims/PlayerAnimCTRL.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargoKarakter/rigli/calisanlar.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargoKarakter/rigli/calisanlar.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargoKarakter/rigli/kargoAnaKarakter.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Cargo_Rush_Models/kargoKarakter/rigli/kargoAnaKarakter.fbx.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scene-1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scene-1.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI-BantCargo/AICargoStateManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI-BantCargo/AICargoStateManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI-BantCargo/States/AICargoIdleState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI-BantCargo/States/AICargoIdleState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI-BantCargo/States/AICargoWalkingState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI-BantCargo/States/AICargoWalkingState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI-Collectable/AICollectableStateMananger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI-Collectable/AICollectableStateMananger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI-Collectable/AIStackController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI-Collectable/AIStackController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI-Collectable/States/AICollectableCollectState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI-Collectable/States/AICollectableCollectState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI-Collectable/States/AICollectableIdleState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI-Collectable/States/AICollectableIdleState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI-Collectable/States/AICollectableWalkingState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI-Collectable/States/AICollectableWalkingState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Buy-Section/PlaceAfterUpgrade.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Buy-Section/PlaceAfterUpgrade.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Kargo Alan/AddMaterialToCargo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Kargo Alan/AddMaterialToCargo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Kargo Alan/CargoPlace.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Kargo Alan/CargoPlace.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Machine Get-Drop/AddMaterialToMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Machine Get-Drop/AddMaterialToMachine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/TagManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/TagManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MoneyScript/MoneyMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MoneyScript/MoneyMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player Scripts/PlayerStackController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player Scripts/PlayerStackController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recordings/Movie_001.webm" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2022.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2022.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -152,6 +170,8 @@
       <workItem from="1729842612623" duration="7411000" />
       <workItem from="1729865602019" duration="3286000" />
       <workItem from="1729939796453" duration="2843000" />
+      <workItem from="1730102414414" duration="6015000" />
+      <workItem from="1730217846407" duration="767000" />
     </task>
     <servers />
   </component>

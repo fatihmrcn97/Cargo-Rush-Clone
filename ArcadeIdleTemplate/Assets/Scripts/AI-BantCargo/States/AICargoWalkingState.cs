@@ -6,7 +6,7 @@ public class AICargoWalkingState : AICargoBaseState
 {
     public override void EnterState(AICargoStateManager ai)
     {
-       
+        ai.anim.SetBool(TagManager.WALKING_BOOL_ANIM,true);
     }
 
     public override void UpdateState(AICargoStateManager ai)

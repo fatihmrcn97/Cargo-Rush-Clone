@@ -6,8 +6,7 @@ using UnityEngine;
 
 public class AddMaterialToCargo : MonoBehaviour
 {
-    private IStackSystem stackSystem;
-    private bool isInTrigger;
+    private IStackSystem stackSystem; 
     private int _maxConvertedMaterial;
     private Coroutine DropMaterialCorotine;
 
@@ -40,7 +39,7 @@ public class AddMaterialToCargo : MonoBehaviour
         if (other.gameObject.CompareTag(TagManager.PLAYER_TAG))
         {
             _maxConvertedMaterial = _cargoPlace.maxConvertedMaterial;
-            isInTrigger = true;
+            other.GetComponent<IItemList>().IsInTrigger = true;
             DropMaterialCorotine =
                 StartCoroutine(PlayerDroppingMaterialsToTheMachine(other.GetComponent<IItemList>()));
         }
@@ -51,7 +50,7 @@ public class AddMaterialToCargo : MonoBehaviour
         if (other.gameObject.CompareTag(TagManager.PLAYER_TAG))
         {
             if (DropMaterialCorotine != null) StopCoroutine(DropMaterialCorotine);
-            isInTrigger = false;
+            other.GetComponent<IItemList>().IsInTrigger = false;
         }
     }
 
@@ -65,7 +64,7 @@ public class AddMaterialToCargo : MonoBehaviour
 
         foreach (var currentSingleMaterial in tempList)
         {
-            if (!isInTrigger || _cargoPlace.IsCurrierGoing) yield break;
+            if (!stackController.IsInTrigger || _cargoPlace.IsCurrierGoing) yield break;
             var iItem = currentSingleMaterial.GetComponent<IItem>();
             if (itemStatus != iItem.ItemStatus()) continue;
             if (tapedItemStatus != iItem.TapedItemStatus()) continue;

@@ -8,6 +8,7 @@ public class AICollectableIdleState : AICollectableBaseState
     {
   
         // item topla ve makine fullmu bak sürekli degilse itemi makineye götür
+        ai.animator.SetBool(TagManager.WALKING_BOOL_ANIM,false);
         
     }
 

@@ -20,6 +20,7 @@ public class AICollectableCollectState : AICollectableBaseState
 
         if (PackableItemSpawner.Instance.allCollectables.Count > 0 && !ai.ItemList.CheckPlayerHandMax())
         {
+            ai.animator.SetBool(TagManager.WALKING_BOOL_ANIM,true);
             var destination = PackableItemSpawner.Instance.allCollectables[0].transform;
             ai.Agent.SetDestination(destination.position);
         }

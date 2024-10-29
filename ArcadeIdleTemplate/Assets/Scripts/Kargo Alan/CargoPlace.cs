@@ -17,8 +17,7 @@ public class CargoPlace : MonoBehaviour
     
     [SerializeField] private GameObject remaningObj;
 
-    public List<GameObject> cargoItems;
-    public Transform CurrierTransform => currier.transform;
+    public List<GameObject> cargoItems; 
     public bool IsCurrierGoing => _isCurrierGoing;
     public TextMeshPro remaningText; 
     public int maxConvertedMaterial = 8;

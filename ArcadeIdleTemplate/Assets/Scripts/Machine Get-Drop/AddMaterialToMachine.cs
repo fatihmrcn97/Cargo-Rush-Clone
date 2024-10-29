@@ -9,9 +9,7 @@ public class AddMaterialToMachine : MonoBehaviour
     [HideInInspector] public IStackSystem stackSystem;
 
     private MachineController _machineController;
-
-    private bool isInTrigger; 
-
+  
     public int _maxConvertedMaterial = 50;
 
     private Coroutine DropMaterialCorotine;
@@ -30,7 +28,7 @@ public class AddMaterialToMachine : MonoBehaviour
     {
         if (other.gameObject.CompareTag(TagManager.PLAYER_TAG))
         {
-            isInTrigger = true;
+            other.GetComponent<IItemList>().IsInTrigger = true;
             DropMaterialCorotine= StartCoroutine(PlayerDroppingMaterialsToTheMachine(other.GetComponent<IItemList>()));
         }
         
@@ -40,7 +38,7 @@ public class AddMaterialToMachine : MonoBehaviour
         if (other.gameObject.CompareTag(TagManager.PLAYER_TAG))
         {
             if (DropMaterialCorotine != null) StopCoroutine(DropMaterialCorotine);
-            isInTrigger = false;
+            other.GetComponent<IItemList>().IsInTrigger = false;
         }  
     }
 
@@ -61,7 +59,7 @@ public class AddMaterialToMachine : MonoBehaviour
         foreach (var currentSingleMaterial in tempList)
         {
             var iItem = currentSingleMaterial.GetComponent<IItem>();
-            if (!isInTrigger || _machineController.convertedMaterials.Count >= _maxConvertedMaterial) yield break; 
+            if (!stackController.IsInTrigger || _machineController.convertedMaterials.Count >= _maxConvertedMaterial) yield break; 
             if(itemStatus != iItem.ItemStatus()) continue;
             if(tapedItemStatus != iItem.TapedItemStatus()) continue;
             currentSingleMaterial.transform.SetParent(null);

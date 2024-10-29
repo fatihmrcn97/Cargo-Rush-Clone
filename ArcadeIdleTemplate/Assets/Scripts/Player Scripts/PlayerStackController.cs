@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,8 @@ public class PlayerStackController : MonoBehaviour, IItemList
 
     [HideInInspector] public int maxStackCount;
 
+    private Animator anim;
+
     private void OnEnable()
     {
         Events.MaterialStackedEvent += CheckMax;
@@ -20,6 +23,11 @@ public class PlayerStackController : MonoBehaviour, IItemList
     private void OnDisable()
     {
         Events.MaterialStackedEvent -= CheckMax;
+    }
+
+    private void Awake()
+    {
+        anim = GetComponentInChildren<Animator>();
     }
 
     private void Start()
@@ -45,6 +53,8 @@ public class PlayerStackController : MonoBehaviour, IItemList
     {
         Vibration.Vibrate(10);
         UIManager.instance.maxUI.SetActive(stackedMaterials.Count >= maxStackCount);
+        anim.SetBool(TagManager.CARRY_BOOL_ANIM,stackedMaterials.Count>0);
+        
     }
 
     #region INTERFACE IMPLEMENTATIONS
