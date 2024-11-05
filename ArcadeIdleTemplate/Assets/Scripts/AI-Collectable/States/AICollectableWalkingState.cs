@@ -12,6 +12,9 @@ public class AICollectableWalkingState : AICollectableBaseState
 
     public override void UpdateState(AICollectableStateMananger ai)
     {
+        if(PackableItemSpawner.Instance.allCollectables.Count<=0 && ai.ItemList.StackedMaterialList().Count<=0) 
+            ai.SwitchState(ai.IdleState);
+        
         ai.animator.SetBool(TagManager.WALKING_BOOL_ANIM,true);
         ai.Agent.SetDestination(ai.destination.position);
         if(Vector3.Distance(ai.destination.position,ai.transform.position) >=.35) return;

@@ -38,7 +38,7 @@ public class AddMaterialToMachine : MonoBehaviour
         if (other.gameObject.CompareTag(TagManager.PLAYER_TAG))
         {
             if (DropMaterialCorotine != null) StopCoroutine(DropMaterialCorotine);
-            other.GetComponent<IItemList>().IsInTrigger = false;
+                other.GetComponent<IItemList>().IsInTrigger = false;
         }  
     }
 
