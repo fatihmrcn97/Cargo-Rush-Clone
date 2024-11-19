@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 801fb717c76a46ae98575566175bda5d, type: 3}
+  m_Name: Skins
+  m_EditorClassIdentifier: 
+  SkinsList:
+  - skinImage: {fileID: 21300000, guid: 162988dd258f02343b5ecaec32043eb0, type: 3}
+    skinBuyMoney: 10
+    incomeUpgradeAmount: 5
+    capasityUpgradeAmount: 1
+  - skinImage: {fileID: 21300000, guid: f188d247580806345a8c08ed882d4484, type: 3}
+    skinBuyMoney: 15
+    incomeUpgradeAmount: 10
+    capasityUpgradeAmount: 2
+  - skinImage: {fileID: 21300000, guid: a5568e996ccb2dc48a835d77aef56aff, type: 3}
+    skinBuyMoney: 21
+    incomeUpgradeAmount: 25
+    capasityUpgradeAmount: 2
+  - skinImage: {fileID: 21300000, guid: b84c27bf55e4d5844bf9f68b4622a624, type: 3}
+    skinBuyMoney: 25
+    incomeUpgradeAmount: 10
+    capasityUpgradeAmount: 4
+  - skinImage: {fileID: 21300000, guid: 159c8f0adacc6604a941acd00d03ffb9, type: 3}
+    skinBuyMoney: 35
+    incomeUpgradeAmount: 10
+    capasityUpgradeAmount: 6
+  - skinImage: {fileID: 21300000, guid: fd98f1d93a66cc146ad55a520d7afa69, type: 3}
+    skinBuyMoney: 45
+    incomeUpgradeAmount: 10
+    capasityUpgradeAmount: 9
