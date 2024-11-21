@@ -9,5 +9,5 @@ public static class Events
     //public static Action<string, Vector3, float> SpawnVFXForUIEvent; 
     //public static Action SpecialAnimalStarted;
     public static Action MaterialStackedEvent;
-     
+    public static Action<int> OnPlayerSkinChange;
 }

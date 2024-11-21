@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSkinHandler : SingletonMonoBehaviour<PlayerSkinHandler>
+public class PlayerSkinHandler : MonoBehaviour
 { 
     [SerializeField] private GameObject defaultSkin;
 
@@ -11,15 +11,27 @@ public class PlayerSkinHandler : SingletonMonoBehaviour<PlayerSkinHandler>
 
     private GameObject _currentSkin;
 
-    private void Start()
+    protected void Awake()
     {
         _currentSkin = defaultSkin;
     }
 
-    public void ChangeSkinBody(int skinIndex)
+    private void OnEnable()
+    {
+        Events.OnPlayerSkinChange += ChangeSkinBody;
+    }
+
+    private void OnDisable()
+    {
+        Events.OnPlayerSkinChange -= ChangeSkinBody;
+    }
+
+
+    private void ChangeSkinBody(int skinIndex)
     {
         _currentSkin.SetActive(false);
         _currentSkin = skinList[skinIndex];
         _currentSkin.SetActive(true);
     }
+ 
 }

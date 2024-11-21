@@ -18,7 +18,7 @@ public class SkinSystemView : MonoBehaviour
     [SerializeField] private Sprite greyButtonSprite, yellowButtonSprite;
 
     [SerializeField] private GameObject moneySpriteObject;
-    
+
 
     private Button _skinBuyButton;
 
@@ -49,9 +49,10 @@ public class SkinSystemView : MonoBehaviour
         _skinBuyButton.onClick.AddListener(() =>
             skinSystemController.BuySkin(_choosenSkin)); // Its buy skin if its already buyed change
 
+        skinSystemController.BuySkin(skinModel.currentSkinIndex);
         SkinBuyedCheckMark();
-        CheckIfAlreadyBuyed();
-    }
+        CheckIfAlreadyBuyed(); 
+    } 
 
     private void ShowCurrentSkinForBuy(int i)
     {
@@ -64,14 +65,33 @@ public class SkinSystemView : MonoBehaviour
         moneyBtnText.text = selectedSkin.skinBuyMoney + "K";
         ChoosenButtonBackgroundHandle(skinsObjects[i].GetComponent<Image>());
         CheckIfAlreadyBuyed();
+        CheckIfMoneyEnough();
     }
 
+    public void ReOpenSkinWindowSettings()
+    {
+        // UI ile atandi
+        //ShowCurrentSkinForBuy(_choosenSkin);
+        ShowCurrentSkinForBuy(skinModel.currentSkinIndex);
+    }
+
+    private void CheckIfMoneyEnough()
+    {
+        var selectedSkinMoney = _selectedSkin.skinBuyMoney;
+        if (skinModel.buyedSkins[_choosenSkin] == 1)
+        {
+            _skinBuyButton.interactable = true; // Skin zaten satin alinmisa buton aktif kalsın
+            return;
+        }
+        _skinBuyButton.interactable = UIManager.instance.Score >= selectedSkinMoney;
+    }
 
     private void SkinBuyedAndChanged(Skin updatedSkin)
     {
         //OnSkinChanged takip ediyor
         mainCharaterImage.sprite = updatedSkin.skinImage;
         SkinBuyedCheckMark();
+        CheckIfAlreadyBuyed();
     }
 
     private void CheckIfAlreadyBuyed()

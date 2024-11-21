@@ -13,7 +13,13 @@ public class SkinModel
    
     public SkinModel(SkinsSO skins)
     {
-        currentSkinIndex = 0;
+        if (PlayerPrefs.HasKey("UsingSkinIndex"))
+            currentSkinIndex = PlayerPrefs.GetInt("UsingSkinIndex");
+        else
+        {
+            currentSkinIndex = 0;
+            PlayerPrefs.SetInt("UsingSkinIndex", currentSkinIndex);
+        }
         SkinsSo = skins; 
         InitializeBuyedSkins();
     }
@@ -33,5 +39,6 @@ public class SkinModel
     {
         buyedSkins[skinIndex] = 1;
         OnSkinChanged?.Invoke(SkinsSo.SkinsList[skinIndex]);
+        currentSkinIndex = skinIndex;
     }
 }

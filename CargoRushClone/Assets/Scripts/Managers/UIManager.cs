@@ -25,7 +25,7 @@ public class UIManager : MonoBehaviour
     public List<Sprite> boxSprites;
 
     [SerializeField] private Button skinSysOpenBtn;
-    [SerializeField] private GameObject skinSysUI;
+    [SerializeField] private Canvas skinSysUI;
     
     private void Awake()
     {
@@ -38,7 +38,7 @@ public class UIManager : MonoBehaviour
 
         InGameCollectablesCount = new Dictionary<string, int>();
         
-        skinSysOpenBtn.onClick.AddListener(()=>skinSysUI.SetActive(true));
+        skinSysOpenBtn.onClick.AddListener(()=>skinSysUI.enabled=true);
     }
 
     private void AwakeInitializer()
