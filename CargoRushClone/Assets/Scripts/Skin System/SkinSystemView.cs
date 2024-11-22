@@ -1,14 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SkinSystemView : MonoBehaviour
-{
-    [SerializeField] private Image mainCharaterImage;
-
+{  
     [SerializeField] private List<GameObject> skinsObjects;
 
     [SerializeField] private SkinsSO skinsSO;
@@ -19,6 +18,8 @@ public class SkinSystemView : MonoBehaviour
 
     [SerializeField] private GameObject moneySpriteObject;
 
+    [SerializeField] private List<DOTweenAnimation> animations;
+    
 
     private Button _skinBuyButton;
 
@@ -59,10 +60,12 @@ public class SkinSystemView : MonoBehaviour
         var selectedSkin = skinsSO.SkinsList[i];
         _selectedSkin = selectedSkin;
         _choosenSkin = i;
-        mainCharaterImage.sprite = selectedSkin.skinImage;
+   //Todo :     mainCharaterImage.sprite = selectedSkin.skinImage;
+        Events.OnPlayerSkinChangePreview?.Invoke(i);
         incomeIncreaseTxt.text = "+%" + selectedSkin.incomeUpgradeAmount + " Income";
         cargoCapasityTxt.text = "+" + selectedSkin.capasityUpgradeAmount + " Capasity";
         moneyBtnText.text = selectedSkin.skinBuyMoney + "K";
+        animations.ForEach(item=>item.DORestart());
         ChoosenButtonBackgroundHandle(skinsObjects[i].GetComponent<Image>());
         CheckIfAlreadyBuyed();
         CheckIfMoneyEnough();
@@ -89,9 +92,10 @@ public class SkinSystemView : MonoBehaviour
     private void SkinBuyedAndChanged(Skin updatedSkin)
     {
         //OnSkinChanged takip ediyor
-        mainCharaterImage.sprite = updatedSkin.skinImage;
-        SkinBuyedCheckMark();
+        //Todo :    mainCharaterImage.sprite = updatedSkin.skinImage;
+        Events.OnPlayerSkinChangePreview?.Invoke(_choosenSkin);
         CheckIfAlreadyBuyed();
+        SkinBuyedCheckMark();
     }
 
     private void CheckIfAlreadyBuyed()
@@ -121,13 +125,15 @@ public class SkinSystemView : MonoBehaviour
 
     private void SkinBuyedCheckMark()
     {
-        for (int i = 0; i < skinsObjects.Count; i++)
-        {
-            if (skinModel.buyedSkins[i] == 1)
-            {
-                skinsObjects[i].transform.GetChild(1).gameObject.SetActive(true);
-            }
-        }
+        // for (int i = 0; i < skinsObjects.Count; i++)
+        // {
+        //     if (skinModel.buyedSkins[i] == 1)
+        //     {
+        //         skinsObjects[i].transform.GetChild(1).gameObject.SetActive(true);
+        //     }
+        // }
+        skinsObjects.ForEach(item => item.transform.GetChild(1).gameObject.SetActive(false));
+        skinsObjects[skinModel.currentSkinIndex].transform.GetChild(1).gameObject.SetActive(true); 
     }
 
     private void OnDestroy()

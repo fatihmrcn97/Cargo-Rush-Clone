@@ -38,7 +38,7 @@ public class SkinModel
     public void SkinBuy(int skinIndex)
     {
         buyedSkins[skinIndex] = 1;
-        OnSkinChanged?.Invoke(SkinsSo.SkinsList[skinIndex]);
         currentSkinIndex = skinIndex;
+        OnSkinChanged?.Invoke(SkinsSo.SkinsList[skinIndex]);
     }
 }

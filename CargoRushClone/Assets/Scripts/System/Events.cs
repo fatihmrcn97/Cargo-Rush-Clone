@@ -10,4 +10,5 @@ public static class Events
     //public static Action SpecialAnimalStarted;
     public static Action MaterialStackedEvent;
     public static Action<int> OnPlayerSkinChange;
+    public static Action<int> OnPlayerSkinChangePreview;
 }
