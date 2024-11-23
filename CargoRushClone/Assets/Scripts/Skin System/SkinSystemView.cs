@@ -19,6 +19,17 @@ public class SkinSystemView : MonoBehaviour
     [SerializeField] private GameObject moneySpriteObject;
 
     [SerializeField] private List<DOTweenAnimation> animations;
+
+    [SerializeField] private Button selectBtn,watchAdBtn;
+
+    [SerializeField] private GameObject unlockMapTxtImage;
+
+    [SerializeField] private GameObject selectedBtnObject;
+    
+
+    [SerializeField] private GameObject upArrow,downArrow;
+    [SerializeField] private Scrollbar scrollbar;
+    
     
 
     private Button _skinBuyButton;
@@ -36,6 +47,7 @@ public class SkinSystemView : MonoBehaviour
         _skinBuyButton = moneyBtnText.GetComponentInParent<Button>();
         ShowCurrentSkinForBuy(skinModel.currentSkinIndex);
         skinModel.OnSkinChanged += SkinBuyedAndChanged;
+        
     }
 
     private void Start()
@@ -50,6 +62,9 @@ public class SkinSystemView : MonoBehaviour
         _skinBuyButton.onClick.AddListener(() =>
             skinSystemController.BuySkin(_choosenSkin)); // Its buy skin if its already buyed change
 
+        selectBtn.onClick.AddListener(() =>skinSystemController.BuySkin(_choosenSkin));
+        scrollbar.onValueChanged.AddListener((val)=>ScrollBarOnValueChanged(val));
+        
         skinSystemController.BuySkin(skinModel.currentSkinIndex);
         SkinBuyedCheckMark();
         CheckIfAlreadyBuyed(); 
@@ -65,10 +80,10 @@ public class SkinSystemView : MonoBehaviour
         incomeIncreaseTxt.text = "+%" + selectedSkin.incomeUpgradeAmount + " Income";
         cargoCapasityTxt.text = "+" + selectedSkin.capasityUpgradeAmount + " Capasity";
         moneyBtnText.text = selectedSkin.skinBuyMoney + "K";
-        animations.ForEach(item=>item.DORestart());
-        ChoosenButtonBackgroundHandle(skinsObjects[i].GetComponent<Image>());
+        animations.ForEach(item=>item.DORestart()); 
         CheckIfAlreadyBuyed();
         CheckIfMoneyEnough();
+        CheckIfAlreadyBuyedAndSelected();
     }
 
     public void ReOpenSkinWindowSettings()
@@ -76,6 +91,13 @@ public class SkinSystemView : MonoBehaviour
         // UI ile atandi
         //ShowCurrentSkinForBuy(_choosenSkin);
         ShowCurrentSkinForBuy(skinModel.currentSkinIndex);
+    }
+ 
+    private void ScrollBarOnValueChanged(float value)
+    {
+        if(!transform.parent.GetComponent<Canvas>().isActiveAndEnabled) return;
+        upArrow.SetActive(!(value > 0.75));
+        downArrow.SetActive(!(value < .15));
     }
 
     private void CheckIfMoneyEnough()
@@ -96,19 +118,35 @@ public class SkinSystemView : MonoBehaviour
         Events.OnPlayerSkinChangePreview?.Invoke(_choosenSkin);
         CheckIfAlreadyBuyed();
         SkinBuyedCheckMark();
+        var currentSkinSprite = skinsObjects[_choosenSkin].transform.GetChild(0).GetComponent<Image>().sprite;
+        ChoosenButtonBackgroundHandle(skinsObjects[_choosenSkin].GetComponent<Image>());
+        UIManager.instance.SetSkinSystemImage(currentSkinSprite);
+        selectedBtnObject.SetActive(true);
+        CheckIfAlreadyBuyedAndSelected();
     }
 
-    private void CheckIfAlreadyBuyed()
+    private void CheckIfAlreadyBuyedAndSelected()
     {
         if (skinModel.buyedSkins[_choosenSkin] == 1)
         {
-            moneyBtnText.text = "Select";
-            moneySpriteObject.SetActive(false);
+            selectBtn.gameObject.SetActive(_choosenSkin != skinModel.currentSkinIndex);
+        }
+    }
+    private void CheckIfAlreadyBuyed()
+    {
+        if (skinModel.buyedSkins[_choosenSkin] == 1)
+        { 
+            selectBtn.gameObject.SetActive(true); 
+            moneyBtnText.transform.parent.gameObject.SetActive(false);
+            watchAdBtn.gameObject.SetActive(false);
+            unlockMapTxtImage.SetActive(false);
         }
         else
         {
-            moneyBtnText.text = _selectedSkin.skinBuyMoney + "K";
-            moneySpriteObject.SetActive(true);
+            unlockMapTxtImage.SetActive(true);
+            selectBtn.gameObject.SetActive(false); 
+            moneyBtnText.transform.parent.gameObject.SetActive(true);
+            watchAdBtn.gameObject.SetActive(true);
         }
     }
 
@@ -133,7 +171,7 @@ public class SkinSystemView : MonoBehaviour
         //     }
         // }
         skinsObjects.ForEach(item => item.transform.GetChild(1).gameObject.SetActive(false));
-        skinsObjects[skinModel.currentSkinIndex].transform.GetChild(1).gameObject.SetActive(true); 
+        skinsObjects[skinModel.currentSkinIndex].transform.GetChild(1).gameObject.SetActive(true);  
     }
 
     private void OnDestroy()

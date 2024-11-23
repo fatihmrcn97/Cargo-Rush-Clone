@@ -37,3 +37,7 @@ MonoBehaviour:
     skinBuyMoney: 45
     incomeUpgradeAmount: 10
     capasityUpgradeAmount: 9
+  - skinImage: {fileID: 21300000, guid: dd1238b18c12ff748ba98edaaf6b2794, type: 3}
+    skinBuyMoney: 60
+    incomeUpgradeAmount: 15
+    capasityUpgradeAmount: 10

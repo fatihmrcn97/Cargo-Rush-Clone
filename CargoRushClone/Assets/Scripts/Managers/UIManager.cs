@@ -59,7 +59,13 @@ public class UIManager : MonoBehaviour
 
         PlayerPrefs.SetInt("score", _score);
         scoreTxt.text = _score.ToString();
-    } 
+    }
+
+    public void SetSkinSystemImage(Sprite sprite)
+    {
+        skinSysOpenBtn.GetComponent<Image>().sprite = sprite;
+        
+    }
 
     
 }
