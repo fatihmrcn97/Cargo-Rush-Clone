@@ -74,6 +74,7 @@ public class AddMaterialToMachine : MonoBehaviour
             _machineController.convertedMaterials.Add(currentSingleMaterial);
             currentSingleMaterial.transform.DOLocalRotate(Vector3.zero, progressionTime); 
             currentSingleMaterial.transform.DOLocalJump(stackSystem.MaterialDropPositon().position, .5f, 1, progressionTime);
+            currentSingleMaterial.transform.DOLocalRotate(new Vector3(Random.Range(0,90), Random.Range(0,190), Random.Range(0,290)), progressionTime);
             stackSystem.DropPointHandle();
             Events.MaterialStackedEvent?.Invoke();
             yield return new WaitForSeconds(progressionTime + .02f);
