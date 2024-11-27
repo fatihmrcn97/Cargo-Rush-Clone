@@ -20,11 +20,13 @@ public class AICollectableIdleState : AICollectableBaseState
         if (ai.ItemList.CheckPlayerHandMax())
         {
             // Makineye bırakmaya giden state git yada Walking state git destination makine olsun
+            ai.shouldWait=true;
             ai.destination = ai.MachineController._addMaterialToMachine.transform;
             ai.SwitchState(ai.WalkingState);
         }
         else
         {
+            ai.shouldWait=false;
             // Collect State git
             ai.SwitchState(ai.CollectState);
         }

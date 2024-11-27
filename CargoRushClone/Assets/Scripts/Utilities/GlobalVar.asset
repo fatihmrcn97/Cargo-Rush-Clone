@@ -9,7 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abd438f270b2eef4dbdf5a0f652fc442, type: 3}
-  m_Name: PlayerSO
+  m_Script: {fileID: 11500000, guid: 3a66c739e55490447ad7cf4becf6c7e6, type: 3}
+  m_Name: GlobalVar
   m_EditorClassIdentifier: 
-  speed: 3
+  PlayerStackSpeed: 0.2
+  AIStackSpeed: 1.5
+  PlayerStackMovementSpeed: 0.3
+  AIStackMovementSpeed: 0.3
+  AICargoAfterWorkWaitTime: 1.5
+  AICollectableAfterWorkWaitTime: 2

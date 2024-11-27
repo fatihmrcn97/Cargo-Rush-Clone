@@ -6,18 +6,21 @@ public class AICargoWalkingState : AICargoBaseState
 {
     public override void EnterState(AICargoStateManager ai)
     {
-        ai.anim.SetBool(TagManager.WALKING_BOOL_ANIM,true);
+        ai.anim.SetBool(TagManager.WALKING_BOOL_ANIM, true);
     }
 
     public override void UpdateState(AICargoStateManager ai)
     {
         ai.Agent.SetDestination(ai.destination.position);
-        if(Vector3.Distance(ai.destination.position,ai.transform.position) >=.55) return;
-        ai.SwitchState(ai.IdleState);
+        if (Vector3.Distance(ai.destination.position, ai.transform.position) >= .55) return;
+
+        if (ai.shoudWait)
+            ai.SwitchState(ai.WaitingState);
+        else
+            ai.SwitchState(ai.IdleState);
     }
 
     public override void OnTriggerEnter(AICargoStateManager ai, Collider other)
     {
-       
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 public class AddMaterialToMachine : MonoBehaviour
 { 
 
-    [HideInInspector] public IStackSystem stackSystem;
+    public IStackSystem stackSystem;
 
     private MachineController _machineController;
   
@@ -16,7 +16,8 @@ public class AddMaterialToMachine : MonoBehaviour
 
     [SerializeField] private ItemStatus itemStatus;
     [SerializeField] private TapedItemStatus tapedItemStatus;
-    
+
+    [SerializeField] private bool isFirstMachine;
     
     private void Start()
     {
@@ -26,20 +27,26 @@ public class AddMaterialToMachine : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag(TagManager.PLAYER_TAG))
+        if (other.CompareTag(TagManager.PLAYER_TAG) || other.CompareTag(TagManager.AI_TAG))
         {
             other.GetComponent<IItemList>().IsInTrigger = true;
             DropMaterialCorotine= StartCoroutine(PlayerDroppingMaterialsToTheMachine(other.GetComponent<IItemList>()));
         }
         
+        
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag(TagManager.PLAYER_TAG))
+        if (other.CompareTag(TagManager.PLAYER_TAG))
         {
             if (DropMaterialCorotine != null) StopCoroutine(DropMaterialCorotine);
                 other.GetComponent<IItemList>().IsInTrigger = false;
-        }  
+        }
+
+        if (other.CompareTag(TagManager.AI_TAG))
+        {
+            other.GetComponent<IItemList>().IsInTrigger = false;
+        }
     }
 
     public bool CheckIsMax()
@@ -50,11 +57,12 @@ public class AddMaterialToMachine : MonoBehaviour
 
     private IEnumerator PlayerDroppingMaterialsToTheMachine(IItemList stackController)
     { 
-        float progressionTime = .1f;
+        float progressionTime = stackController.StackMovementSpeed();
         List<GameObject> tempList = new(stackController.StackedMaterialList());
         tempList.Reverse();
         if (stackController.StackedMaterialList().Count <= 0) yield break;
-
+        
+        // yield return new WaitForSeconds(stackController.StackGetGiveDelaySpeed());
             
         foreach (var currentSingleMaterial in tempList)
         {
@@ -74,7 +82,8 @@ public class AddMaterialToMachine : MonoBehaviour
             _machineController.convertedMaterials.Add(currentSingleMaterial);
             currentSingleMaterial.transform.DOLocalRotate(Vector3.zero, progressionTime); 
             currentSingleMaterial.transform.DOLocalJump(stackSystem.MaterialDropPositon().position, .5f, 1, progressionTime);
-            currentSingleMaterial.transform.DOLocalRotate(new Vector3(Random.Range(0,90), Random.Range(0,190), Random.Range(0,290)), progressionTime);
+            if(isFirstMachine)
+                currentSingleMaterial.transform.DOLocalRotate(new Vector3(Random.Range(0,90), Random.Range(0,190), Random.Range(0,290)), progressionTime);
             stackSystem.DropPointHandle();
             Events.MaterialStackedEvent?.Invoke();
             yield return new WaitForSeconds(progressionTime + .02f);

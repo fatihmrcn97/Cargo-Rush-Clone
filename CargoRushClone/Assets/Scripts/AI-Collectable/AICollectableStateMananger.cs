@@ -11,6 +11,7 @@ public class AICollectableStateMananger : MonoBehaviour
     public AICollectableIdleState IdleState = new();
     public AICollectableWalkingState WalkingState = new();
     public AICollectableCollectState CollectState = new();
+    public AICollectablleWaitState WaitState = new();
     #endregion
 
     private NavMeshAgent _agent;
@@ -21,8 +22,8 @@ public class AICollectableStateMananger : MonoBehaviour
 
     public IItemList ItemList;
 
-    public Transform destination;
-
+    [HideInInspector] public Transform destination;
+    [HideInInspector] public bool shouldWait;
     [HideInInspector] public Animator animator;
 
     private void Awake()

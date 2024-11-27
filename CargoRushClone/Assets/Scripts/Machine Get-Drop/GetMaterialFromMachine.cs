@@ -6,7 +6,7 @@ using UnityEngine;
 public class GetMaterialFromMachine : MonoBehaviour
 {
     public List<GameObject> singleMaterial;
- 
+
 
     private MachineController _machineController;
 
@@ -22,20 +22,25 @@ public class GetMaterialFromMachine : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.gameObject.CompareTag(TagManager.PLAYER_TAG)) return;
-        var iItemList = other.GetComponent<IItemList>();
-        iItemList.IsInTrigger = true;
-        PlayerGettingStackMaterials(iItemList).Forget();
+        if (other.CompareTag(TagManager.PLAYER_TAG) || other.CompareTag(TagManager.AI_TAG))
+        {
+            var iItemList = other.GetComponent<IItemList>();
+            iItemList.IsInTrigger = true;
+            PlayerGettingStackMaterials(iItemList).Forget();
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag(TagManager.PLAYER_TAG))
-            other.GetComponent<IItemList>().IsInTrigger=false;
+        if (other.CompareTag(TagManager.PLAYER_TAG) || other.CompareTag(TagManager.AI_TAG))
+            other.GetComponent<IItemList>().IsInTrigger = false;
     }
 
     private async UniTaskVoid PlayerGettingStackMaterials(IItemList stackController)
     {
+        var speedDelay = (int)(1000 * stackController.StackGetGiveDelaySpeed());
+        await UniTask.Delay(speedDelay); 
+        
         while (stackController.IsInTrigger)
         {
             if (singleMaterial.Count <= 0)
@@ -63,7 +68,7 @@ public class GetMaterialFromMachine : MonoBehaviour
 
             stackController.StackedMaterialList().Add(currentSingleMaterial);
             Events.MaterialStackedEvent?.Invoke();
-            await UniTask.Delay(50);
+            await UniTask.Delay(100);
         }
     }
 }

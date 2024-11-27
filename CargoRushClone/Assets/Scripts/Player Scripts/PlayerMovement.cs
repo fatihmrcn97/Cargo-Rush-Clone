@@ -45,6 +45,8 @@ public class PlayerMovement : MonoBehaviour
         if (_input.MoveDirection != Vector3.zero)
         { 
             anim.SetBool(TagManager.WALKING_BOOL_ANIM, true);
+            float joystickMagnitude = new Vector2(_joystick.Horizontal, _joystick.Vertical).magnitude;
+            anim.SetFloat(TagManager.CHAR_SPEED_FLOAT, joystickMagnitude);
             HandleRotation(_input.MoveDirection);
         }
         else
@@ -56,14 +58,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void HandleRotation(Vector3 currentMovement)
-    {
-        //Vector3 positionToLookAt;
-        //positionToLookAt.x = currentMovement.x;
-        //positionToLookAt.y = 0f;
-        //positionToLookAt.z = currentMovement.z;
-        //Quaternion currentRotation = transform.rotation;
-        //Quaternion targetRotation = Quaternion.LookRotation(positionToLookAt);
-        //transform.rotation = Quaternion.Slerp(currentRotation, targetRotation, _rotationFactorPerFrame * Time.deltaTime);
+    { 
         currentMovement.y = 0;
         _rotationVector = Vector3.Slerp(_rotationVector, currentMovement, Time.deltaTime * _rotationFactorPerFrame);
         transform.rotation = Quaternion.LookRotation(_rotationVector);

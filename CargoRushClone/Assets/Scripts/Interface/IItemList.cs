@@ -5,12 +5,14 @@ public interface IItemList
 {
     List<GameObject> StackedMaterialList();
     List<Transform> StackTransforms();
-
-    int MaxStackCount();
-
+  
     void StackPositionHandler();
 
     bool CheckPlayerHandMax();
 
     bool IsInTrigger { get; set; }
+
+    float StackMovementSpeed();
+    
+    float StackGetGiveDelaySpeed();
 }

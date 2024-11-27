@@ -23,6 +23,11 @@ public class PlaceAfterBought : MonoBehaviour, IBuyTrigger
         StartCoroutine(PlaceActivateWithScale());
     }
 
+    public void AlreadyBought()
+    {
+        StartCoroutine(PlaceActivateWithScale());
+    }
+
     private IEnumerator PlaceActivateWithScale()
     { 
         transform.GetChild(0).GetComponent<Canvas>().enabled = false;

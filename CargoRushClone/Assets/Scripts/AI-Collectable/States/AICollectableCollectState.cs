@@ -31,8 +31,10 @@ public class AICollectableCollectState : AICollectableBaseState
         if (ai.ItemList.CheckPlayerHandMax())
         {
             // Walking state destination hallet
+            ai.shouldWait = true;
             ai.destination = ai.MachineController._addMaterialToMachine.transform;
             ai.SwitchState(ai.WalkingState);
+            
         }
     }
 

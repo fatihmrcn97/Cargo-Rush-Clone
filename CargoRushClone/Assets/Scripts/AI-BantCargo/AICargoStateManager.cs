@@ -7,9 +7,11 @@ using UnityEngine.AI;
 public class AICargoStateManager : MonoBehaviour
 {
     #region STATES
+
     private AICargoBaseState _currentState;
     public AICargoIdleState IdleState = new();
     public AICargoWalkingState WalkingState = new();
+    public AICargoWaitState WaitingState = new();
     #endregion
 
     private NavMeshAgent _agent;
@@ -17,15 +19,15 @@ public class AICargoStateManager : MonoBehaviour
 
     [SerializeField] private GetMaterialFromMachine _machineController;
     public GetMaterialFromMachine MachineController => _machineController;
- 
+
     public List<Transform> destinations;
-    
+
     public IItemList ItemList;
 
-    public Transform destination;
+    [HideInInspector] public Transform destination;
 
     [HideInInspector] public Animator anim;
-    
+    [HideInInspector] public bool shoudWait=false;
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
@@ -45,7 +47,7 @@ public class AICargoStateManager : MonoBehaviour
     }
 
     private void Update()
-    {  
+    {
         _currentState.UpdateState(this);
     }
 
@@ -66,5 +68,4 @@ public class AICargoStateManager : MonoBehaviour
             _ => destinations[0]
         };
     }
-    
 }

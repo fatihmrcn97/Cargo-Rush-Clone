@@ -5,25 +5,17 @@ using UnityEngine;
  
 public class MachineController : MonoBehaviour, IMachineController
 {
-    public List<GameObject> convertedMaterials;
+    [HideInInspector] public List<GameObject> convertedMaterials;
 
     [SerializeField] protected Transform material_machine_enter_pos;
 
-    [HideInInspector] public IStackSystem _stackSystem;
-
-    protected bool isMachineWorking;
+    protected IStackSystem _stackSystem;
 
     [HideInInspector] public Animator anim;
 
-    public AddMaterialToMachine _addMaterialToMachine;
+    [HideInInspector] public AddMaterialToMachine _addMaterialToMachine;
 
-    public GetMaterialFromMachine _getMaterialFromMachine;
- 
-    [SerializeField] protected float timePerProduce;
-
-    protected Vector3 startPosOfDropPos;
-
-    [SerializeField] protected float stackFinishZposIncreaser;
+    [HideInInspector] public GetMaterialFromMachine _getMaterialFromMachine;
 
     protected float animStartValue;
 

@@ -30,11 +30,7 @@ public class PutInBoxMachine : MachineController , ITriggerInteraction
        
         anim = GetComponentInChildren<Animator>();
         _addMaterialToMachine = GetComponentInChildren<AddMaterialToMachine>();
-      //  _getMaterialFromMachine = GetComponentInChildren<GetMaterialFromMachine>();
         InvokeRepeating(nameof(MachineStartedWorking), 1f, 1f);
-        // animStartValue = anim.GetFloat(TagManager.ANIM_SPEED_FLOAT); 
-
-       // Debug.Log(  stackSystems.GetValue(1));
     }
 
     private void MachineStartedWorking()
@@ -46,7 +42,7 @@ public class PutInBoxMachine : MachineController , ITriggerInteraction
         _convertingItem = convertedMaterials[^1];
         convertedMaterials.Remove(_convertingItem);
         _addMaterialToMachine.stackSystem.SetTheStackPositonBack(convertedMaterials.Count);
-        _convertingItem.transform.DOLocalJump(material_machine_enter_pos.position, jumpPower, 1, .15f).OnComplete(ItemBoxingProcess);
+        _convertingItem.transform.DOLocalJump(material_machine_enter_pos.position, jumpPower, 1, .45f).OnComplete(ItemBoxingProcess);
  
     }
 

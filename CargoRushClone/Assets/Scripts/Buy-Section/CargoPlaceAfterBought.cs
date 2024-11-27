@@ -5,11 +5,17 @@ using Dreamteck.Splines;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlaceAfterUpgrade : MonoBehaviour, IBuyTrigger
+public class CargoPlaceAfterBought : MonoBehaviour , IBuyTrigger
 {
-    [SerializeField] private GameObject currentCargoSystem, nextCargoSystem;
-    [SerializeField] private GameObject nextObjectToBuy , nextVehicle;
-
+    [SerializeField] private GameObject kargolamaParentObj;
+    
+    [Header("CargoSystems")] 
+    [SerializeField] private GameObject currentCargoSystem;
+    [Space] 
+    [SerializeField] private GameObject nextObjectToBuy;
+    [SerializeField] private GameObject nextVehicle;
+    
+    
     [SerializeField] UnityEvent u_event;
 
     [SerializeField] private bool isStart;
@@ -28,29 +34,42 @@ public class PlaceAfterUpgrade : MonoBehaviour, IBuyTrigger
 
     public void AlreadyBought()
     {
-        StartCoroutine(PlaceActivateWithScale());
+        StartCoroutine(PlaceAlreadyBought());
+    }
+
+    private IEnumerator PlaceAlreadyBought()
+    {
+        kargolamaParentObj.SetActive(true);  
+        u_event?.Invoke();
+        yield return null;
+        Vibration.Vibrate(50); 
+        OpenNextObjectToBuy();
+        transform.gameObject.SetActive(false);
     }
 
     private IEnumerator PlaceActivateWithScale()
     {
+        kargolamaParentObj.SetActive(true);
+        currentCargoSystem.SetActive(false);
+        
         transform.GetChild(0).GetComponent<Canvas>().enabled = false;
         transform.GetChild(1).GetComponent<Canvas>().enabled = false;
-
-        currentCargoSystem.GetComponentInChildren<SplineFollower>().follow = true;
-        currentCargoSystem.GetComponentInChildren<SplineFollower>().Restart();
+        // currentCargoSystem.GetComponentInChildren<SplineFollower>().follow = true;
+        // currentCargoSystem.GetComponentInChildren<SplineFollower>().Restart();
+        
         yield return new WaitForSeconds(2.5f);
-        currentCargoSystem.SetActive(false);
-
+        
         var nextVehicObj = Instantiate(nextVehicle);
         nextVehicObj.transform.position = nextVehicle.transform.position;
         var position = nextVehicObj.transform.position;
-        position += new Vector3(-3, 0, 0);
+        position += new Vector3(-2, 0, 0);
         nextVehicObj.transform.position = position;
-        nextVehicObj.transform.DOMove(position + new Vector3(3, 0, 0), 1.25f);
-        yield return new WaitForSeconds(1.25f);
+        nextVehicObj.transform.DOMove(position + new Vector3(2, 0, 0), .75f);
+        nextVehicObj.transform.rotation = Quaternion.Euler(0, 0, 0);
+        yield return new WaitForSeconds(.75f);
         Destroy(nextVehicObj);
-        nextCargoSystem.GetComponentInChildren<SplineFollower>().follow = false;
-        nextCargoSystem.SetActive(true); 
+        currentCargoSystem.SetActive(true);
+        currentCargoSystem.GetComponentInChildren<SplineFollower>().follow = false; 
         u_event?.Invoke();
         Vibration.Vibrate(50);
         yield return null;

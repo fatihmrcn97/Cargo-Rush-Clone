@@ -25,7 +25,7 @@ public class AddMaterialToCargo : MonoBehaviour
     private void Awake()
     {
         _cargoPlace = GetComponentInParent<CargoPlace>();
-        _maxConvertedMaterial = _cargoPlace.maxConvertedMaterial;
+        _maxConvertedMaterial = _cargoPlace.MaxConvertedMaterial;
         _cargoPlace.remaningText.text = "0/" + _maxConvertedMaterial;
     }
 
@@ -36,9 +36,9 @@ public class AddMaterialToCargo : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag(TagManager.PLAYER_TAG))
+        if (other.CompareTag(TagManager.PLAYER_TAG) || other.CompareTag(TagManager.AI_TAG))
         {
-            _maxConvertedMaterial = _cargoPlace.maxConvertedMaterial;
+            _maxConvertedMaterial = _cargoPlace.MaxConvertedMaterial;
             other.GetComponent<IItemList>().IsInTrigger = true;
             DropMaterialCorotine =
                 StartCoroutine(PlayerDroppingMaterialsToTheMachine(other.GetComponent<IItemList>()));
@@ -47,9 +47,13 @@ public class AddMaterialToCargo : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag(TagManager.PLAYER_TAG))
+        if (other.CompareTag(TagManager.PLAYER_TAG))
         {
             if (DropMaterialCorotine != null) StopCoroutine(DropMaterialCorotine);
+            other.GetComponent<IItemList>().IsInTrigger = false;
+        }
+        if (other.CompareTag(TagManager.AI_TAG))
+        {
             other.GetComponent<IItemList>().IsInTrigger = false;
         }
     }

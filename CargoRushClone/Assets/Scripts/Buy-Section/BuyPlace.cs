@@ -148,7 +148,7 @@ public class BuyPlace : MonoBehaviour
     {
         if (PlayerPrefs.HasKey(saveName))
         {
-            afterBought.PlaceBought();
+            afterBought.AlreadyBought();
         }
     }
 }
