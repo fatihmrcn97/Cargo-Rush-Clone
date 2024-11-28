@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -9,8 +10,6 @@ public class BoxTapingMachine : MachineController, ITriggerInteraction
 {
     private GameObject _convertingItem;
 
-    [SerializeField] private float jumpPower = .25f;
-
     // [SerializeField] private ParticleSystem ps; 
     [SerializeField] private SplineComputer splineComputer;
 
@@ -18,36 +17,64 @@ public class BoxTapingMachine : MachineController, ITriggerInteraction
     [SerializeField] private TapedItemStatus outTapedItemStatus;
 
     [SerializeField] private TextMeshPro remainingTxt;
+    [SerializeField] private TextMeshPro surplasBoxesUiText;
+    [SerializeField] private GameObject surplasBoxesUIObj;
+    
 
     [SerializeField] private GameObject paletObj;
     private List<GameObject> _addedPalets;
 
+    [Header("Machine & Box Settings")]
+    [Range(0.25f,10f)]
+    [SerializeField] private float machineWorkingSpeed;
+    [Range(0.5f,5f)]
+    [SerializeField] private float boxSpeedOnBantMachine;
+    [SerializeField] private float jumpPower = .25f;
 
+    [SerializeField] private List<MeshRenderer> meshRenderers;
+    [SerializeField] private MeshRenderer corner;
+    
+    private bool _isMachineWorking = false;
+    private List<bool> fakeBoxes;
+    
+    private float _upgradeMachineWorkingSpeed=0;
+    private float _upgradeProductSpeed=0;
     private void Awake()
     {
         _stackSystem = GetComponent<IStackSystem>();
         _stackSystems = new List<IStackSystem> { _stackSystem };
         _addedPalets = new List<GameObject>();
-
-
+        fakeBoxes=new List<bool>(); 
         splineComputer = GetComponentInChildren<SplineComputer>();
         anim = GetComponentInChildren<Animator>();
         _addMaterialToMachine = GetComponentInChildren<AddMaterialToMachine>();
         _getMaterialFromMachine = GetComponentInChildren<GetMaterialFromMachine>();
-        InvokeRepeating(nameof(MachineStartedWorking), 1f, 3f);
+        InvokeRepeating(nameof(MachineStartedWorking), 1f, machineWorkingSpeed+_upgradeMachineWorkingSpeed);
 
         remainingTxt.text = "0/" + _addMaterialToMachine._maxConvertedMaterial;
         // animStartValue = anim.GetFloat(TagManager.ANIM_SPEED_FLOAT); 
+    }
+
+    private void Update()
+    { 
+        if(!_isMachineWorking) return;
+        foreach (var item in meshRenderers)
+        {
+            item.materials[2].mainTextureOffset += new Vector2(0,Time.deltaTime * -2);
+        }
+        corner.materials[1].mainTextureOffset += new Vector2(0,Time.deltaTime * -2);
     }
 
     private void MachineStartedWorking()
     {
         if (convertedMaterials.Count <= 0) return;
 
+        _isMachineWorking = true;
         //      ps.Play();
         // anim.SetBool(TagManager.WALKING_BOOL_ANIM, true);
         _convertingItem = convertedMaterials[^1];
         convertedMaterials.Remove(_convertingItem);
+        fakeBoxes.Add(true);
         remainingTxt.text = convertedMaterials.Count + "/" + _addMaterialToMachine._maxConvertedMaterial;
         _addMaterialToMachine.stackSystem.SetTheStackPositonBack(convertedMaterials.Count);
         _convertingItem.transform.DOLocalJump(material_machine_enter_pos.position, jumpPower, 1, .15f)
@@ -69,9 +96,9 @@ public class BoxTapingMachine : MachineController, ITriggerInteraction
 
     private IEnumerator ReduceSplineSpeedForSec(SplineFollower speed)
     {
-        speed.followSpeed = .55f;
+        speed.followSpeed = .45f;
         yield return new WaitForSeconds(2f);
-        speed.followSpeed = 1;
+        speed.followSpeed = boxSpeedOnBantMachine;
     }
 
     public void PathEnded(GameObject item)
@@ -80,47 +107,71 @@ public class BoxTapingMachine : MachineController, ITriggerInteraction
         item.transform.DORotate(_stackSystem.MaterialDropPositon().rotation.eulerAngles, .15f);
         item.GetComponent<IItem>().SetStatus(outItemStatus, outTapedItemStatus);
         item.tag = TagManager.Default;
-     
+        fakeBoxes.Remove(fakeBoxes[^1]);
         CheckExtraPaletAddOrDelete(true);
+        if(_floorCount>=3) item.transform.GetChild(0).gameObject.SetActive(false);
         item.GetComponent<IItem>()
             .SetCurrentTween(
                 item.transform.DOJump(_stackSystem.MaterialDropPositon().position, 1.15f, 1, .25f));
         
+        if(fakeBoxes.Count<=0) _isMachineWorking = false;
         _getMaterialFromMachine.singleMaterial.Add(item);
         _stackSystem.DropPointHandle();
         
     }
 
+    private void UpgradeSettings()
+    {
+        
+    }
+
+    
+    int _floorCount = 0;
     public void CheckExtraPaletAddOrDelete(bool isAdd)
     {
         if (isAdd)
         {
             if (_getMaterialFromMachine.singleMaterial.Count <= 0) return;
-            // Paleti ekle
-            int paletCount = _getMaterialFromMachine.singleMaterial.Count;
-            if (paletCount % 16 == 0)
+            if (_floorCount < 3)
             {
-                int heightMultiplier = paletCount / 16; //.65f Ekelenecek her bir palet için
-                var addedPalet = Instantiate(paletObj);
-                addedPalet.transform.SetPositionAndRotation(
-                    paletObj.transform.position + new Vector3(0, 0.48f * heightMultiplier, 0),
-                    paletObj.transform.rotation);
-                _addedPalets.Add(addedPalet);
+                // Paleti ekle
+                int paletCount = _getMaterialFromMachine.singleMaterial.Count;
+                if (paletCount % 16 == 0)
+                {
+                    int heightMultiplier = paletCount / 16; //.65f Ekelenecek her bir palet için
+                    var addedPalet = Instantiate(paletObj);
+                    addedPalet.transform.SetPositionAndRotation(
+                        paletObj.transform.position + new Vector3(0, 0.48f * heightMultiplier, 0),
+                        paletObj.transform.rotation);
+                    _addedPalets.Add(addedPalet);
+                    _floorCount++;
+                }
             }
+            else
+            {
+                surplasBoxesUIObj.SetActive(true);
+                surplasBoxesUiText.text = "+ "+ (_getMaterialFromMachine.singleMaterial.Count - 48) ;
+                _floorCount++;
+            }
+         
         }
         else
         {
+            surplasBoxesUIObj.SetActive(false);
             // Paleti sil
             if (_getMaterialFromMachine.singleMaterial.Count < 16)
             {
                 //tüm paletleri sil
-                _addedPalets.ForEach(Destroy);
+                if(_addedPalets.Count<=0) return; 
+                _floorCount=0;
+                Destroy(_addedPalets[0]);
                 _addedPalets.Clear();
                 return;
             }
 
             if (_getMaterialFromMachine.singleMaterial.Count % 16 == 0)
             {
+                _floorCount--;
                 var lastPalet = _addedPalets[^1];
                 _addedPalets.Remove(lastPalet);
                 Destroy(lastPalet);

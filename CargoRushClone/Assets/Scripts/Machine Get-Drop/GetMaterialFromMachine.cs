@@ -53,7 +53,7 @@ public class GetMaterialFromMachine : MonoBehaviour
 
             var currentSingleMaterial = singleMaterial[^1];
             singleMaterial.Remove(currentSingleMaterial);
-
+            currentSingleMaterial.transform.GetChild(0).gameObject.SetActive(true);
             _machineController._stackSystems[indexOfStackSytem].SetTheStackPositonBack(singleMaterial.Count);
 
             var stackTransform = stackController.StackTransforms()[stackController.StackedMaterialList().Count];
