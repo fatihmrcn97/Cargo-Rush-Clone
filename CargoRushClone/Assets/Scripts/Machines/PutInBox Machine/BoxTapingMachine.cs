@@ -19,66 +19,84 @@ public class BoxTapingMachine : MachineController, ITriggerInteraction
     [SerializeField] private TextMeshPro remainingTxt;
     [SerializeField] private TextMeshPro surplasBoxesUiText;
     [SerializeField] private GameObject surplasBoxesUIObj;
-    
+
 
     [SerializeField] private GameObject paletObj;
     private List<GameObject> _addedPalets;
 
-    [Header("Machine & Box Settings")]
-    [Range(0.25f,10f)]
-    [SerializeField] private float machineWorkingSpeed;
-    [Range(0.5f,5f)]
-    [SerializeField] private float boxSpeedOnBantMachine;
+    [Header("Machine & Box Settings")] [Range(0.25f, 10f)] [SerializeField]
+    private float machineWorkingSpeed;
+
+    [Range(0.5f, 5f)] [SerializeField] private float boxSpeedOnBantMachine;
     [SerializeField] private float jumpPower = .25f;
+    [SerializeField] private int maxTapedItemCount=50;
+    
 
     [SerializeField] private List<MeshRenderer> meshRenderers;
     [SerializeField] private MeshRenderer corner;
     
     private bool _isMachineWorking = false;
     private List<bool> fakeBoxes;
+
+    [SerializeField] private GameObject stoppedUI;
     
-    private float _upgradeMachineWorkingSpeed=0;
-    private float _upgradeProductSpeed=0;
+ 
+    private WaitForSeconds _waitTime;
     private void Awake()
     {
         _stackSystem = GetComponent<IStackSystem>();
         _stackSystems = new List<IStackSystem> { _stackSystem };
         _addedPalets = new List<GameObject>();
-        fakeBoxes=new List<bool>(); 
+        fakeBoxes = new List<bool>();
         splineComputer = GetComponentInChildren<SplineComputer>();
         anim = GetComponentInChildren<Animator>();
         _addMaterialToMachine = GetComponentInChildren<AddMaterialToMachine>();
         _getMaterialFromMachine = GetComponentInChildren<GetMaterialFromMachine>();
-        InvokeRepeating(nameof(MachineStartedWorking), 1f, machineWorkingSpeed+_upgradeMachineWorkingSpeed);
-
-        remainingTxt.text = "0/" + _addMaterialToMachine._maxConvertedMaterial;
+        
+        _waitTime = new WaitForSeconds(machineWorkingSpeed);
+        StartCoroutine(MachineStartedWorking());
+        
+        remainingTxt.text = "0/" + maxTapedItemCount;
         // animStartValue = anim.GetFloat(TagManager.ANIM_SPEED_FLOAT); 
     }
 
     private void Update()
-    { 
-        if(!_isMachineWorking) return;
+    {
+        if (!_isMachineWorking) return;
         foreach (var item in meshRenderers)
         {
-            item.materials[2].mainTextureOffset += new Vector2(0,Time.deltaTime * -2);
+            item.materials[2].mainTextureOffset += new Vector2(0, Time.deltaTime * -2);
         }
-        corner.materials[1].mainTextureOffset += new Vector2(0,Time.deltaTime * -2);
+
+        corner.materials[1].mainTextureOffset += new Vector2(0, Time.deltaTime * -2);
     }
 
-    private void MachineStartedWorking()
+    private IEnumerator MachineStartedWorking()
     {
-        if (convertedMaterials.Count <= 0) return;
+        while (true)
+        {
+            if (convertedMaterials.Count <= 0 || _getMaterialFromMachine.singleMaterial.Count>=maxTapedItemCount)
+            {
+                if (fakeBoxes.Count <= 0) stoppedUI.SetActive(true);
+                yield return _waitTime;
+            }
+            else
+            {
+                stoppedUI.SetActive(false);
+                _isMachineWorking = true;
+                //      ps.Play();
+                // anim.SetBool(TagManager.WALKING_BOOL_ANIM, true);
+                _convertingItem = convertedMaterials[^1];
+                convertedMaterials.Remove(_convertingItem);
+                fakeBoxes.Add(true);
+                remainingTxt.text = convertedMaterials.Count + "/" + maxTapedItemCount;
+                _addMaterialToMachine.stackSystem.SetTheStackPositonBack(convertedMaterials.Count);
+                _convertingItem.transform.DOLocalJump(material_machine_enter_pos.position, jumpPower, 1, .15f)
+                    .OnComplete(ItemBoxingProcess);
+            }
 
-        _isMachineWorking = true;
-        //      ps.Play();
-        // anim.SetBool(TagManager.WALKING_BOOL_ANIM, true);
-        _convertingItem = convertedMaterials[^1];
-        convertedMaterials.Remove(_convertingItem);
-        fakeBoxes.Add(true);
-        remainingTxt.text = convertedMaterials.Count + "/" + _addMaterialToMachine._maxConvertedMaterial;
-        _addMaterialToMachine.stackSystem.SetTheStackPositonBack(convertedMaterials.Count);
-        _convertingItem.transform.DOLocalJump(material_machine_enter_pos.position, jumpPower, 1, .15f)
-            .OnComplete(ItemBoxingProcess);
+            yield return _waitTime;
+        }
     }
 
     private void ItemBoxingProcess()
@@ -109,24 +127,29 @@ public class BoxTapingMachine : MachineController, ITriggerInteraction
         item.tag = TagManager.Default;
         fakeBoxes.Remove(fakeBoxes[^1]);
         CheckExtraPaletAddOrDelete(true);
-        if(_floorCount>=3) item.transform.GetChild(0).gameObject.SetActive(false);
+        if (_floorCount >= 3) item.transform.GetChild(0).gameObject.SetActive(false);
         item.GetComponent<IItem>()
             .SetCurrentTween(
                 item.transform.DOJump(_stackSystem.MaterialDropPositon().position, 1.15f, 1, .25f));
-        
-        if(fakeBoxes.Count<=0) _isMachineWorking = false;
+
+        if (fakeBoxes.Count <= 0) _isMachineWorking = false;
         _getMaterialFromMachine.singleMaterial.Add(item);
         _stackSystem.DropPointHandle();
-        
     }
 
-    private void UpgradeSettings()
+    public void UpgradeSettings(float upgradeMachineWorkingSpeed, float upgradeProductSpeed)
     {
-        
+        boxSpeedOnBantMachine *= upgradeProductSpeed; 
+        machineWorkingSpeed /= upgradeMachineWorkingSpeed;
+        _waitTime = new WaitForSeconds(machineWorkingSpeed);
+        _addMaterialToMachine._maxConvertedMaterial += 25;
+        maxTapedItemCount += 50;
+        remainingTxt.text = convertedMaterials.Count + "/" + maxTapedItemCount; 
     }
 
-    
+
     int _floorCount = 0;
+
     public void CheckExtraPaletAddOrDelete(bool isAdd)
     {
         if (isAdd)
@@ -150,20 +173,18 @@ public class BoxTapingMachine : MachineController, ITriggerInteraction
             else
             {
                 surplasBoxesUIObj.SetActive(true);
-                surplasBoxesUiText.text = "+ "+ (_getMaterialFromMachine.singleMaterial.Count - 48) ;
-                _floorCount++;
+                surplasBoxesUiText.text = "+ " + (_getMaterialFromMachine.singleMaterial.Count - 48); 
             }
-         
         }
         else
-        {
-            surplasBoxesUIObj.SetActive(false);
+        { 
             // Paleti sil
             if (_getMaterialFromMachine.singleMaterial.Count < 16)
             {
                 //tüm paletleri sil
-                if(_addedPalets.Count<=0) return; 
-                _floorCount=0;
+                surplasBoxesUIObj.SetActive(false);
+                if (_addedPalets.Count <= 0) return;
+                _floorCount = 0;
                 Destroy(_addedPalets[0]);
                 _addedPalets.Clear();
                 return;
@@ -171,6 +192,7 @@ public class BoxTapingMachine : MachineController, ITriggerInteraction
 
             if (_getMaterialFromMachine.singleMaterial.Count % 16 == 0)
             {
+                surplasBoxesUIObj.SetActive(false);
                 _floorCount--;
                 var lastPalet = _addedPalets[^1];
                 _addedPalets.Remove(lastPalet);

@@ -38,7 +38,7 @@ public class PlayerCollectItem : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag(TagManager.PACKABLE_ITEM_SPAWNER))
+        if (other.CompareTag(TagManager.PACKABLE_ITEM_SPAWNER) && !transform.parent.CompareTag(TagManager.AI_TAG))
         {
             if(_itemList.StackedMaterialList().Count > 0 && _itemList.StackedMaterialList()[0].CompareTag(TagManager.COLLECTABLE_ITEM))
                 PushBackItems();

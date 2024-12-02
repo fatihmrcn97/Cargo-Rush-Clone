@@ -14,6 +14,11 @@ public class AICollectableIdleState : AICollectableBaseState
 
     public override void UpdateState(AICollectableStateMananger ai)
     {
+        if (PackableItemSpawner.Instance.IsCurrentlySpwaning || PackableItemSpawner.Instance.allCollectables.Count<=0)  
+        {
+            ai.PackbleItemSpwanerWorking();
+            return;
+        }
         ai.animator.SetBool(TagManager.WALKING_BOOL_ANIM,false);
         if(PackableItemSpawner.Instance.allCollectables.Count<=0) return;
         if(ai.MachineController.convertedMaterials.Count >= ai.MachineController._addMaterialToMachine._maxConvertedMaterial) return; // Makine alim kapasitesine ulaşmıs

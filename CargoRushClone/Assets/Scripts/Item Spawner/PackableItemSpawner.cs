@@ -13,7 +13,8 @@ public class PackableItemSpawner : SingletonMonoBehaviour<PackableItemSpawner>
     private Dictionary<string, int> _inGameCollectablesCount;
 
     private bool _isCurrentlySpwaning = false;
-
+    public bool IsCurrentlySpwaning => _isCurrentlySpwaning;
+    
     public List<GameObject> allCollectables;
 
     private void Start()
@@ -24,6 +25,7 @@ public class PackableItemSpawner : SingletonMonoBehaviour<PackableItemSpawner>
         InvokeRepeating(nameof(CheckShouldSpawnCollectable), 15, 7);
     }
 
+   
     public void SpawnCollectableObject(string poolName)
     {
         StartCoroutine(SpawnObjects(poolName));
@@ -33,11 +35,10 @@ public class PackableItemSpawner : SingletonMonoBehaviour<PackableItemSpawner>
     private IEnumerator SpawnObjects(string poolName)
     {
         _isCurrentlySpwaning = true;
-
         if (!_inGameCollectablesCount.ContainsKey(poolName))
             _inGameCollectablesCount.Add(poolName, 0);
         var createdItemCount = _inGameCollectablesCount[poolName];
-
+       Events.OnPackableItemSpawnerStarted?.Invoke();
         for (int i = 0; i < spawnMaxCount; i++)
         {
             createdItemCount++;
@@ -48,7 +49,6 @@ public class PackableItemSpawner : SingletonMonoBehaviour<PackableItemSpawner>
             _inGameCollectablesCount[poolName] = createdItemCount;
             yield return _waitTime;
         }
-
         _isCurrentlySpwaning = false;
     }
 

@@ -10,7 +10,7 @@ public class AddMaterialToMachine : MonoBehaviour
 
     private MachineController _machineController;
   
-    public int _maxConvertedMaterial = 50;
+    public int _maxConvertedMaterial;
 
     private Coroutine DropMaterialCorotine;
 
@@ -51,8 +51,7 @@ public class AddMaterialToMachine : MonoBehaviour
 
     public bool CheckIsMax()
     {
-        if (_machineController.convertedMaterials.Count >= _maxConvertedMaterial) return true;
-        else return false;
+        return _machineController.convertedMaterials.Count >= _maxConvertedMaterial;
     }
 
     private IEnumerator PlayerDroppingMaterialsToTheMachine(IItemList stackController)
@@ -61,7 +60,7 @@ public class AddMaterialToMachine : MonoBehaviour
         List<GameObject> tempList = new(stackController.StackedMaterialList());
         tempList.Reverse();
         if (stackController.StackedMaterialList().Count <= 0) yield break;
-        
+        if(CheckIsMax()) yield break;
         // yield return new WaitForSeconds(stackController.StackGetGiveDelaySpeed());
             
         foreach (var currentSingleMaterial in tempList)
@@ -70,6 +69,7 @@ public class AddMaterialToMachine : MonoBehaviour
             if (!stackController.IsInTrigger || _machineController.convertedMaterials.Count >= _maxConvertedMaterial) yield break; 
             if(itemStatus != iItem.ItemStatus()) continue;
             if(tapedItemStatus != iItem.TapedItemStatus()) continue;
+            if(CheckIsMax()) yield break;
             currentSingleMaterial.transform.SetParent(null);
             // Active collision
             

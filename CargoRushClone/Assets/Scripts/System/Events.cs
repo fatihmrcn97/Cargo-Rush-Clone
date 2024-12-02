@@ -11,4 +11,6 @@ public static class Events
     public static Action MaterialStackedEvent;
     public static Action<int> OnPlayerSkinChange;
     public static Action<int> OnPlayerSkinChangePreview;
+
+    public static Action OnPackableItemSpawnerStarted; 
 }

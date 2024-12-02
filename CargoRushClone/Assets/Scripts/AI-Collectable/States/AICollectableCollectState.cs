@@ -11,8 +11,11 @@ public class AICollectableCollectState : AICollectableBaseState
 
     public override void UpdateState(AICollectableStateMananger ai)
     {
-        if(PackableItemSpawner.Instance.allCollectables.Count<=0 && ai.ItemList.StackedMaterialList().Count<=0) 
-            ai.SwitchState(ai.IdleState);
+        if (PackableItemSpawner.Instance.allCollectables.Count <= 0 && ai.ItemList.StackedMaterialList().Count <= 0)
+        {
+            ai.PackbleItemSpwanerWorking();
+            return;
+        }
  
         if (PackableItemSpawner.Instance.allCollectables.Count <= 0 && ai.ItemList.StackedMaterialList().Count >= 1)
         {

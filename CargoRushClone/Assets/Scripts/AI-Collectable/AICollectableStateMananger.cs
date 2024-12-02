@@ -17,6 +17,8 @@ public class AICollectableStateMananger : MonoBehaviour
     private NavMeshAgent _agent;
     public NavMeshAgent Agent => _agent;
 
+    [SerializeField] private Transform waitTransform;
+    
     [SerializeField] private MachineController _machineController;
     public MachineController MachineController => _machineController;
 
@@ -26,6 +28,7 @@ public class AICollectableStateMananger : MonoBehaviour
     [HideInInspector] public bool shouldWait;
     [HideInInspector] public Animator animator;
 
+    
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
@@ -35,9 +38,10 @@ public class AICollectableStateMananger : MonoBehaviour
 
     private void Start()
     {
-        _currentState = IdleState;
+        _currentState = WaitState;
         _currentState.EnterState(this);
-    }
+        Events.OnPackableItemSpawnerStarted += PackbleItemSpwanerWorking;
+    } 
 
     private void OnTriggerEnter(Collider other)
     {
@@ -45,7 +49,7 @@ public class AICollectableStateMananger : MonoBehaviour
     }
 
     private void Update()
-    { 
+    {  
         _currentState.UpdateState(this);
     }
 
@@ -54,4 +58,12 @@ public class AICollectableStateMananger : MonoBehaviour
         _currentState = state;
         state.EnterState(this);
     }
+
+    public void PackbleItemSpwanerWorking()
+    {
+        shouldWait = true;
+        destination = waitTransform;
+        SwitchState(WalkingState);
+    }
+ 
 }

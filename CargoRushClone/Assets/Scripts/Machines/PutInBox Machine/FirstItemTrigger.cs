@@ -9,9 +9,18 @@ public class FirstItemTrigger : MonoBehaviour
 
     [SerializeField] private TriggerActivationOptions triggerActivationOptions;
     
+    private Collider _boxCollider;
     private void Awake()
     {
+        _boxCollider = GetComponent<Collider>();
+        _boxCollider.enabled = false;
         _putInBoxMachine = GetComponentInParent<ITriggerInteraction>();
+    }
+
+    private IEnumerator Start()
+    {
+        yield return new WaitForSeconds(.5f); // SAFE OPERATIONS
+        _boxCollider.enabled = true;
     }
 
     private void OnTriggerEnter(Collider other) 

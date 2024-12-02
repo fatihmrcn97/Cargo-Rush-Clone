@@ -9,10 +9,13 @@ public class PlaceAfterUpgBantMachine : MonoBehaviour, IBuyTrigger
 {
     [SerializeField] private GameObject nextObjectToBuy;
     [SerializeField] private bool isStart;
- 
+
+    [SerializeField] private BoxTapingMachine boxTapingMachine; 
+        
     [SerializeField] UnityEvent u_event;
+  
     private void Awake()
-    {
+    { 
         if (isStart) return;
         transform.GetComponent<BoxCollider>().enabled = false;
         transform.transform.GetChild(0).gameObject.SetActive(false);
@@ -33,11 +36,13 @@ public class PlaceAfterUpgBantMachine : MonoBehaviour, IBuyTrigger
     {
         transform.GetChild(0).GetComponent<Canvas>().enabled = false;
         transform.GetChild(1).GetComponent<Canvas>().enabled = false;
+        
         yield return new WaitForSeconds(0.5f);
+        boxTapingMachine.UpgradeSettings(1.2f,1.2f);
         u_event?.Invoke();
         Vibration.Vibrate(50);
-        yield return null;
         OpenNextObjectToBuy();
+        yield return null;
         transform.gameObject.SetActive(false);
     }
 

@@ -23,7 +23,8 @@ public class BuyPlace : MonoBehaviour
     private int _value;
 
     [SerializeField] private string saveName;
-
+    public string SaveName => saveName;
+    
     private IBuyTrigger afterBought;
 
     private int _origMfb;
