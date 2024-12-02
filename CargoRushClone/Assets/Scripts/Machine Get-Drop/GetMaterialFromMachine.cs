@@ -31,7 +31,7 @@ public class GetMaterialFromMachine : MonoBehaviour
 
         if (other.CompareTag(TagManager.AI_TAG))
         {
-            if (other.GetComponent<AICargoStateManager>().MachineController == this)
+            if (other.GetComponent<IAIWorker>().GetMachineController() == this)
             {
                 var iItemList = other.GetComponent<IItemList>();
                 iItemList.IsInTrigger = true;

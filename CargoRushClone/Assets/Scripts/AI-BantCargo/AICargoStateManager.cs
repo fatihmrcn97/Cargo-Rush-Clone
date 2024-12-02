@@ -1,10 +1,10 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using UnityEngine.AI;
+using UnityEngine.AI; 
+using Random = UnityEngine.Random;
 
-public class AICargoStateManager : MonoBehaviour
+public class AICargoStateManager : MonoBehaviour , IAIWorker
 {
     #region STATES
 
@@ -12,27 +12,37 @@ public class AICargoStateManager : MonoBehaviour
     public AICargoIdleState IdleState = new();
     public AICargoWalkingState WalkingState = new();
     public AICargoWaitState WaitingState = new();
+
     #endregion
 
+    public List<Transform> destinations;
+    [SerializeField] private List<GetMaterialFromMachine> machineControllers;
+
+    public Vector3 diffentiateLocation;
+    
+    
     private NavMeshAgent _agent;
     public NavMeshAgent Agent => _agent;
-
-    [SerializeField] private GetMaterialFromMachine _machineController;
-    public GetMaterialFromMachine MachineController => _machineController;
-
-    public List<Transform> destinations;
-
+    private GetMaterialFromMachine _currentMachine;
+    public GetMaterialFromMachine MachineController => _currentMachine;
+    
+    
     public IItemList ItemList;
-
     [HideInInspector] public Transform destination;
-
     [HideInInspector] public Animator anim;
-    [HideInInspector] public bool shoudWait=false;
+    [HideInInspector] public bool shoudWait = false;
+    [HideInInspector] public Transform startPoint;
+
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
         ItemList = GetComponent<IItemList>();
         anim = GetComponentInChildren<Animator>();
+        _currentMachine = machineControllers[0];
+
+        var startPosObj = new GameObject();
+        startPosObj.transform.position = transform.position;
+        startPoint = startPosObj.transform;
     }
 
     private void Start()
@@ -48,7 +58,15 @@ public class AICargoStateManager : MonoBehaviour
 
     private void Update()
     {
+        //Debug.Log(_currentState);
         _currentState.UpdateState(this);
+    }
+
+    public void RandomGetMaterialFromMachine()
+    {
+        var fakeMachines = machineControllers
+            .Where(item => item.gameObject.activeInHierarchy && item.singleMaterial.Count > 0).ToList();
+        _currentMachine = fakeMachines.Count == 0 ? machineControllers[0] : fakeMachines[Random.Range(0, fakeMachines.Count)];
     }
 
     public void SwitchState(AICargoBaseState state)
@@ -67,5 +85,10 @@ public class AICargoStateManager : MonoBehaviour
             TapedItemStatus.blueBox => destinations[2],
             _ => destinations[0]
         };
+    }
+
+    public GetMaterialFromMachine GetMachineController()
+    {
+        return _currentMachine;
     }
 }

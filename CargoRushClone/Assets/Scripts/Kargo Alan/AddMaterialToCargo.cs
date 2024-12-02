@@ -20,7 +20,9 @@ public class AddMaterialToCargo : MonoBehaviour
     }
 
     private CargoPlace _cargoPlace;
+    private GameObject _aiWorker = null;
 
+    public CargoPlace CargoPlace => _cargoPlace;
 
     private void Awake()
     {
@@ -36,15 +38,25 @@ public class AddMaterialToCargo : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(TagManager.PLAYER_TAG) || other.CompareTag(TagManager.AI_TAG))
+        if (other.CompareTag(TagManager.PLAYER_TAG))
         {
             _maxConvertedMaterial = _cargoPlace.MaxConvertedMaterial;
             other.GetComponent<IItemList>().IsInTrigger = true;
             DropMaterialCorotine =
-                StartCoroutine(PlayerDroppingMaterialsToTheMachine(other.GetComponent<IItemList>()));
+                StartCoroutine(PlayerDroppingMaterialsToTheMachine(other.GetComponent<IItemList>(),false));
         }
-    }
 
+        if (other.CompareTag(TagManager.AI_TAG))
+        {
+            _aiWorker = other.gameObject;
+            _maxConvertedMaterial = _cargoPlace.MaxConvertedMaterial;
+            other.GetComponent<IItemList>().IsInTrigger = true;
+            DropMaterialCorotine =
+                StartCoroutine(PlayerDroppingMaterialsToTheMachine(other.GetComponent<IItemList>(),true));
+        }
+        
+    }
+ 
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag(TagManager.PLAYER_TAG))
@@ -55,11 +67,12 @@ public class AddMaterialToCargo : MonoBehaviour
         if (other.CompareTag(TagManager.AI_TAG))
         {
             other.GetComponent<IItemList>().IsInTrigger = false;
+            _aiWorker = null;
         }
     }
 
 
-    private IEnumerator PlayerDroppingMaterialsToTheMachine(IItemList stackController)
+    private IEnumerator PlayerDroppingMaterialsToTheMachine(IItemList stackController,bool isAI)
     {
         float progressionTime = .1f;
         List<GameObject> tempList = new(stackController.StackedMaterialList());
@@ -91,6 +104,10 @@ public class AddMaterialToCargo : MonoBehaviour
             {
                 _cargoPlace.CargoFullCurrierGo();
                 stackSystem.SetTheStackPositonBack(0);
+                if (_aiWorker != null && isAI)
+                { 
+                    _aiWorker.GetComponent<AIStateManager>().CheckIfAIStillHasItem();
+                }
                 yield break;
             }
 

@@ -11,6 +11,14 @@ public class AICargoIdleState : AICargoBaseState
 
     public override void UpdateState(AICargoStateManager ai)
     {
+        if (ai.MachineController.singleMaterial.Count == 0 && ai.ItemList.StackedMaterialList().Count == 0)
+        {
+            // Alicak vericek yok bekleme noktasında git ve bekle
+            ai.shoudWait = true;
+            ai.destination = ai.startPoint;
+            ai.SwitchState(ai.WalkingState);
+        }
+        
         if (ai.MachineController.singleMaterial.Count > 0)
         {
             //Eli fulse kargo bırakmaya git
@@ -54,4 +62,5 @@ public class AICargoIdleState : AICargoBaseState
     public override void OnTriggerEnter(AICargoStateManager ai, Collider other)
     {
     }
+
 }
