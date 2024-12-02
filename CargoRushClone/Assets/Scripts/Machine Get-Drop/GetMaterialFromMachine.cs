@@ -22,11 +22,21 @@ public class GetMaterialFromMachine : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(TagManager.PLAYER_TAG) || other.CompareTag(TagManager.AI_TAG))
+        if (other.CompareTag(TagManager.PLAYER_TAG))
         {
             var iItemList = other.GetComponent<IItemList>();
             iItemList.IsInTrigger = true;
             PlayerGettingStackMaterials(iItemList).Forget();
+        }
+
+        if (other.CompareTag(TagManager.AI_TAG))
+        {
+            if (other.GetComponent<AICargoStateManager>().MachineController == this)
+            {
+                var iItemList = other.GetComponent<IItemList>();
+                iItemList.IsInTrigger = true;
+                PlayerGettingStackMaterials(iItemList).Forget();
+            }
         }
     }
 
@@ -68,7 +78,7 @@ public class GetMaterialFromMachine : MonoBehaviour
 
             stackController.StackedMaterialList().Add(currentSingleMaterial);
             Events.MaterialStackedEvent?.Invoke();
-            await UniTask.Delay(100);
+            await UniTask.Delay(200);
         }
     }
 }

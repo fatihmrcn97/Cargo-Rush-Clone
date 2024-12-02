@@ -49,7 +49,7 @@ public class AddMaterialToMachine : MonoBehaviour
         }
     }
 
-    public bool CheckIsMax()
+    private bool CheckIsMax()
     {
         return _machineController.convertedMaterials.Count >= _maxConvertedMaterial;
     }
