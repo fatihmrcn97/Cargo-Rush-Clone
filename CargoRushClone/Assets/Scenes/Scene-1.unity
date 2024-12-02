@@ -13431,7 +13431,7 @@ MonoBehaviour:
       m_Calls: []
   timerSlider: {fileID: 6633943995736116114}
   totalDuration: 6
-  minMaxCargoPerVehicle: {x: 5, y: 8}
+  minMaxCargoPerVehicle: {x: 7, y: 7}
 --- !u!4 &549670379
 Transform:
   m_ObjectHideFlags: 0
