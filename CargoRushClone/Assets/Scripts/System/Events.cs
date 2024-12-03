@@ -13,4 +13,6 @@ public static class Events
     public static Action<int> OnPlayerSkinChangePreview;
 
     public static Action OnPackableItemSpawnerStarted; 
+    
+    public static Action OnWorldCanvasOpened;
 }

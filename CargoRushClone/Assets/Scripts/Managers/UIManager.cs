@@ -27,6 +27,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button skinSysOpenBtn;
     [SerializeField] private Canvas skinSysUI;
     
+    public GameObject joystick;
     public GlobalVariablesSO globalVars;
     private void Awake()
     {
