@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Dreamteck.Splines;
@@ -33,23 +34,44 @@ public class CargoPlace : MonoBehaviour
 
     [SerializeField] private Vector2 minMaxCargoPerVehicle;
 
-
+    private int _moneyEarnAmountUpgrade = 0;
+    private float _upgradeTotalDurationDecraser = 0;
+    private float _totaleDurationWithUpgrade;
     private void Awake()
     {
         _maxConvertedMaterial = Random.Range((int)minMaxCargoPerVehicle.x, (int)minMaxCargoPerVehicle.y);
         _moneyManager = GetComponentInChildren<MoneyManager>();
         _addMaterialToCargo = GetComponentInChildren<AddMaterialToCargo>();
-        timerSlider.maxValue = totalDuration;
+        if(!PlayerPrefs.HasKey("upgradeTotalDurationDecraser"))
+            PlayerPrefs.SetFloat("upgradeTotalDurationDecraser", 0);
+        
+        if(!PlayerPrefs.HasKey("moneyEarnAmountUpgrade"))
+            PlayerPrefs.SetInt("moneyEarnAmountUpgrade", 0);
+        
+        _moneyEarnAmountUpgrade = PlayerPrefs.GetInt("moneyEarnAmountUpgrade");
+        _upgradeTotalDurationDecraser = PlayerPrefs.GetFloat("upgradeTotalDurationDecraser");
+        _totaleDurationWithUpgrade = totalDuration +_upgradeTotalDurationDecraser;
+        timerSlider.maxValue = _totaleDurationWithUpgrade;
         timerSlider.value = 0;
         timerSlider.gameObject.SetActive(false);
     }
-
-
+    
     public void CargoFullCurrierGo()
     {
         StartCoroutine(CurrierGo());
     }
 
+    private void OnEnable()
+    {
+        Events.OnUpgradeWaitTime += UpgradeWaitTime;
+        Events.OnMoneyEarnAmountUpgrade += MoneyEarnAmountUpgrade;
+    }
+
+    private void OnDisable()
+    {
+        Events.OnUpgradeWaitTime -= UpgradeWaitTime;
+        Events.OnMoneyEarnAmountUpgrade -= MoneyEarnAmountUpgrade;
+    }
 
     private IEnumerator CurrierGo()
     {
@@ -57,10 +79,10 @@ public class CargoPlace : MonoBehaviour
         StartCoroutine(SliderTimer());
         unityEvent?.Invoke();
         splineFollower.follow = true;
-        splineFollower.followDuration = totalDuration;
+        splineFollower.followDuration = _totaleDurationWithUpgrade;
         splineFollower.Restart();
         _isCurrierGoing = true;
-        _moneyManager.MoneyCreate(cargoItems.Count);
+        _moneyManager.MoneyCreate(cargoItems.Count+_moneyEarnAmountUpgrade);
         remaningObj.SetActive(false);
         yield return new WaitForSeconds(2.5f);
         _addMaterialToCargo.TapedItemStatus = SetRandomShippingObject();
@@ -101,11 +123,22 @@ public class CargoPlace : MonoBehaviour
     {
         timerSlider.gameObject.SetActive(true);
         float timer = 0;
-        while (timer < totalDuration)
+        while (timer < _totaleDurationWithUpgrade)
         {
             timer += Time.deltaTime;
             timerSlider.value = timer;
             yield return null;
         }
+    }
+
+    private void UpgradeWaitTime()
+    {
+        _upgradeTotalDurationDecraser = PlayerPrefs.GetFloat("upgradeTotalDurationDecraser");
+        _totaleDurationWithUpgrade = totalDuration +_upgradeTotalDurationDecraser;
+    }
+
+    private void MoneyEarnAmountUpgrade()
+    {
+        _moneyEarnAmountUpgrade = PlayerPrefs.GetInt("moneyEarnAmountUpgrade");
     }
 }

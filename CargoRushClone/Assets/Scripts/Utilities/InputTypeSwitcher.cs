@@ -17,7 +17,13 @@ public class InputTypeSwitcher : MonoBehaviour
     {
         if (other.CompareTag(TagManager.PLAYER_TAG))
         {
-            Events.OnWorldCanvasOpened?.Invoke();
+            StartCoroutine(Delay());
         }
+    }
+
+    private IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Events.OnWorldCanvasOpened?.Invoke();
     }
 }

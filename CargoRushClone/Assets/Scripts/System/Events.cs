@@ -15,4 +15,11 @@ public static class Events
     public static Action OnPackableItemSpawnerStarted; 
     
     public static Action OnWorldCanvasOpened;
+    
+    // UPGRADE EVENTS
+    public static Action OnUpgradeWaitTime,OnMoneyEarnAmountUpgrade;
+
+    public static Action OnCapasityUpgradeForAI, OnSpeedUpgradeForAI;
+
+    public static Action OnMachineSpeedUpgrade;
 }

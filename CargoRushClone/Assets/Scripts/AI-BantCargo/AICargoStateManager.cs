@@ -33,6 +33,7 @@ public class AICargoStateManager : MonoBehaviour , IAIWorker
     [HideInInspector] public bool shoudWait = false;
     [HideInInspector] public Transform startPoint;
 
+    private float agentBaseSpeed;
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
@@ -43,6 +44,11 @@ public class AICargoStateManager : MonoBehaviour , IAIWorker
         var startPosObj = new GameObject();
         startPosObj.transform.position = transform.position;
         startPoint = startPosObj.transform;
+        
+        if(!PlayerPrefs.HasKey("AgentSpeed"))
+            PlayerPrefs.SetFloat("AgentSpeed",0);
+        agentBaseSpeed = _agent.speed;
+        _agent.speed = agentBaseSpeed + PlayerPrefs.GetFloat("AgentSpeed");
     }
 
     private void Start()
@@ -90,5 +96,20 @@ public class AICargoStateManager : MonoBehaviour , IAIWorker
     public GetMaterialFromMachine GetMachineController()
     {
         return _currentMachine;
+    }
+
+    private void OnEnable()
+    {
+        Events.OnSpeedUpgradeForAI += SpeedUpgrade;
+    }
+
+    private void OnDisable()
+    {
+        Events.OnSpeedUpgradeForAI -= SpeedUpgrade;
+    }
+
+    public void SpeedUpgrade()
+    {
+        _agent.speed = agentBaseSpeed + PlayerPrefs.GetFloat("AgentSpeed");
     }
 }

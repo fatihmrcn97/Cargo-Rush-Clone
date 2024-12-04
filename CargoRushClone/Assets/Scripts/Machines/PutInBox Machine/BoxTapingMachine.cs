@@ -40,8 +40,8 @@ public class BoxTapingMachine : MachineController, ITriggerInteraction
 
     [SerializeField] private GameObject stoppedUI;
     
- 
     private WaitForSeconds _waitTime;
+    private float upgradeBoxSpeed=0;
     private void Awake()
     {
         _stackSystem = GetComponent<IStackSystem>();
@@ -57,6 +57,10 @@ public class BoxTapingMachine : MachineController, ITriggerInteraction
         StartCoroutine(MachineStartedWorking());
         
         remainingTxt.text = "0/" + maxTapedItemCount;
+        if (!PlayerPrefs.HasKey("boxSpeedOnMachine"))
+            PlayerPrefs.SetFloat("boxSpeedOnMachine", 0);
+        
+        upgradeBoxSpeed = PlayerPrefs.GetFloat("boxSpeedOnMachine");
         // animStartValue = anim.GetFloat(TagManager.ANIM_SPEED_FLOAT); 
     }
 
@@ -91,6 +95,7 @@ public class BoxTapingMachine : MachineController, ITriggerInteraction
                 fakeBoxes.Add(true);
                 remainingTxt.text = convertedMaterials.Count + "/" + maxTapedItemCount;
                 _addMaterialToMachine.stackSystem.SetTheStackPositonBack(convertedMaterials.Count);
+                _convertingItem.GetComponent<SplineFollower>().followSpeed =boxSpeedOnBantMachine+upgradeBoxSpeed;
                 _convertingItem.transform.DOLocalJump(material_machine_enter_pos.position, jumpPower, 1, .15f)
                     .OnComplete(ItemBoxingProcess);
             }
@@ -103,6 +108,7 @@ public class BoxTapingMachine : MachineController, ITriggerInteraction
     {
         _convertingItem.GetComponent<SplineFollower>().spline = splineComputer;
         _convertingItem.GetComponent<SplineFollower>().enabled = true;
+        
     }
 
 
@@ -116,7 +122,7 @@ public class BoxTapingMachine : MachineController, ITriggerInteraction
     {
         speed.followSpeed = .45f;
         yield return new WaitForSeconds(2f);
-        speed.followSpeed = boxSpeedOnBantMachine;
+        speed.followSpeed = boxSpeedOnBantMachine+upgradeBoxSpeed;
     }
 
     public void PathEnded(GameObject item)
@@ -199,5 +205,20 @@ public class BoxTapingMachine : MachineController, ITriggerInteraction
                 Destroy(lastPalet);
             }
         }
+    }
+
+    private void OnEnable()
+    {
+        Events.OnMachineSpeedUpgrade += UpgradeBoxSpeed;
+    }
+
+    private void OnDisable()
+    {
+        Events.OnMachineSpeedUpgrade -= UpgradeBoxSpeed;
+    }
+
+    private void UpgradeBoxSpeed()
+    {
+        upgradeBoxSpeed = PlayerPrefs.GetFloat("boxSpeedOnMachine");
     }
 }

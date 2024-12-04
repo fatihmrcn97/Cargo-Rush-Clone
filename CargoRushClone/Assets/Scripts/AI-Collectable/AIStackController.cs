@@ -24,9 +24,19 @@ public class AIStackController : MonoBehaviour, IItemList
         stackSpeed = UIManager.instance.globalVars.AIStackMovementSpeed;
     }
 
-    public void MaxStackCountUpdated()
+    private void OnEnable()
     {
-        // maxStackCount = maxStackCountBase + PlayerPrefs.GetInt("maxCollected");
+        Events.OnCapasityUpgradeForAI += MaxStackCountUpdated;
+    }
+
+    private void OnDisable()
+    {
+        Events.OnCapasityUpgradeForAI -= MaxStackCountUpdated;
+    }
+
+    private void MaxStackCountUpdated()
+    {
+         maxStackCount = maxStackCountBase + PlayerPrefs.GetInt("maxCollectedAI");
     }
 
     private void Awake()

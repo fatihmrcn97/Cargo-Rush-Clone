@@ -29,6 +29,8 @@ public class UIManager : MonoBehaviour
     
     public GameObject joystick;
     public GlobalVariablesSO globalVars;
+
+    public Transform moneyTargetPos;
     private void Awake()
     {
         

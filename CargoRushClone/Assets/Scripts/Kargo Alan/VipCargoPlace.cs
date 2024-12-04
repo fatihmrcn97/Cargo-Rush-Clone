@@ -14,6 +14,8 @@ public class VipCargoPlace : MonoBehaviour
     [SerializeField] private Transform vipCustomerTarget;
     [SerializeField] private Transform vipBaseTarget;
     [SerializeField] private GameObject vipDrone;
+    [SerializeField] private GameObject money2d;
+
 
     private MoneyManager _moneyManager;
     private bool _isVipActive = false;
@@ -26,7 +28,7 @@ public class VipCargoPlace : MonoBehaviour
 
 
     [Header("UI Elements")] [SerializeField]
-    private TextMeshProUGUI timeText;
+    private TextMeshProUGUI timeText, moneyEarnedAmountTxt;
 
     [SerializeField] private Slider vipComplatedRewardWaitSlider;
     [SerializeField] private GameObject vipComplatedCanvas;
@@ -65,6 +67,25 @@ public class VipCargoPlace : MonoBehaviour
     {
         vipComplatedCanvas.SetActive(false);
         StartCoroutine(CurrierGo());
+        StartCoroutine(MoneyUIAnimation());
+    }
+
+    private IEnumerator MoneyUIAnimation()
+    {
+        int moneyEanerdAmount = moneyEarnMuliplier * _maxConvertedMaterial;
+        moneyEarnedAmountTxt.text = moneyEanerdAmount.ToString();
+        for (int i = 0; i < 15; i++)
+        {
+            var money = Instantiate(money2d, UIManager.instance.transform);
+            money.transform.DOLocalMove(
+                money.transform.localPosition + new Vector3(Random.Range(-200, 200), Random.Range(-450, 450), 0),
+                0.05f);
+            money.transform.DOLocalMove(UIManager.instance.moneyTargetPos.localPosition, .45f)
+                .OnComplete(() => Destroy(money));
+            yield return null;
+        }
+
+        UIManager.instance.ScoreAdd(moneyEanerdAmount);
     }
 
     private void DeactiveteVipCustomer()

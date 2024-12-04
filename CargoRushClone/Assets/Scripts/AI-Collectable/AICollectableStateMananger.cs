@@ -25,12 +25,17 @@ public class AICollectableStateMananger : MonoBehaviour
     [HideInInspector] public bool shouldWait;
     [HideInInspector] public Animator animator;
 
-    
+    private float agentBaseSpeed;
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
         ItemList = GetComponent<IItemList>();
         animator = GetComponentInChildren<Animator>();
+        
+        if(!PlayerPrefs.HasKey("AgentSpeed"))
+            PlayerPrefs.SetFloat("AgentSpeed",0);
+        agentBaseSpeed = _agent.speed;
+        _agent.speed = agentBaseSpeed + PlayerPrefs.GetFloat("AgentSpeed");
     }
 
     private void Start()
@@ -62,5 +67,18 @@ public class AICollectableStateMananger : MonoBehaviour
         destination = waitTransform;
         SwitchState(WalkingState);
     }
- 
+    private void OnEnable()
+    {
+        Events.OnSpeedUpgradeForAI += SpeedUpgrade;
+    }
+
+    private void OnDisable()
+    {
+        Events.OnSpeedUpgradeForAI -= SpeedUpgrade;
+    }
+
+    public void SpeedUpgrade()
+    {
+        _agent.speed = agentBaseSpeed + PlayerPrefs.GetFloat("AgentSpeed");
+    }
 }

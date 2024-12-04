@@ -33,8 +33,7 @@ public class NewInputReader : IInputReader
 
 public class MouseInputReader : IInputReader
 {
-    private readonly Camera _camera;
-    readonly float gravity = 35f;
+    private readonly Camera _camera; 
 
     public MouseInputReader(Camera camera)
     {
@@ -57,18 +56,14 @@ public class MouseInputReader : IInputReader
         get
         {
             Vector3 direction = GetMouseDirection();
-            if (Input.GetMouseButton(0))
-            {
-            
-                return direction;
-            }
-            //
-            // direction = _camera.transform.forward *  Input.GetAxis("Mouse X") +
-            //             _camera.transform.right * Input.GetAxis("Mouse Y");
-            // if (direction != Vector3.zero)
-            //     direction.y -= gravity * Time.deltaTime;
-            //return direction;
-            return Vector3.zero;
+            return Input.GetMouseButton(0) ? direction :
+                //
+                // direction = _camera.transform.forward *  Input.GetAxis("Mouse X") +
+                //             _camera.transform.right * Input.GetAxis("Mouse Y");
+                // if (direction != Vector3.zero)
+                //     direction.y -= gravity * Time.deltaTime;
+                //return direction;
+                Vector3.zero;
         }
     }
 }
