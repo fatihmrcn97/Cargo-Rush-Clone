@@ -82,7 +82,7 @@ public class CargoPlace : MonoBehaviour
         splineFollower.followDuration = _totaleDurationWithUpgrade;
         splineFollower.Restart();
         _isCurrierGoing = true;
-        _moneyManager.MoneyCreate(cargoItems.Count+_moneyEarnAmountUpgrade);
+        _moneyManager.MoneyCreate((BoosterSystem.Instance.DoubleIncomeBoosterAmount*cargoItems.Count)+_moneyEarnAmountUpgrade);
         remaningObj.SetActive(false);
         yield return new WaitForSeconds(2.5f);
         _addMaterialToCargo.TapedItemStatus = SetRandomShippingObject();
@@ -93,7 +93,7 @@ public class CargoPlace : MonoBehaviour
 
     public void OnUpgrade()
     {
-        _moneyManager.MoneyCreate(cargoItems.Count);
+        _moneyManager.MoneyCreate((BoosterSystem.Instance.DoubleIncomeBoosterAmount*cargoItems.Count));
         cargoItems.ForEach(Destroy);
         cargoItems.Clear();
     }

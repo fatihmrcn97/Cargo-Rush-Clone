@@ -22,4 +22,7 @@ public static class Events
     public static Action OnCapasityUpgradeForAI, OnSpeedUpgradeForAI;
 
     public static Action OnMachineSpeedUpgrade;
+    
+    //Booster Events
+    public static Action OnWorkerBoosterClaimed;
 }

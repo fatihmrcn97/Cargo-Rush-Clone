@@ -55,7 +55,7 @@ public class PlayerStackController : MonoBehaviour, IItemList
     private void CheckMax()
     {
         Vibration.Vibrate(10);
-        UIManager.instance.maxUI.SetActive(stackedMaterials.Count >= maxStackCount);
+        UIManager.instance.maxUI.SetActive(stackedMaterials.Count >= (maxStackCount+BoosterSystem.Instance.CapasityBoosterAmount));
         anim.SetBool(TagManager.CARRY_BOOL_ANIM, stackedMaterials.Count > 0);
     }
 
@@ -73,7 +73,7 @@ public class PlayerStackController : MonoBehaviour, IItemList
 
     public bool CheckPlayerHandMax()
     {
-        return StackedMaterialList().Count >= maxStackCount;
+        return StackedMaterialList().Count >= (maxStackCount+BoosterSystem.Instance.CapasityBoosterAmount);
     }
 
     public bool IsInTrigger { get; set; }

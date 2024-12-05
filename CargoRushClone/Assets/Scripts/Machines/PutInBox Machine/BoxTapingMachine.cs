@@ -95,7 +95,7 @@ public class BoxTapingMachine : MachineController, ITriggerInteraction
                 fakeBoxes.Add(true);
                 remainingTxt.text = convertedMaterials.Count + "/" + maxTapedItemCount;
                 _addMaterialToMachine.stackSystem.SetTheStackPositonBack(convertedMaterials.Count);
-                _convertingItem.GetComponent<SplineFollower>().followSpeed =boxSpeedOnBantMachine+upgradeBoxSpeed;
+                _convertingItem.GetComponent<SplineFollower>().followSpeed =boxSpeedOnBantMachine+upgradeBoxSpeed+BoosterSystem.Instance.ProductionBoosterAmount;
                 _convertingItem.transform.DOLocalJump(material_machine_enter_pos.position, jumpPower, 1, .15f)
                     .OnComplete(ItemBoxingProcess);
             }
@@ -122,7 +122,7 @@ public class BoxTapingMachine : MachineController, ITriggerInteraction
     {
         speed.followSpeed = .45f;
         yield return new WaitForSeconds(2f);
-        speed.followSpeed = boxSpeedOnBantMachine+upgradeBoxSpeed;
+        speed.followSpeed = boxSpeedOnBantMachine+upgradeBoxSpeed+BoosterSystem.Instance.ProductionBoosterAmount;
     }
 
     public void PathEnded(GameObject item)

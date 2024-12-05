@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -126,15 +127,30 @@ public class AIStateManager : MonoBehaviour, IAIWorker
     private void OnEnable()
     {
         Events.OnSpeedUpgradeForAI += SpeedUpgrade;
+        Events.OnWorkerBoosterClaimed+=WorkerBoosterClaimed;
     }
 
     private void OnDisable()
     {
         Events.OnSpeedUpgradeForAI -= SpeedUpgrade;
+        Events.OnWorkerBoosterClaimed-=WorkerBoosterClaimed;
     }
 
     public void SpeedUpgrade()
     {
         _agent.speed = agentBaseSpeed + PlayerPrefs.GetFloat("AgentSpeed");
     }
+    
+    private void WorkerBoosterClaimed()
+    {
+        StartCoroutine(WorkerBooster());
+    }
+
+    private IEnumerator WorkerBooster()
+    {
+        _agent.speed = agentBaseSpeed + PlayerPrefs.GetFloat("AgentSpeed") + .5f;
+        yield return new WaitForSeconds(150f);
+        _agent.speed = agentBaseSpeed + PlayerPrefs.GetFloat("AgentSpeed");
+    }
+
 }

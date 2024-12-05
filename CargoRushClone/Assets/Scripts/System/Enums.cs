@@ -30,3 +30,13 @@ public enum CollectableTypes
     pinkduck,
     blueduck
 }
+
+public enum BoosterTypes
+{
+    SpeedBooster,
+    CapasityBooster,
+    DoubleIncomeBooster,
+    ProductionBooster,
+    WorkerBooster,
+    FreeMoneyBooster
+}

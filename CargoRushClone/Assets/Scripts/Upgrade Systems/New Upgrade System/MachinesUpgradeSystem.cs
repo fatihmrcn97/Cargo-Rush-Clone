@@ -7,15 +7,9 @@ public class MachinesUpgradeSystem : MonoBehaviour
 {
     public TextMeshProUGUI moneyTxtSpeed; 
     public TextMeshProUGUI speedUpgradeLevelText;
-    public TextMeshProUGUI aiBuyUpgradeLevelText;
     [SerializeField] private Slider sliderSpeed;
     [SerializeField] private Slider sliderAIBuy;
-
-   
-
-    [Header("Capasity Upgrade Settings")] [SerializeField]
-    private int maxAIBuyLevel = 10;
-
+  
     [SerializeField] private int maxSpeedLevel = 10;
 
     [SerializeField] private List<int> moneyForAIBUy;
