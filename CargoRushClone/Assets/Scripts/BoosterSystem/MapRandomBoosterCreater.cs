@@ -33,11 +33,7 @@ public class MapRandomBoosterCreater : MonoBehaviour
     {
         boosterSpwanPoints[changeIndex] = boosterYedekSpawnPoints[changeIndex];
     }
-    
-    
-    
-    
-    
+     
     
     #region WRAPPER OF CRATEBOOSTERS
     private void CreateSpeedBooster()

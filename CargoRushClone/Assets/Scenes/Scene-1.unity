@@ -9009,6 +9009,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8391238409093868966, guid: cb6e5c4e8c90ba34b8fe6dd44a7d6e4e,
         type: 3}
+      propertyPath: u_event.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8391238409093868966, guid: cb6e5c4e8c90ba34b8fe6dd44a7d6e4e,
+        type: 3}
       propertyPath: u_event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 170363388}
@@ -9030,6 +9035,11 @@ PrefabInstance:
     - target: {fileID: 8391238409093868966, guid: cb6e5c4e8c90ba34b8fe6dd44a7d6e4e,
         type: 3}
       propertyPath: u_event.m_PersistentCalls.m_Calls.Array.data[4].m_Target
+      value: 
+      objectReference: {fileID: 2122770577}
+    - target: {fileID: 8391238409093868966, guid: cb6e5c4e8c90ba34b8fe6dd44a7d6e4e,
+        type: 3}
+      propertyPath: u_event.m_PersistentCalls.m_Calls.Array.data[5].m_Target
       value: 
       objectReference: {fileID: 2122770577}
     - target: {fileID: 8391238409093868966, guid: cb6e5c4e8c90ba34b8fe6dd44a7d6e4e,
@@ -9059,6 +9069,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8391238409093868966, guid: cb6e5c4e8c90ba34b8fe6dd44a7d6e4e,
         type: 3}
+      propertyPath: u_event.m_PersistentCalls.m_Calls.Array.data[5].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8391238409093868966, guid: cb6e5c4e8c90ba34b8fe6dd44a7d6e4e,
+        type: 3}
       propertyPath: u_event.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetActive
       objectReference: {fileID: 0}
@@ -9080,6 +9095,11 @@ PrefabInstance:
     - target: {fileID: 8391238409093868966, guid: cb6e5c4e8c90ba34b8fe6dd44a7d6e4e,
         type: 3}
       propertyPath: u_event.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      value: ChangeSpawnPoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 8391238409093868966, guid: cb6e5c4e8c90ba34b8fe6dd44a7d6e4e,
+        type: 3}
+      propertyPath: u_event.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
       value: ChangeSpawnPoint
       objectReference: {fileID: 0}
     - target: {fileID: 8391238409093868966, guid: cb6e5c4e8c90ba34b8fe6dd44a7d6e4e,
@@ -9109,6 +9129,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8391238409093868966, guid: cb6e5c4e8c90ba34b8fe6dd44a7d6e4e,
         type: 3}
+      propertyPath: u_event.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
+      value: MapRandomBoosterCreater, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8391238409093868966, guid: cb6e5c4e8c90ba34b8fe6dd44a7d6e4e,
+        type: 3}
       propertyPath: u_event.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
       value: 1
       objectReference: {fileID: 0}
@@ -9130,6 +9155,11 @@ PrefabInstance:
     - target: {fileID: 8391238409093868966, guid: cb6e5c4e8c90ba34b8fe6dd44a7d6e4e,
         type: 3}
       propertyPath: u_event.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8391238409093868966, guid: cb6e5c4e8c90ba34b8fe6dd44a7d6e4e,
+        type: 3}
+      propertyPath: u_event.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_BoolArgument
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8391238409093868966, guid: cb6e5c4e8c90ba34b8fe6dd44a7d6e4e,
@@ -9170,6 +9200,11 @@ PrefabInstance:
     - target: {fileID: 8391238409093868966, guid: cb6e5c4e8c90ba34b8fe6dd44a7d6e4e,
         type: 3}
       propertyPath: u_event.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8391238409093868966, guid: cb6e5c4e8c90ba34b8fe6dd44a7d6e4e,
+        type: 3}
+      propertyPath: u_event.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
