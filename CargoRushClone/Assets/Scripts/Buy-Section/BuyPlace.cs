@@ -118,7 +118,7 @@ public class BuyPlace : MonoBehaviour
             UIManager.instance.ScoreAdd(-_moneyDecreaseAmount);
             MoneyForBuy -= _moneyDecreaseAmount;
 
-            Vibration.Vibrate(10);
+            VibrationOld.Vibrate(10);
             slider.value = _value - MoneyForBuy;
             moneyTxt.text = MoneyForBuy.ToString();
             await UniTask.DelayFrame(1, cancellationToken: _cts.Token);

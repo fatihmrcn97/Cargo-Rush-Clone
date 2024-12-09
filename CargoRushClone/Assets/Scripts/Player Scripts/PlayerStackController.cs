@@ -1,6 +1,7 @@
 using System;
 using DG.Tweening;
 using System.Collections.Generic;
+using Taptic;
 using UnityEngine;
 
 public class PlayerStackController : MonoBehaviour, IItemList
@@ -54,8 +55,9 @@ public class PlayerStackController : MonoBehaviour, IItemList
 
     private void CheckMax()
     {
-        Vibration.Vibrate(10);
+        VibrationOld.Vibrate(10);
         UIManager.instance.maxUI.SetActive(stackedMaterials.Count >= (maxStackCount+BoosterSystem.Instance.CapasityBoosterAmount));
+        Vibration.Vibrate(70,125,true); //medium 
         anim.SetBool(TagManager.CARRY_BOOL_ANIM, stackedMaterials.Count > 0);
     }
 

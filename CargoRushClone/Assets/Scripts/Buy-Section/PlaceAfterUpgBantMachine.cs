@@ -40,7 +40,7 @@ public class PlaceAfterUpgBantMachine : MonoBehaviour, IBuyTrigger
         yield return new WaitForSeconds(0.5f);
         boxTapingMachine.UpgradeSettings(1.2f,1.2f);
         u_event?.Invoke();
-        Vibration.Vibrate(50);
+        VibrationOld.Vibrate(50);
         OpenNextObjectToBuy();
         yield return null;
         transform.gameObject.SetActive(false);

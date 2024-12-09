@@ -38,7 +38,7 @@ public class PlaceAfterBought : MonoBehaviour, IBuyTrigger
         yield return new WaitForSeconds(1f);
 
         u_event?.Invoke();
-        Vibration.Vibrate(50);
+        VibrationOld.Vibrate(50);
         yield return null; 
         OpenNextObjectToBuy();
         transform.gameObject.SetActive(false);

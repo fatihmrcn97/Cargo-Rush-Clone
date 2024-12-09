@@ -42,7 +42,7 @@ public class CargoPlaceAfterBought : MonoBehaviour , IBuyTrigger
         kargolamaParentObj.SetActive(true);  
         u_event?.Invoke();
         yield return null;
-        Vibration.Vibrate(50); 
+        VibrationOld.Vibrate(50); 
         OpenNextObjectToBuy();
         transform.gameObject.SetActive(false);
     }
@@ -71,7 +71,7 @@ public class CargoPlaceAfterBought : MonoBehaviour , IBuyTrigger
         currentCargoSystem.SetActive(true);
         currentCargoSystem.GetComponentInChildren<SplineFollower>().follow = false; 
         u_event?.Invoke();
-        Vibration.Vibrate(50);
+        VibrationOld.Vibrate(50);
         yield return null;
         OpenNextObjectToBuy();
         transform.gameObject.SetActive(false);

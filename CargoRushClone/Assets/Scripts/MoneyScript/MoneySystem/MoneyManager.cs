@@ -94,7 +94,7 @@ public class MoneyManager : MonoBehaviour
         foreach (var item in Enumerable.Reverse(tempMoneyList))
         {
             item.GetComponent<MoneyMovement>().MoneyCollectedMovement(player);
-            Vibration.Vibrate(10);
+            VibrationOld.Vibrate(10);
             moneyList.Remove(item); 
             yield return null;
         }

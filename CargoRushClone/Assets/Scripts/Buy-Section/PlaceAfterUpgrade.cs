@@ -52,7 +52,7 @@ public class PlaceAfterUpgrade : MonoBehaviour, IBuyTrigger
         nextCargoSystem.GetComponentInChildren<SplineFollower>().follow = false;
         nextCargoSystem.SetActive(true); 
         u_event?.Invoke();
-        Vibration.Vibrate(50);
+        VibrationOld.Vibrate(50);
         yield return null;
         OpenNextObjectToBuy();
         transform.gameObject.SetActive(false);
