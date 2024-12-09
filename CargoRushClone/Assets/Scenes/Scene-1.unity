@@ -26183,7 +26183,7 @@ MonoBehaviour:
   tapedItemStatus: 1
   isFirstMachine: 0
   machineType: 1
-  saveName: 
+  saveName: bant1Add
 --- !u!114 &766166016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39311,7 +39311,7 @@ MonoBehaviour:
   tapedItemStatus: 3
   isFirstMachine: 0
   machineType: 1
-  saveName: 
+  saveName: bant3add
 --- !u!114 &1164953225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54905,7 +54905,7 @@ MonoBehaviour:
   tapedItemStatus: 0
   isFirstMachine: 1
   machineType: 0
-  saveName: 
+  saveName: collectableAdd
 --- !u!114 &1620617376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58074,7 +58074,7 @@ MonoBehaviour:
   tapedItemStatus: 2
   isFirstMachine: 0
   machineType: 1
-  saveName: 
+  saveName: bant2Add
 --- !u!114 &1735682867
 MonoBehaviour:
   m_ObjectHideFlags: 0
