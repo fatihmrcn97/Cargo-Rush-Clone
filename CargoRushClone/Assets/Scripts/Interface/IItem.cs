@@ -14,4 +14,7 @@ public interface IItem
     void SetCurrentTween(Tween tw);
 
     Transform ResetObj();
+    
+    CollectableTypes CollectableType();
 }
+

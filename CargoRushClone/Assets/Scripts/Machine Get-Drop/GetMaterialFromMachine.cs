@@ -1,3 +1,4 @@
+using System.Collections;
 using DG.Tweening;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
@@ -7,17 +8,28 @@ public class GetMaterialFromMachine : MonoBehaviour
 {
     public List<GameObject> singleMaterial;
 
-
     private MachineController _machineController;
 
     private const float ProgressTime = .2f;
 
     [SerializeField] private int indexOfStackSytem;
 
+    [SerializeField] private string saveIndex;
 
-    private void Start()
+    private GetMaterialSave _getMaterialSave;
+
+    private BoxTapingMachine _boxTapingMachine;
+    private IEnumerator Start()
     {
+        
+        if((int.Parse(saveIndex)>2))
+            _boxTapingMachine = GetComponentInParent<BoxTapingMachine>();
+        
         _machineController = GetComponentInParent<MachineController>();
+        _getMaterialSave = new GetMaterialSave(_boxTapingMachine,_machineController,singleMaterial,saveIndex);
+        _machineController.getMaterialSave = _getMaterialSave;
+        yield return new WaitForSeconds(.5f);
+        _getMaterialSave.LoadData();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -63,6 +75,8 @@ public class GetMaterialFromMachine : MonoBehaviour
 
             var currentSingleMaterial = singleMaterial[^1];
             singleMaterial.Remove(currentSingleMaterial);
+            
+            _getMaterialSave.RemoveData();
             currentSingleMaterial.transform.GetChild(0).gameObject.SetActive(true);
             _machineController._stackSystems[indexOfStackSytem].SetTheStackPositonBack(singleMaterial.Count);
 

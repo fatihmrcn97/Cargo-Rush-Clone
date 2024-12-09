@@ -6773,6 +6773,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   singleMaterial: []
   indexOfStackSytem: 0
+  saveIndex: 0
 --- !u!1 &185828593
 GameObject:
   m_ObjectHideFlags: 0
@@ -17116,6 +17117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   singleMaterial: []
   indexOfStackSytem: 2
+  saveIndex: 2
 --- !u!1 &461122270
 GameObject:
   m_ObjectHideFlags: 0
@@ -22316,6 +22318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   singleMaterial: []
   indexOfStackSytem: 0
+  saveIndex: 3
 --- !u!1 &641498673
 GameObject:
   m_ObjectHideFlags: 0
@@ -26179,6 +26182,8 @@ MonoBehaviour:
   itemStatus: 1
   tapedItemStatus: 1
   isFirstMachine: 0
+  machineType: 1
+  saveName: 
 --- !u!114 &766166016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35317,6 +35322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   singleMaterial: []
   indexOfStackSytem: 0
+  saveIndex: 4
 --- !u!1 &1057982687
 GameObject:
   m_ObjectHideFlags: 0
@@ -39304,6 +39310,8 @@ MonoBehaviour:
   itemStatus: 1
   tapedItemStatus: 3
   isFirstMachine: 0
+  machineType: 1
+  saveName: 
 --- !u!114 &1164953225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51977,6 +51985,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   singleMaterial: []
   indexOfStackSytem: 0
+  saveIndex: 5
 --- !u!1 &1551328643
 GameObject:
   m_ObjectHideFlags: 0
@@ -54895,6 +54904,8 @@ MonoBehaviour:
   itemStatus: 0
   tapedItemStatus: 0
   isFirstMachine: 1
+  machineType: 0
+  saveName: 
 --- !u!114 &1620617376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58062,6 +58073,8 @@ MonoBehaviour:
   itemStatus: 1
   tapedItemStatus: 2
   isFirstMachine: 0
+  machineType: 1
+  saveName: 
 --- !u!114 &1735682867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68401,6 +68414,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   singleMaterial: []
   indexOfStackSytem: 1
+  saveIndex: 1
 --- !u!1001 &2093323775
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -72119,9 +72133,32 @@ PrefabInstance:
       objectReference: {fileID: 1362826266}
     - target: {fileID: 2583666111780195770, guid: 9519e008bef1209488f2f2eb16fcb263,
         type: 3}
+      propertyPath: boxItems.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2583666111780195770, guid: 9519e008bef1209488f2f2eb16fcb263,
+        type: 3}
       propertyPath: boxSprites.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2583666111780195770, guid: 9519e008bef1209488f2f2eb16fcb263,
+        type: 3}
+      propertyPath: boxItems.Array.data[0]
+      value: 
+      objectReference: {fileID: 5862504352274940469, guid: f0589e0c5d25e53479a3cea115c69c6f,
+        type: 3}
+    - target: {fileID: 2583666111780195770, guid: 9519e008bef1209488f2f2eb16fcb263,
+        type: 3}
+      propertyPath: boxItems.Array.data[1]
+      value: 
+      objectReference: {fileID: 5862504352274940469, guid: d1d81c8c7822be2488aa606bb611bb93,
+        type: 3}
+    - target: {fileID: 2583666111780195770, guid: 9519e008bef1209488f2f2eb16fcb263,
+        type: 3}
+      propertyPath: boxItems.Array.data[2]
+      value: 
+      objectReference: {fileID: 5862504352274940469, guid: a409c87eb28494649aca6ed4a42547d4,
+        type: 3}
     - target: {fileID: 2583666111780195770, guid: 9519e008bef1209488f2f2eb16fcb263,
         type: 3}
       propertyPath: boxSprites.Array.data[0]
@@ -72139,6 +72176,29 @@ PrefabInstance:
       propertyPath: boxSprites.Array.data[2]
       value: 
       objectReference: {fileID: 21300000, guid: e95e5a41ede8ffd4aaee5b1db41a9fe5,
+        type: 3}
+    - target: {fileID: 2583666111780195770, guid: 9519e008bef1209488f2f2eb16fcb263,
+        type: 3}
+      propertyPath: collectablePrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2583666111780195770, guid: 9519e008bef1209488f2f2eb16fcb263,
+        type: 3}
+      propertyPath: collectablePrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 6640522842780418265, guid: 47173c97322d907438b4c7170acb66fa,
+        type: 3}
+    - target: {fileID: 2583666111780195770, guid: 9519e008bef1209488f2f2eb16fcb263,
+        type: 3}
+      propertyPath: collectablePrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 6640522842780418265, guid: 0452651f512edc347a535de65583d21e,
+        type: 3}
+    - target: {fileID: 2583666111780195770, guid: 9519e008bef1209488f2f2eb16fcb263,
+        type: 3}
+      propertyPath: collectablePrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 6640522842780418265, guid: 7785445b8c507e749af40c5ab8721571,
         type: 3}
     - target: {fileID: 3515999147085619791, guid: 9519e008bef1209488f2f2eb16fcb263,
         type: 3}
@@ -77320,7 +77380,6 @@ MonoBehaviour:
   _getMaterialFromMachine: {fileID: 0}
   jumpPower: 0.75
   outItemStatus: 1
-  outTapedItemStatus: 1
   lastBoxPosition:
   - {fileID: 4252173064885049152}
   - {fileID: 1652432123}

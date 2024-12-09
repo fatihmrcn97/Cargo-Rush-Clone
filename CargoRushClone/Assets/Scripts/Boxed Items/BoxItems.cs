@@ -41,4 +41,9 @@ public class BoxItems : MonoBehaviour, IItem
         // itemi geri poola dondurceksem resetleme işlemeri burda olacak
         return transform;
     }
+
+    public CollectableTypes CollectableType()
+    {
+        return CollectableTypes.duck;
+    }
 }

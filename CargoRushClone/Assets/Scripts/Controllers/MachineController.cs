@@ -9,7 +9,9 @@ public class MachineController : MonoBehaviour, IMachineController
 
     [SerializeField] protected Transform material_machine_enter_pos;
 
-    protected IStackSystem _stackSystem;
+    public ISave getMaterialSave;
+
+    public IStackSystem _stackSystem;
 
     [HideInInspector] public Animator anim;
 
@@ -20,6 +22,10 @@ public class MachineController : MonoBehaviour, IMachineController
     protected float animStartValue;
 
     public List<IStackSystem> _stackSystems;
+
+    public ISave AddMaterialSaveCollectable;
+    
+    
 
     public virtual void StartWashing()
     {

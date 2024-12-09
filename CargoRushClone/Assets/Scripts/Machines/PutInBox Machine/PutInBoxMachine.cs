@@ -13,7 +13,6 @@ public class PutInBoxMachine : MachineController , ITriggerInteraction
     // [SerializeField] private ParticleSystem ps; 
 
     [SerializeField] private ItemStatus outItemStatus;
-    [SerializeField] private TapedItemStatus outTapedItemStatus;
 
 
     [SerializeField] private List<Transform> lastBoxPosition;
@@ -21,8 +20,8 @@ public class PutInBoxMachine : MachineController , ITriggerInteraction
     [SerializeField] private List<GameObject> newProducts;
     [SerializeField] private List<GetMaterialFromMachine> _getMaterialFromMachines;
     
-
-
+     
+    
     private void Awake()
     { 
        var stackSystemsTem = GetComponents<IStackSystem>();
@@ -31,6 +30,8 @@ public class PutInBoxMachine : MachineController , ITriggerInteraction
         anim = GetComponentInChildren<Animator>();
         _addMaterialToMachine = GetComponentInChildren<AddMaterialToMachine>();
         InvokeRepeating(nameof(MachineStartedWorking), 1f, 1f);
+        
+         
     }
 
     private void MachineStartedWorking()
@@ -41,6 +42,7 @@ public class PutInBoxMachine : MachineController , ITriggerInteraction
         // anim.SetBool(TagManager.WALKING_BOOL_ANIM, true);
         _convertingItem = convertedMaterials[^1];
         convertedMaterials.Remove(_convertingItem);
+        AddMaterialSaveCollectable.RemoveData((int)_convertingItem.GetComponent<IItem>().CollectableType());
         _addMaterialToMachine.stackSystem.SetTheStackPositonBack(convertedMaterials.Count);
         _convertingItem.transform.DOLocalJump(material_machine_enter_pos.position, jumpPower, 1, .45f).OnComplete(ItemBoxingProcess);
  
@@ -69,12 +71,13 @@ public class PutInBoxMachine : MachineController , ITriggerInteraction
                 item.SetActive(false);
                 packBox.transform.DOLocalRotate(_stackSystems[index].MaterialDropPositon().rotation.eulerAngles, .15f);
                 _getMaterialFromMachines[index].singleMaterial.Add(packBox);
+                getMaterialSave.SaveData(0);
                 packBox.GetComponent<IItem>().SetCurrentTween( packBox.transform.DOLocalJump(_stackSystems[index].MaterialDropPositon().position, .5f, 1, .15f).OnComplete(() =>
                 { 
                     anim.SetBool(TagManager.WALKING_BOOL_ANIM, false);
                 }));
                 _stackSystems[index].DropPointHandle();
-               PoolSystem.instance.DeactivateAndSentToPool(item.GetComponent<IItem>());
+                PoolSystem.instance.DeactivateAndSentToPool(item.GetComponent<IItem>());
             }); 
     }
 

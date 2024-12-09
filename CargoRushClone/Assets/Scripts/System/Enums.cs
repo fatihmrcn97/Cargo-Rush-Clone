@@ -40,3 +40,9 @@ public enum BoosterTypes
     WorkerBooster,
     FreeMoneyBooster
 }
+
+public enum AddMachineTypes
+{
+    CollectibleMachine,
+    BantTapingMachine,
+}

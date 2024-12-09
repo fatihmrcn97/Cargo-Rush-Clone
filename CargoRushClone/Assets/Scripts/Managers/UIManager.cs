@@ -31,6 +31,9 @@ public class UIManager : MonoBehaviour
     public GlobalVariablesSO globalVars;
 
     public Transform moneyTargetPos;
+    
+    public List<GameObject> collectablePrefabs;
+    public List<GameObject> boxItems;
     private void Awake()
     {
         

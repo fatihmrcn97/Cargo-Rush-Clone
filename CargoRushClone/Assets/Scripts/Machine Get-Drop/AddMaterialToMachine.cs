@@ -18,12 +18,28 @@ public class AddMaterialToMachine : MonoBehaviour
 
     [SerializeField] private bool isFirstMachine;
 
-    public TapedItemStatus TapedItemStatus => tapedItemStatus;
+    private ISave _saveSystem;
+
+    [SerializeField] private AddMachineTypes machineType;
+
+    [SerializeField] private string saveName;
+    
 
     private void Start()
     {
         _machineController = GetComponentInParent<MachineController>();
         stackSystem = GetComponent<IStackSystem>();
+        _saveSystem = machineType switch
+        {
+            AddMachineTypes.CollectibleMachine => new AddMaterialSaveCollectable(stackSystem, _machineController),
+            AddMachineTypes.BantTapingMachine => new AddMateriaSaveBantMachine(stackSystem, _machineController,saveName),
+            _ => _saveSystem
+        };
+
+        _machineController.AddMaterialSaveCollectable = _saveSystem;
+
+
+        _saveSystem.LoadData();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -91,6 +107,10 @@ public class AddMaterialToMachine : MonoBehaviour
             stackController.StackedMaterialList().Remove(currentSingleMaterial);
             stackController.StackPositionHandler();
             _machineController.convertedMaterials.Add(currentSingleMaterial);
+         
+            if(machineType == AddMachineTypes.CollectibleMachine)
+                _saveSystem.SaveData((int)iItem.CollectableType());
+            else _saveSystem.SaveData((int)tapedItemStatus-1);
             currentSingleMaterial.transform.DOLocalRotate(Vector3.zero, progressionTime);
             currentSingleMaterial.transform.DOLocalJump(stackSystem.MaterialDropPositon().position, .5f, 1,
                 progressionTime);
@@ -102,4 +122,5 @@ public class AddMaterialToMachine : MonoBehaviour
             yield return new WaitForSeconds(progressionTime + .02f);
         }
     }
+ 
 }

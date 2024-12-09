@@ -34,6 +34,11 @@ public class Collectable : MonoBehaviour, ICollectable , IItem
         return transform;
     }
 
+    public CollectableTypes CollectableType()
+    {
+        return collectableTypes;
+    }
+
     public void DeactivateObjAndPhysics()
     {
        _collider.enabled = false;
