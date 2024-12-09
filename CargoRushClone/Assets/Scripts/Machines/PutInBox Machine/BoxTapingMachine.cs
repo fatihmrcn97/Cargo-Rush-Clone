@@ -140,6 +140,7 @@ public class BoxTapingMachine : MachineController, ITriggerInteraction
 
         if (fakeBoxes.Count <= 0) _isMachineWorking = false;
         _getMaterialFromMachine.singleMaterial.Add(item);
+        AddMaterialSaveCollectable.RemoveData((int)outTapedItemStatus-1);
         getMaterialSave.SaveData(0);
         _stackSystem.DropPointHandle();
     }
