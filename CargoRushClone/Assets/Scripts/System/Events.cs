@@ -25,4 +25,6 @@ public static class Events
     
     //Booster Events
     public static Action OnWorkerBoosterClaimed;
+    
+    public static Action<UpgradeType> OnMachineUpgrade;
 }

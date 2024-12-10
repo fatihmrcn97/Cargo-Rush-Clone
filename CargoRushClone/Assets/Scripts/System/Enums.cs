@@ -46,3 +46,10 @@ public enum AddMachineTypes
     CollectibleMachine,
     BantTapingMachine,
 }
+
+public enum UpgradeType
+{
+    Speed,
+    Capacity,
+    AI
+}

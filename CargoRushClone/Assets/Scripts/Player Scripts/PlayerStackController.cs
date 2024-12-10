@@ -20,9 +20,8 @@ public class PlayerStackController : MonoBehaviour, IItemList
 
     private void OnEnable()
     {
-        Events.MaterialStackedEvent += CheckMax;
-    }
-
+        Events.MaterialStackedEvent += CheckMax; 
+    } 
     private void OnDisable()
     {
         Events.MaterialStackedEvent -= CheckMax;

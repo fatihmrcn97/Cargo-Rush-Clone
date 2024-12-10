@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class MachinesUpgradeSystem : MonoBehaviour
 {
-    public TextMeshProUGUI moneyTxtSpeed; 
+    public TextMeshProUGUI moneyTxtSpeed;
     public TextMeshProUGUI speedUpgradeLevelText;
     [SerializeField] private Slider sliderSpeed;
     [SerializeField] private Slider sliderAIBuy;
-  
+
     [SerializeField] private int maxSpeedLevel = 10;
 
     [SerializeField] private List<int> moneyForAIBUy;
@@ -23,8 +23,6 @@ public class MachinesUpgradeSystem : MonoBehaviour
 
     private void Awake()
     {
-    
-
         if (!PlayerPrefs.HasKey(_speedUpgradePrefName))
             PlayerPrefs.SetInt(_speedUpgradePrefName, 0);
 
@@ -32,9 +30,6 @@ public class MachinesUpgradeSystem : MonoBehaviour
 
         _upgradeSpeedButton.onClick.AddListener(SpeedUpgrade);
     }
-
-
-   
 
 
     public void SpeedUpgrade()
@@ -45,9 +40,9 @@ public class MachinesUpgradeSystem : MonoBehaviour
         {
             moneyTxtSpeed.transform.parent.GetComponent<Button>().interactable = false;
             moneyTxtSpeed.text = "MAX";
+            return;
         }
-
-        if (currentLevel >= maxSpeedLevel) return;
+ 
         if (UIManager.instance.Score < moneyForSpeed[currentLevel]) return;
 
 
@@ -83,7 +78,5 @@ public class MachinesUpgradeSystem : MonoBehaviour
             moneyTxtSpeed.text = moneyForSpeed[currentLevel].ToString();
 
         speedUpgradeLevelText.text = currentLevel + "/" + maxSpeedLevel;
-
-       
     }
 }
