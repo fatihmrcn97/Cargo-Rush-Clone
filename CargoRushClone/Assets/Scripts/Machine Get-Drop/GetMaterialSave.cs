@@ -89,7 +89,7 @@ public class GetMaterialSave : ISave
                     var createdSavedObj = Object.Instantiate(UIManager.instance.boxItems[saveIndex - 3],
                         _machineController._stackSystem.MaterialDropPositon().position, Quaternion.Euler(outRotation));
                     createdSavedObj.GetComponentInChildren<Animator>().SetTrigger("close");
-                    //  createdSavedObj.GetComponent<IItem>().SetStatus(outItemStatus, outTapedItemStatus);
+                    createdSavedObj.GetComponent<IItem>().SetStatus(ItemStatus.boxedAndTaped, TapedItemStatus.yellowBox);
                     singleMaterial.Add(createdSavedObj);
                     _boxTapingMachine.CheckExtraPaletAddOrDelete(true);
                     _machineController._stackSystem.DropPointHandle();
@@ -104,7 +104,7 @@ public class GetMaterialSave : ISave
                     var createdSavedObj = Object.Instantiate(UIManager.instance.boxItems[saveIndex - 3],
                         _machineController._stackSystem.MaterialDropPositon().position, Quaternion.Euler(outRotation));
                     createdSavedObj.GetComponentInChildren<Animator>().SetTrigger("close");
-                    //  createdSavedObj.GetComponent<IItem>().SetStatus(outItemStatus, outTapedItemStatus);
+                    createdSavedObj.GetComponent<IItem>().SetStatus(ItemStatus.boxedAndTaped, TapedItemStatus.pinkBox);
                     singleMaterial.Add(createdSavedObj);
                     _boxTapingMachine.CheckExtraPaletAddOrDelete(true);
                     _machineController._stackSystem.DropPointHandle();
@@ -118,7 +118,7 @@ public class GetMaterialSave : ISave
                 {
                     var createdSavedObj = Object.Instantiate(UIManager.instance.boxItems[saveIndex - 3],
                         _machineController._stackSystem.MaterialDropPositon().position, Quaternion.Euler(outRotation));
-                    //  createdSavedObj.GetComponent<IItem>().SetStatus(outItemStatus, outTapedItemStatus);
+                    createdSavedObj.GetComponent<IItem>().SetStatus(ItemStatus.boxedAndTaped, TapedItemStatus.blueBox);
                     createdSavedObj.GetComponentInChildren<Animator>().SetTrigger("close");
                     singleMaterial.Add(createdSavedObj);
                     _boxTapingMachine.CheckExtraPaletAddOrDelete(true);
