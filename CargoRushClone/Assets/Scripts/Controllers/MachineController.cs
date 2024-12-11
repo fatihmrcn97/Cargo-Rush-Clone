@@ -5,7 +5,7 @@ using UnityEngine;
  
 public class MachineController : MonoBehaviour, IMachineController
 {
-    [HideInInspector] public List<GameObject> convertedMaterials;
+     public List<GameObject> convertedMaterials;
 
     [SerializeField] protected Transform material_machine_enter_pos;
 

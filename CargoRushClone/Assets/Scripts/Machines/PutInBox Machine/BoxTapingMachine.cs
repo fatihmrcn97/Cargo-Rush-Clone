@@ -95,6 +95,7 @@ public class BoxTapingMachine : MachineController, ITriggerInteraction
                 fakeBoxes.Add(true);
                 remainingTxt.text = convertedMaterials.Count + "/" + maxTapedItemCount;
                 _addMaterialToMachine.stackSystem.SetTheStackPositonBack(convertedMaterials.Count);
+                Debug.Log(_addMaterialToMachine.stackSystem.MaterialDropPositon().localPosition);
                 _convertingItem.GetComponent<SplineFollower>().followSpeed =boxSpeedOnBantMachine+upgradeBoxSpeed+BoosterSystem.Instance.ProductionBoosterAmount;
                 _convertingItem.transform.DOLocalJump(material_machine_enter_pos.position, jumpPower, 1, .15f)
                     .OnComplete(ItemBoxingProcess);

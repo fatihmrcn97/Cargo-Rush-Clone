@@ -25,7 +25,7 @@ public class AddMaterialToMachine : MonoBehaviour
     [SerializeField] private string saveName;
     
 
-    private void Start()
+    private IEnumerator Start()
     {
         _machineController = GetComponentInParent<MachineController>();
         stackSystem = GetComponent<IStackSystem>();
@@ -38,7 +38,7 @@ public class AddMaterialToMachine : MonoBehaviour
 
         _machineController.AddMaterialSaveCollectable = _saveSystem;
 
-
+        yield return new WaitForSeconds(1.1f);
         _saveSystem.LoadData();
     }
 
