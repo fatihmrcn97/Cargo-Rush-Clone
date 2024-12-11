@@ -15,6 +15,8 @@ public class CustomStackSystem : MonoBehaviour, IStackSystem
     private int index = 0;
     private int height = 0;
 
+    [SerializeField] private float heightIncreaseAmount = 0.29f;
+    
     private void Awake()
     {
         GameObject obj = new("NewGameObject");
@@ -43,13 +45,13 @@ public class CustomStackSystem : MonoBehaviour, IStackSystem
             index = 0;
             height++;
             materialDropPosition.SetPositionAndRotation(
-                dropTransforms[index].position + new Vector3(0, .225f * height, 0),
+                dropTransforms[index].position + new Vector3(0, heightIncreaseAmount * height, 0),
                 dropTransforms[index].rotation);
         }
         else if (height > 0)
         {
             materialDropPosition.SetPositionAndRotation(
-                dropTransforms[index].position + new Vector3(0, .225f * height, 0),
+                dropTransforms[index].position + new Vector3(0, heightIncreaseAmount * height, 0),
                 dropTransforms[index].rotation);
         }
         else
@@ -81,7 +83,7 @@ public class CustomStackSystem : MonoBehaviour, IStackSystem
 
 
         materialDropPosition.SetPositionAndRotation
-        (dropTransforms[index].position + new Vector3(0, .225f * height, 0),
+        (dropTransforms[index].position + new Vector3(0, heightIncreaseAmount * height, 0),
             dropTransforms[index].rotation);
 
         if (nullableBoxTaping != null)

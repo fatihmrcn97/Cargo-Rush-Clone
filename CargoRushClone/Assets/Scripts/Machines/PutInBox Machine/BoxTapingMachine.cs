@@ -81,7 +81,7 @@ public class BoxTapingMachine : MachineController, ITriggerInteraction
         {
             if (convertedMaterials.Count <= 0 || _getMaterialFromMachine.singleMaterial.Count>=maxTapedItemCount)
             {
-                if (fakeBoxes.Count <= 0) stoppedUI.SetActive(true);
+                if (fakeBoxes.Count <= 0 && _getMaterialFromMachine.singleMaterial.Count>=maxTapedItemCount) stoppedUI.SetActive(true);
                 yield return _waitTime;
             }
             else

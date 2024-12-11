@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a66c739e55490447ad7cf4becf6c7e6, type: 3}
   m_Name: GlobalVar
   m_EditorClassIdentifier: 
-  PlayerStackSpeed: 0.2
+  PlayerStackSpeed: 0.05
   AIStackSpeed: 1.5
-  PlayerStackMovementSpeed: 0.3
+  PlayerStackMovementSpeed: 0.1
   AIStackMovementSpeed: 0.3
   AICargoAfterWorkWaitTime: 1.5
   AICollectableAfterWorkWaitTime: 2

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 927b369eb4c08134e9a27bbce27f8e8c, type: 3}
   m_Name: StackPosForFirstMaterial
   m_EditorClassIdentifier: 
-  x: 0.25
-  y: 0.2
-  z: 0.25
+  x: 0.31
+  y: 0.3
+  z: 0.31

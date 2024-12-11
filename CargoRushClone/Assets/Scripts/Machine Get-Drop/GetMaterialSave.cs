@@ -45,6 +45,7 @@ public class GetMaterialSave : ISave
                         _machineController._stackSystems[saveIndex].MaterialDropPositon().position,
                         Quaternion.Euler(outRotation));
                     createdSavedObj.GetComponentInChildren<Animator>().SetTrigger("close"); 
+                    createdSavedObj.GetComponent<IItem>().SetStatus(ItemStatus.boxedItem, TapedItemStatus.yellowBox);
                     singleMaterial.Add(createdSavedObj);
                     _machineController._stackSystems[saveIndex].DropPointHandle();
                 }
@@ -60,6 +61,7 @@ public class GetMaterialSave : ISave
                         _machineController._stackSystems[saveIndex].MaterialDropPositon().position,
                         Quaternion.Euler(outRotation));
                     createdSavedObj.GetComponentInChildren<Animator>().SetTrigger("close");
+                    createdSavedObj.GetComponent<IItem>().SetStatus(ItemStatus.boxedItem, TapedItemStatus.pinkBox);
                     singleMaterial.Add(createdSavedObj);
                     _machineController._stackSystems[saveIndex].DropPointHandle();
                 }
@@ -75,6 +77,7 @@ public class GetMaterialSave : ISave
                         _machineController._stackSystems[saveIndex].MaterialDropPositon().position,
                         Quaternion.Euler(outRotation));
                     createdSavedObj.GetComponentInChildren<Animator>().SetTrigger("close");
+                    createdSavedObj.GetComponent<IItem>().SetStatus(ItemStatus.boxedItem, TapedItemStatus.blueBox);
                     singleMaterial.Add(createdSavedObj);
                     _machineController._stackSystems[saveIndex].DropPointHandle();
                 }
