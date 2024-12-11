@@ -3,9 +3,9 @@ using TMPro;
 using UnityEngine.UI;
 
 [System.Serializable]
-public class UpgradeConfig
+public class UpgradeConfig<T>
 {
-    public UpgradeType type;
+    public T type;
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI costText;
     public Slider progressSlider;
