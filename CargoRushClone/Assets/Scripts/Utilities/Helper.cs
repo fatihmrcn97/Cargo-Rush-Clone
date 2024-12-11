@@ -5,13 +5,13 @@ using UnityEngine;
 public static class Helper  
 {
 
-    public static string GetPoolName(TapedItemStatus tapedItemStatus)
+    public static string GetPoolName(CollectableTypes collectableTypes)
     {
-        return tapedItemStatus switch
+        return collectableTypes switch
         {
-            TapedItemStatus.pinkBox => "pinkDuck",
-            TapedItemStatus.yellowBox => "duck",
-            TapedItemStatus.nonTapped => "",
+            CollectableTypes.pinkduck => "pinkDuck",
+            CollectableTypes.duck => "duck",
+            CollectableTypes.blueduck => "blueDuck",
             _ => ""
         };
     }  

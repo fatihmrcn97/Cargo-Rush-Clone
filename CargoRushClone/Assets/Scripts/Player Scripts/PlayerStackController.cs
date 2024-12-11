@@ -18,6 +18,8 @@ public class PlayerStackController : MonoBehaviour, IItemList
 
     private Animator anim;
 
+    [SerializeField] private GameObject maxUI;
+    
     private void OnEnable()
     {
         Events.MaterialStackedEvent += CheckMax; 
@@ -55,7 +57,7 @@ public class PlayerStackController : MonoBehaviour, IItemList
     private void CheckMax()
     {
         VibrationOld.Vibrate(10);
-        UIManager.instance.maxUI.SetActive(stackedMaterials.Count >= (maxStackCount+BoosterSystem.Instance.CapasityBoosterAmount));
+        maxUI.SetActive(stackedMaterials.Count >= (maxStackCount+BoosterSystem.Instance.CapasityBoosterAmount));
         Vibration.Vibrate(70,125,true); //medium 
         anim.SetBool(TagManager.CARRY_BOOL_ANIM, stackedMaterials.Count > 0);
     }

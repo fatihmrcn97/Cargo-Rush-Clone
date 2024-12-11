@@ -68,7 +68,7 @@ namespace Taptic
             Initialize();
             if (isInitialized == false) {
                 logAuto(funcToStr() + ": Not initialized", logLevel.Warning);
-                Debug.Log("amplitude  1  " + amplitude);
+              //  Debug.Log("amplitude  1  " + amplitude);
             }
             else if (HasVibrator() == false) {
                 logAuto(funcToStr() + ": Device doesn't have Vibrator", logLevel.Warning);

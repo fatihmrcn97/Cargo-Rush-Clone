@@ -28,7 +28,9 @@ public class PlayerCollectItem : MonoBehaviour
             collectableObj.transform.SetParent(_itemList.StackTransforms()[_itemList.StackedMaterialList().Count]);
             collectableObj.transform.DOLocalJump(Vector3.zero, .5f, 1, ProgressTime);
             collectableObj.transform.DOLocalRotate(Vector3.zero, ProgressTime);
-           
+            
+            UIManager.instance.InGameCollectablesCount[Helper.GetPoolName(collectableObj.GetComponent<IItem>().CollectableType())] -= 1;
+            
             _itemList.StackedMaterialList().Add(collectableObj);
             Events.MaterialStackedEvent?.Invoke(); 
         }
@@ -49,6 +51,7 @@ public class PlayerCollectItem : MonoBehaviour
     {
         foreach (var item in _itemList.StackedMaterialList())
         {
+            UIManager.instance.InGameCollectablesCount[Helper.GetPoolName(item.GetComponent<IItem>().CollectableType())] += 1;
             item.GetComponent<ICollectable>().PushInCircle(-transform.forward);
         }
         _itemList.StackedMaterialList().Clear();

@@ -34,6 +34,7 @@ public class AddMaterialSaveCollectable : ISave
             createdSavedObj.GetComponent<Rigidbody>().isKinematic = true;
             createdSavedObj.GetComponent<Rigidbody>().useGravity = false;
             createdSavedObj.GetComponent<BoxCollider>().isTrigger = true;
+            createdSavedObj.transform.tag = TagManager.PACKABLE_ITEM;
             _machineController.convertedMaterials.Add(createdSavedObj);
             _stackSystem.DropPointHandle();
         }

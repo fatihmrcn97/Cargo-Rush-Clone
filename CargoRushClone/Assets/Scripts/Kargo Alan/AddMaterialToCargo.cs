@@ -97,8 +97,7 @@ public class AddMaterialToCargo : MonoBehaviour
             stackSystem.DropPointHandle();
             Events.MaterialStackedEvent?.Invoke();
             _cargoPlace.remaningText.text = _cargoPlace.cargoItems.Count + "/" + _maxConvertedMaterial;
-
-            UIManager.instance.InGameCollectablesCount[Helper.GetPoolName(tapedItemStatus)] -= 1;
+ 
 
             if (_cargoPlace.cargoItems.Count >= _maxConvertedMaterial)
             {
