@@ -3,6 +3,7 @@ using DG.Tweening;
 using System.Collections.Generic;
 using Taptic;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 public class PlayerStackController : MonoBehaviour, IItemList
 {
@@ -19,6 +20,9 @@ public class PlayerStackController : MonoBehaviour, IItemList
     private Animator anim;
 
     [SerializeField] private GameObject maxUI;
+
+    [SerializeField] private RigBuilder iKcontrol;
+    
     
     private void OnEnable()
     {
@@ -59,6 +63,7 @@ public class PlayerStackController : MonoBehaviour, IItemList
         VibrationOld.Vibrate(10);
         maxUI.SetActive(stackedMaterials.Count >= (maxStackCount+BoosterSystem.Instance.CapasityBoosterAmount));
         Vibration.Vibrate(70,125,true); //medium 
+        iKcontrol.enabled=stackedMaterials.Count > 0;
         anim.SetBool(TagManager.CARRY_BOOL_ANIM, stackedMaterials.Count > 0);
     }
 
