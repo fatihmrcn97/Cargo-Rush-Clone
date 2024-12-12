@@ -64,6 +64,11 @@ public class BoxTapingMachine : MachineController, ITriggerInteraction
         // animStartValue = anim.GetFloat(TagManager.ANIM_SPEED_FLOAT); 
     }
 
+    private void Start()
+    {
+        UIManager.instance.activeBantMachines++;
+    }
+
     private void Update()
     {
         if (!_isMachineWorking) return;

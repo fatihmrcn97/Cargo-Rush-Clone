@@ -26,6 +26,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Button skinSysOpenBtn;
     [SerializeField] private Canvas skinSysUI;
+
+    public int activeBantMachines=0, activeCargo=0;
     
     public GameObject joystick;
     public GlobalVariablesSO globalVars;

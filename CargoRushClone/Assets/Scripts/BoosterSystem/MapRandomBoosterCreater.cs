@@ -18,8 +18,12 @@ public class MapRandomBoosterCreater : MonoBehaviour
 
     [SerializeField] private List<Transform> boosterYedekSpawnPoints;
 
+
+    private List<int> activeBoosters;
+
     private void Awake()
     {
+        activeBoosters = new List<int>();
         InvokeRepeating(nameof(CreateSpeedBooster), 1f, boosterTimes[0]);
         InvokeRepeating(nameof(CreateCapsityBooster), 1f, boosterTimes[1]);
         InvokeRepeating(nameof(CreateDoubleBooster), 1f, boosterTimes[2]);
@@ -28,45 +32,67 @@ public class MapRandomBoosterCreater : MonoBehaviour
         InvokeRepeating(nameof(CreateFreeMoneyBooster), 1f, boosterTimes[5]);
     }
 
+    private void Start()
+    {
+        Events.OnBoosterFinished += BoosterFinished;
+    }
 
     public void ChangeSpawnPoint(int changeIndex)
     {
         boosterSpwanPoints[changeIndex] = boosterYedekSpawnPoints[changeIndex];
     }
-     
-    
+
+
     #region WRAPPER OF CRATEBOOSTERS
+
     private void CreateSpeedBooster()
     {
         CreateBooster(BoosterTypes.SpeedBooster);
     }
+
     private void CreateCapsityBooster()
     {
         CreateBooster(BoosterTypes.CapasityBooster);
     }
+
     private void CreateDoubleBooster()
     {
         CreateBooster(BoosterTypes.DoubleIncomeBooster);
     }
+
     private void CreateProductionBooster()
     {
         CreateBooster(BoosterTypes.ProductionBooster);
     }
+
     private void CreateWorkerBooster()
     {
         CreateBooster(BoosterTypes.WorkerBooster);
     }
+
     private void CreateFreeMoneyBooster()
     {
         CreateBooster(BoosterTypes.FreeMoneyBooster);
     }
+
     #endregion
+
     private void CreateBooster(BoosterTypes boosterType)
     {
+        if (activeBoosters.Contains((int)boosterType)) return;
         var booster = Instantiate(boosters[(int)boosterType]);
         booster.transform.position = boosterSpwanPoints[(int)boosterType].position;
+        Destroy(booster,300);
+        if (boosterType != BoosterTypes.FreeMoneyBooster)
+            activeBoosters.Add((int)boosterType);
     }
-    
+
+    private void BoosterFinished(BoosterTypes type)
+    {
+        if (activeBoosters.Contains((int)type))
+            activeBoosters.Remove((int)type);
+    }
+
     // private void CreateBoosters()
     // {
     //     if(GetRandomNonUsedBoosterSpawnPoint()==null) return;

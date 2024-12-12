@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -25,6 +27,9 @@ public class BoosterSystem : SingletonMonoBehaviour<BoosterSystem>
         workerBoosterButton,
         freeMoneyBoosterButton;
 
+
+    [SerializeField] private List<TextMeshProUGUI> boosterTimeTxt;
+    
 
     private float speedBoosterAmount;
     public float SpeedBoosterAmount => speedBoosterAmount;
@@ -69,31 +74,36 @@ public class BoosterSystem : SingletonMonoBehaviour<BoosterSystem>
     private void SpeedBoost()
     {
         // Karakteri hızlandır
-        StartCoroutine(BoostSpeedFor3Min());
+        StartCoroutine(BoostSpeedFor3Min(180));
+        StartCoroutine(TimerForWaitingCompleteOrder(boosterTimeTxt[0], 180));
         speedBooster.SetActive(false);
     }
 
     private void CapasityBoost()
     {
-        StartCoroutine(BoostCapasityFor3Min());
+        StartCoroutine(BoostCapasityFor3Min(150));
+        StartCoroutine(TimerForWaitingCompleteOrder(boosterTimeTxt[1], 150));
         capasityBooster.SetActive(false);
     }
 
     private void DoubleIncomeBoost()
     {
-        StartCoroutine(BoostDoubleIncomeFor3Min());
+        StartCoroutine(BoostDoubleIncomeFor3Min(150));
+        StartCoroutine(TimerForWaitingCompleteOrder(boosterTimeTxt[2], 150));
         doubleIncomeBooster.SetActive(false);
     }
 
     private void ProductionBoost()
     {
-        StartCoroutine(BoostProductionSpeedFor3Min());
+        StartCoroutine(BoostProductionSpeedFor3Min(150));
+        StartCoroutine(TimerForWaitingCompleteOrder(boosterTimeTxt[3], 150));
         productionBooster.SetActive(false);
     }
 
     private void WorkerBoost()
     {
-        Events.OnWorkerBoosterClaimed?.Invoke();
+        StartCoroutine(TimerForWaitingCompleteOrder(boosterTimeTxt[4], 150));
+        Events.OnWorkerBoosterClaimed?.Invoke(150);
         workerBooster.SetActive(false);
     }
 
@@ -105,48 +115,57 @@ public class BoosterSystem : SingletonMonoBehaviour<BoosterSystem>
 
     private IEnumerator BoostFreeMoney()
     {
-        int moneyEanerdAmount = 100; 
-        
+        int moneyEanerdAmount = (300*UIManager.instance.activeBantMachines)+(200*UIManager.instance.activeCargo);
+        var listOfMoney = new List<GameObject>();
         for (int i = 0; i < 55; i++)
         {
             var money = Instantiate(money2d, UIManager.instance.transform);
             money.transform.DOLocalMove(
-                money.transform.localPosition + new Vector3(Random.Range(-600, 600), Random.Range(-850, 850), 0),
+                money.transform.localPosition + new Vector3(Random.Range(-500, 500), Random.Range(-650, 650), 0),
                 0.05f);
+           listOfMoney.Add(money);
+        }
+
+        foreach (var money in listOfMoney)
+        {
             money.transform.DOLocalMove(UIManager.instance.moneyTargetPos.localPosition, .45f)
                 .OnComplete(() => Destroy(money));
             yield return null;
         }
-
+        listOfMoney.Clear();
         UIManager.instance.ScoreAdd(moneyEanerdAmount);
     }
 
 
-    private IEnumerator BoostSpeedFor3Min()
+    private IEnumerator BoostSpeedFor3Min(float time)
     {
         speedBoosterAmount = 1.5f;
-        yield return new WaitForSeconds(150f);
+        yield return new WaitForSeconds(time);
         speedBoosterAmount = 0;
+        Events.OnBoosterFinished?.Invoke(BoosterTypes.SpeedBooster);
     }
 
-    private IEnumerator BoostCapasityFor3Min()
+    private IEnumerator BoostCapasityFor3Min(float time)
     {
         capasityBoosterAmount = 15;
-        yield return new WaitForSeconds(150f);
+        yield return new WaitForSeconds(time);
         capasityBoosterAmount = 0;
+        Events.OnBoosterFinished?.Invoke(BoosterTypes.CapasityBooster);
     }
 
-    private IEnumerator BoostDoubleIncomeFor3Min()
+    private IEnumerator BoostDoubleIncomeFor3Min(float time)
     {
         doubleIncomeBoosterAmount = 2;
-        yield return new WaitForSeconds(150f);
+        yield return new WaitForSeconds(time);
         doubleIncomeBoosterAmount = 1;
+        Events.OnBoosterFinished?.Invoke(BoosterTypes.DoubleIncomeBooster);
     }
-    private IEnumerator BoostProductionSpeedFor3Min()
+    private IEnumerator BoostProductionSpeedFor3Min(float time)
     {
         productionBoosterAmount = .5f;
-        yield return new WaitForSeconds(150f);
+        yield return new WaitForSeconds(time);
         productionBoosterAmount = 0;
+        Events.OnBoosterFinished?.Invoke(BoosterTypes.ProductionBooster);
     }
 
     public void OpenBoosterUI(BoosterTypes boosterType)
@@ -174,5 +193,24 @@ public class BoosterSystem : SingletonMonoBehaviour<BoosterSystem>
             default:
                 throw new ArgumentOutOfRangeException(nameof(boosterType), boosterType, null);
         }
+    }
+    
+    
+    private IEnumerator TimerForWaitingCompleteOrder(TextMeshProUGUI timeText,float timeForCompleteOrder)
+    {
+        timeText.transform.parent.gameObject.SetActive(true);
+        float timer = timeForCompleteOrder;
+
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            int minutes = Mathf.FloorToInt(timer / 60F);
+            int seconds = Mathf.FloorToInt(timer - minutes * 60);
+            string niceTime = $"{minutes:0}:{seconds:00}";
+            timeText.text = niceTime;
+            yield return null;
+        } 
+        timeText.text = "0:00";
+        timeText.transform.parent.gameObject.SetActive(false);  
     }
 }

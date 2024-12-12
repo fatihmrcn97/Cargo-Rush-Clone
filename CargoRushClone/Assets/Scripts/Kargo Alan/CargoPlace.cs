@@ -55,7 +55,12 @@ public class CargoPlace : MonoBehaviour
         timerSlider.value = 0;
         timerSlider.gameObject.SetActive(false);
     }
-    
+
+    private void Start()
+    {
+        UIManager.instance.activeCargo++;
+    }
+
     public void CargoFullCurrierGo()
     {
         StartCoroutine(CurrierGo());

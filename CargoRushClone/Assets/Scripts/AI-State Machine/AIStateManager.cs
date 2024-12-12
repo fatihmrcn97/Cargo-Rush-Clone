@@ -141,12 +141,12 @@ public class AIStateManager : MonoBehaviour, IAIWorker
         _agent.speed = agentBaseSpeed + PlayerPrefs.GetFloat("AgentSpeed");
     }
     
-    private void WorkerBoosterClaimed()
+    private void WorkerBoosterClaimed(float time)
     {
-        StartCoroutine(WorkerBooster());
+        StartCoroutine(WorkerBooster(time));
     }
 
-    private IEnumerator WorkerBooster()
+    private IEnumerator WorkerBooster(float time)
     {
         _agent.speed = agentBaseSpeed + PlayerPrefs.GetFloat("AgentSpeed") + .5f;
         yield return new WaitForSeconds(150f);
