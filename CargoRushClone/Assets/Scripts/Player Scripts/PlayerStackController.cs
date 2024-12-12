@@ -54,7 +54,7 @@ public class PlayerStackController : MonoBehaviour, IItemList
         for (int i = 0; i < stackedMaterials.Count; i++)
         {
             stackedMaterials[i].transform.SetParent(stackTransform[i]);
-            stackedMaterials[i].transform.DOLocalMove(Vector3.zero, .1f);
+            stackedMaterials[i].transform.localPosition = Vector3.zero;
         }
     }
 

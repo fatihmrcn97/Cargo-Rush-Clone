@@ -82,9 +82,10 @@ public class AddMaterialToMachine : MonoBehaviour
 
     private IEnumerator PlayerDroppingMaterialsToTheMachine(IItemList stackController)
     {
-        float progressionTime = stackController.StackMovementSpeed();
+        float progressionTime = 1f;
         List<GameObject> tempList = new(stackController.StackedMaterialList());
-        tempList.Reverse();
+        if(!isFirstMachine)
+            tempList.Reverse();
         if (stackController.StackedMaterialList().Count <= 0) yield break;
         if (CheckIsMax()) yield break;
         // yield return new WaitForSeconds(stackController.StackGetGiveDelaySpeed());
@@ -97,7 +98,6 @@ public class AddMaterialToMachine : MonoBehaviour
             if (itemStatus != iItem.ItemStatus()) continue;
             if (tapedItemStatus != iItem.TapedItemStatus()) continue;
             if (CheckIsMax()) yield break;
-            currentSingleMaterial.transform.SetParent(null);
             // Active collision
 
             currentSingleMaterial.tag = TagManager.PACKABLE_ITEM;
@@ -107,19 +107,25 @@ public class AddMaterialToMachine : MonoBehaviour
             stackController.StackedMaterialList().Remove(currentSingleMaterial);
             stackController.StackPositionHandler();
             _machineController.convertedMaterials.Add(currentSingleMaterial);
-         
+            
+            currentSingleMaterial.transform.SetParent(null);
+            
             if(machineType == AddMachineTypes.CollectibleMachine)
                 _saveSystem.SaveData((int)iItem.CollectableType());
-            else _saveSystem.SaveData((int)tapedItemStatus-1);
-            currentSingleMaterial.transform.DOLocalRotate(Vector3.zero, progressionTime);
+            else 
+                _saveSystem.SaveData((int)tapedItemStatus-1);
+         
             currentSingleMaterial.transform.DOLocalJump(stackSystem.MaterialDropPositon().position, .5f, 1,
                 progressionTime);
-            if (isFirstMachine)
-                currentSingleMaterial.transform.DOLocalRotate(
-                    new Vector3(Random.Range(0, 90), Random.Range(0, 190), Random.Range(0, 290)), progressionTime);
+            currentSingleMaterial.transform.DOLocalRotate(
+                isFirstMachine
+                    ? new Vector3(Random.Range(0, 90), Random.Range(0, 190), Random.Range(0, 290))
+                    : Vector3.zero, progressionTime);
+            
             stackSystem.DropPointHandle();
             Events.MaterialStackedEvent?.Invoke();
-            yield return new WaitForSeconds(progressionTime + .02f);
+
+            if (isFirstMachine) yield return new WaitForSeconds(0.1f);
         }
     }
  

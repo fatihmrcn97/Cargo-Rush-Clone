@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3043215827778219287}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2755488678333544600}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7760125848766518627
 MeshFilter:
@@ -108,6 +108,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3275989354788299298}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
@@ -117,7 +118,6 @@ Transform:
   - {fileID: 8215669997353051038}
   - {fileID: 8931519197905917183}
   m_Father: {fileID: 6689714157729007611}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &8560360954213783993
 Animator:
@@ -152,6 +152,7 @@ GameObject:
   - component: {fileID: 3130187642634322776}
   - component: {fileID: 2736729631469245094}
   - component: {fileID: -2341951567204567441}
+  - component: {fileID: -5489876587592684527}
   m_Layer: 0
   m_Name: First Kutu Yesil
   m_TagString: Packable
@@ -166,6 +167,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5862504352274940469}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -173,7 +175,6 @@ Transform:
   m_Children:
   - {fileID: 2755488678333544600}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!65 &3130187642634322776
 BoxCollider:
@@ -183,9 +184,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5862504352274940469}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 0.4, y: 0.4, z: 0.4}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2736729631469245094
@@ -319,6 +328,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemStatus: 1
   tapedItemStatus: 0
+--- !u!114 &-5489876587592684527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5862504352274940469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0, g: 0, b: 0, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &6613499780806127145
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,13 +371,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6613499780806127145}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.48985732, y: -0, z: -0, w: 0.87180257}
   m_LocalPosition: {x: -0, y: 1, z: 1}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2755488678333544600}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 58.662, y: 0, z: 0}
 --- !u!33 &3214124998118117898
 MeshFilter:
@@ -428,13 +455,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7990759075831882372}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.9143757, y: -0, z: -0, w: -0.4048668}
   m_LocalPosition: {x: -0, y: 1, z: -1}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2755488678333544600}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -227.76599, y: 0, z: 0}
 --- !u!33 &1403007823821220319
 MeshFilter:

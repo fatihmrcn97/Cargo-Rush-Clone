@@ -10,7 +10,7 @@ public class GetMaterialFromMachine : MonoBehaviour
 
     private MachineController _machineController;
 
-    private const float ProgressTime = .2f;
+    private const float ProgressTime = .9f;
 
     [SerializeField] private int indexOfStackSytem;
 
@@ -92,7 +92,7 @@ public class GetMaterialFromMachine : MonoBehaviour
 
             stackController.StackedMaterialList().Add(currentSingleMaterial);
             Events.MaterialStackedEvent?.Invoke();
-            await UniTask.Delay(200);
+            await UniTask.Delay(0);
         }
     }
 }

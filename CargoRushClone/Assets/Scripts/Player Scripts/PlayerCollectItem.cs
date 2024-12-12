@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerCollectItem : MonoBehaviour
 {
 
-    private const float ProgressTime = .25f;
+    private const float ProgressTime = .31f;
     private IItemList _itemList;
 
     private void Awake()
