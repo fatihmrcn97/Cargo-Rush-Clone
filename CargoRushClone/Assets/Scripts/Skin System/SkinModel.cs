@@ -6,7 +6,7 @@ using UnityEngine;
 public class SkinModel
 {
     public Action<Skin> OnSkinChanged;
-    public SkinsSO SkinsSo { get; private set; }
+    public SkinsSO SkinsSo { get; }
     public int currentSkinIndex { get; private set; }
 
     public Dictionary<int, int> buyedSkins;
