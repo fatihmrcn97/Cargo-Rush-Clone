@@ -11,8 +11,7 @@ public class AIStackController : MonoBehaviour, IItemList
     public List<Transform> stackTransform;
 
     [SerializeField] private int maxStackCountBase = 3;
-
-    private float stackSpeed; // stack alma verme hizi
+ 
     [HideInInspector] public int maxStackCount;
 
     private bool _isInTrigger;
@@ -20,8 +19,7 @@ public class AIStackController : MonoBehaviour, IItemList
 
     private void Start()
     {
-        maxStackCount = maxStackCountBase;
-        stackSpeed = UIManager.instance.globalVars.AIStackMovementSpeed;
+        maxStackCount = maxStackCountBase; 
     }
 
     private void OnEnable()
@@ -76,7 +74,7 @@ public class AIStackController : MonoBehaviour, IItemList
 
     public float StackMovementSpeed()
     {
-        return stackSpeed;
+        return UIManager.instance.globalVars.AIStackMovementSpeed;;
     }
 
     public float StackGetGiveDelaySpeed()

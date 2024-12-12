@@ -92,7 +92,7 @@ public class GetMaterialFromMachine : MonoBehaviour
 
             stackController.StackedMaterialList().Add(currentSingleMaterial);
             Events.MaterialStackedEvent?.Invoke();
-            await UniTask.Delay(0);
+            await UniTask.Delay(speedDelay);
         }
     }
 }

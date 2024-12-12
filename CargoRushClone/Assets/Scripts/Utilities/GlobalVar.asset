@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerStackSpeed: 0.05
   AIStackSpeed: 1.5
-  PlayerStackMovementSpeed: 0.1
+  PlayerStackMovementSpeed: 1
   AIStackMovementSpeed: 0.3
   AICargoAfterWorkWaitTime: 1.5
   AICollectableAfterWorkWaitTime: 2

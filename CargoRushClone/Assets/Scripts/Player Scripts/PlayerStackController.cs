@@ -12,8 +12,7 @@ public class PlayerStackController : MonoBehaviour, IItemList
     public List<Transform> stackTransform;
 
     [SerializeField] private int maxStackCountBase = 20;
-
-    private float stackSpeed; //Stack alma-verme hizi
+ 
 
     [HideInInspector] public int maxStackCount;
 
@@ -41,7 +40,6 @@ public class PlayerStackController : MonoBehaviour, IItemList
     private void Start()
     {
         maxStackCount = maxStackCountBase + PlayerPrefs.GetInt("maxCollected");
-        stackSpeed = UIManager.instance.globalVars.PlayerStackMovementSpeed;
     }
 
     public void MaxStackCountUpdated()
@@ -88,7 +86,7 @@ public class PlayerStackController : MonoBehaviour, IItemList
 
     public float StackMovementSpeed()
     {
-        return stackSpeed;
+        return UIManager.instance.globalVars.PlayerStackMovementSpeed;;
     }
 
     public float StackGetGiveDelaySpeed()

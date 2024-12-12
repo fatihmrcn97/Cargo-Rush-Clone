@@ -82,7 +82,7 @@ public class AddMaterialToMachine : MonoBehaviour
 
     private IEnumerator PlayerDroppingMaterialsToTheMachine(IItemList stackController)
     {
-        float progressionTime = 1f;
+        float progressionTime = stackController.StackMovementSpeed();
         List<GameObject> tempList = new(stackController.StackedMaterialList());
         if(!isFirstMachine)
             tempList.Reverse();
@@ -125,7 +125,9 @@ public class AddMaterialToMachine : MonoBehaviour
             stackSystem.DropPointHandle();
             Events.MaterialStackedEvent?.Invoke();
 
-            if (isFirstMachine) yield return new WaitForSeconds(0.1f);
+            yield return isFirstMachine
+                ? new WaitForSeconds(0.1f)
+                : new WaitForSeconds(stackController.StackGetGiveDelaySpeed());
         }
     }
  
