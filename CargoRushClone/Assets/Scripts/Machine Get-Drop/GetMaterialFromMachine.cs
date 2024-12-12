@@ -19,14 +19,14 @@ public class GetMaterialFromMachine : MonoBehaviour
     private GetMaterialSave _getMaterialSave;
 
     private BoxTapingMachine _boxTapingMachine;
+
     private IEnumerator Start()
     {
-        
-        if((int.Parse(saveIndex)>2))
+        if ((int.Parse(saveIndex) > 2))
             _boxTapingMachine = GetComponentInParent<BoxTapingMachine>();
-        
+
         _machineController = GetComponentInParent<MachineController>();
-        _getMaterialSave = new GetMaterialSave(_boxTapingMachine,_machineController,singleMaterial,saveIndex);
+        _getMaterialSave = new GetMaterialSave(_boxTapingMachine, _machineController, singleMaterial, saveIndex);
         _machineController.getMaterialSave = _getMaterialSave;
         yield return new WaitForSeconds(.5f);
         _getMaterialSave.LoadData();
@@ -61,8 +61,8 @@ public class GetMaterialFromMachine : MonoBehaviour
     private async UniTaskVoid PlayerGettingStackMaterials(IItemList stackController)
     {
         var speedDelay = (int)(1000 * stackController.StackGetGiveDelaySpeed());
-        await UniTask.Delay(speedDelay); 
-        
+        await UniTask.Delay(speedDelay);
+
         while (stackController.IsInTrigger)
         {
             if (singleMaterial.Count <= 0)
@@ -75,7 +75,7 @@ public class GetMaterialFromMachine : MonoBehaviour
 
             var currentSingleMaterial = singleMaterial[^1];
             singleMaterial.Remove(currentSingleMaterial);
-            
+
             _getMaterialSave.RemoveData();
             currentSingleMaterial.transform.GetChild(0).gameObject.SetActive(true);
             _machineController._stackSystems[indexOfStackSytem].SetTheStackPositonBack(singleMaterial.Count);
@@ -86,9 +86,10 @@ public class GetMaterialFromMachine : MonoBehaviour
                 currentSingleMaterial.GetComponent<IItem>().CurrentTween().Kill();
             }
 
+
             currentSingleMaterial.transform.SetParent(stackTransform);
             currentSingleMaterial.transform.DOLocalJump(Vector3.zero, .5f, 1, ProgressTime);
-            currentSingleMaterial.transform.DOLocalRotate(Vector3.zero, ProgressTime);
+            currentSingleMaterial.transform.DOLocalRotate(new Vector3(0, Random.Range(-90, 90), 0), ProgressTime);
 
             stackController.StackedMaterialList().Add(currentSingleMaterial);
             Events.MaterialStackedEvent?.Invoke();

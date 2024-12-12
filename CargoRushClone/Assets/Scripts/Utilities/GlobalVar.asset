@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GlobalVar
   m_EditorClassIdentifier: 
   PlayerStackSpeed: 0.05
-  AIStackSpeed: 1.5
+  AIStackSpeed: 0.06
   PlayerStackMovementSpeed: 1
   AIStackMovementSpeed: 0.3
   AICargoAfterWorkWaitTime: 1.5

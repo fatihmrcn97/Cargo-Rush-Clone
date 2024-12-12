@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AIStateManager : MonoBehaviour, IAIWorker
+public class 
+    AIStateManager : MonoBehaviour, IAIWorker
 {
     AIBaseState currentState;
     public AIIdleState IdleState = new();
