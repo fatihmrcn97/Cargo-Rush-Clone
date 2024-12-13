@@ -3,13 +3,12 @@ using UnityEngine;
 
 public class PlayerCollectItem : MonoBehaviour
 {
-
-    private const float ProgressTime = .31f;
+ 
     private IItemList _itemList;
 
     private void Awake()
     {
-        _itemList = GetComponentInParent<IItemList>();
+        _itemList = GetComponentInParent<IItemList>(); 
     }
 
     private void OnTriggerEnter(Collider other)
@@ -26,8 +25,8 @@ public class PlayerCollectItem : MonoBehaviour
 
             PackableItemSpawner.Instance.allCollectables.Remove(collectableObj);
             collectableObj.transform.SetParent(_itemList.StackTransforms()[_itemList.StackedMaterialList().Count]);
-            collectableObj.transform.DOLocalJump(Vector3.zero, .5f, 1, ProgressTime);
-            collectableObj.transform.DOLocalRotate(Vector3.zero, ProgressTime);
+            collectableObj.transform.DOLocalJump(Vector3.zero, .5f, 1, UIManager.instance.globalVars.duckCollectSpeed);
+            collectableObj.transform.DOLocalRotate(Vector3.zero, UIManager.instance.globalVars.duckCollectSpeed);
             
             UIManager.instance.InGameCollectablesCount[Helper.GetPoolName(collectableObj.GetComponent<IItem>().CollectableType())] -= 1;
             

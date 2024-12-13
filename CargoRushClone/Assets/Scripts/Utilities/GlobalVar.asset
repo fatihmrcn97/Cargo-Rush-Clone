@@ -18,3 +18,4 @@ MonoBehaviour:
   AIStackMovementSpeed: 0.3
   AICargoAfterWorkWaitTime: 1.5
   AICollectableAfterWorkWaitTime: 2
+  duckCollectSpeed: 1

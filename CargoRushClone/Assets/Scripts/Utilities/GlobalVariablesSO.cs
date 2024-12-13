@@ -16,4 +16,6 @@ public class GlobalVariablesSO : ScriptableObject
     [Space][Header("Worker after job wait times")]
     public float AICargoAfterWorkWaitTime;
     public float AICollectableAfterWorkWaitTime;
+
+    public float duckCollectSpeed;
 }
