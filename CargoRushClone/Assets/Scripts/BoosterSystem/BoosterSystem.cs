@@ -29,6 +29,9 @@ public class BoosterSystem : SingletonMonoBehaviour<BoosterSystem>
 
 
     [SerializeField] private List<TextMeshProUGUI> boosterTimeTxt;
+
+    [SerializeField] private TextMeshProUGUI earnedMoneyTxt;
+    
     
 
     private float speedBoosterAmount;
@@ -115,7 +118,7 @@ public class BoosterSystem : SingletonMonoBehaviour<BoosterSystem>
 
     private IEnumerator BoostFreeMoney()
     {
-        int moneyEanerdAmount = (300*UIManager.instance.activeBantMachines)+(200*UIManager.instance.activeCargo);
+        int moneyEanerdAmount = (300*UIManager.instance.activeBantMachines)+(200*UIManager.instance.activeCargo); 
         var listOfMoney = new List<GameObject>();
         for (int i = 0; i < 55; i++)
         {
@@ -188,6 +191,8 @@ public class BoosterSystem : SingletonMonoBehaviour<BoosterSystem>
                 workerBooster.SetActive(true);
                 break;
             case BoosterTypes.FreeMoneyBooster:
+                int moneyEanerdAmount = (300*UIManager.instance.activeBantMachines)+(200*UIManager.instance.activeCargo);
+                earnedMoneyTxt.text = ""+moneyEanerdAmount/10+"K";
                 freeMoneyBooster.SetActive(true);
                 break;
             default:
