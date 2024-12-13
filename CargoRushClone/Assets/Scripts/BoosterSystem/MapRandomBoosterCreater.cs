@@ -82,9 +82,17 @@ public class MapRandomBoosterCreater : MonoBehaviour
         if (activeBoosters.Contains((int)boosterType)) return;
         var booster = Instantiate(boosters[(int)boosterType]);
         booster.transform.position = boosterSpwanPoints[(int)boosterType].position;
-        Destroy(booster,300);
+        StartCoroutine(BoosterDestroye(booster, (int)boosterType));
         if (boosterType != BoosterTypes.FreeMoneyBooster)
             activeBoosters.Add((int)boosterType);
+    }
+
+    private IEnumerator BoosterDestroye(GameObject booster, int boosterType)
+    {
+        yield return new WaitForSeconds(boosterTimes[(int)boosterType] - 5f);
+        Destroy(booster);
+        if (activeBoosters.Contains(boosterType))
+            activeBoosters.Remove(boosterType);
     }
 
     private void BoosterFinished(BoosterTypes type)
